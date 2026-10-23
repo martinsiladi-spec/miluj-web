@@ -576,7 +576,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 
 <!-- ================= PROTOTYP ================= -->
 <section class="hero">
-  <nav class="lang" aria-label="Jazyk"><a href="../" hreflang="en" lang="en">EN</a><a href="../sk/" hreflang="sk" lang="sk" aria-current="true">SK</a><a href="../es/" hreflang="es" lang="es">ES</a></nav>
+  <nav class="lang" aria-label="Jazyk"><a href="../" hreflang="en" lang="en">EN</a><a href="./" hreflang="sk" lang="sk" aria-current="true">SK</a><a href="../es/" hreflang="es" lang="es">ES</a></nav>
   <div class="bg"><img src="../assets/x_hero.webp" alt="Ascension Pyramid v noci, z jej vrcholu stúpa lúč svetla" fetchpriority="high"></div>
   <div class="wrap">
     <img class="hero-logo" src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
@@ -732,7 +732,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       </svg>
       <p class="fine">Údaj „až 24 hodín“ je cieľ uvádzaný dodávateľom. Krivka bežnej vody je ilustračná; skutočný úbytok H₂ závisí od koncentrácie, nádoby, teploty a zaobchádzania. MILUJ chce oba profily nezávisle overiť, skôr než ich predstaví ako namerané výsledky.</p>
     </div>
-    <p style="margin-top:36px"><a class="btn ghost" href="../water/">Čo robí vodu živou? Prečítajte si viac (EN) →</a></p>
+    <p style="margin-top:36px"><a class="btn ghost" href="water/">Čo robí vodu živou? Prečítajte si viac →</a></p>
   </div>
 </section>
 
@@ -848,7 +848,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     ['s08_cacao','Ceremónia','Kakaové ceremónie','Rituál otvárajúci srdce, zdieľaný v kruhu.'],
     ['s09_genekeys','Sebapoznanie','Gene Keys','Kontemplatívna mapa darov a tieňov.']
   ];
-  const card = (p, dup) => `<article class="card"${dup ? ' aria-hidden="true"' : ' tabindex="0"'}><img src="../assets/${p[0]}.webp" alt="${dup ? '' : p[2] + ' at MILUJ'}" loading="lazy"><div class="cap"><span class="tag">${p[1]}</span><h3>${p[2]}</h3><p>${p[3]}</p></div></article>`;
+  const card = (p, dup) => `<article class="card"${dup ? ' aria-hidden="true"' : ' tabindex="0"'}><img src="../assets/${p[0]}.webp" alt="${dup ? '' : p[2] + ' v MILUJ'}" loading="lazy"><div class="cap"><span class="tag">${p[1]}</span><h3>${p[2]}</h3><p>${p[3]}</p></div></article>`;
   $('#track').innerHTML = practices.map(p => card(p, false)).join('') + practices.map(p => card(p, true)).join('');
   const w = practices.map(p => p[2]).join('  ✦  ') + '  ✦  ';
   $('#words').textContent = w + w;

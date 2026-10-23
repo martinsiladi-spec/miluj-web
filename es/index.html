@@ -576,7 +576,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 
 <!-- ================= PROTOTYP ================= -->
 <section class="hero">
-  <nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">EN</a><a href="../sk/" hreflang="sk" lang="sk">SK</a><a href="../es/" hreflang="es" lang="es" aria-current="true">ES</a></nav>
+  <nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">EN</a><a href="../sk/" hreflang="sk" lang="sk">SK</a><a href="./" hreflang="es" lang="es" aria-current="true">ES</a></nav>
   <div class="bg"><img src="../assets/x_hero.webp" alt="La Ascension Pyramid de noche, con un haz de luz que se eleva desde su cima" fetchpriority="high"></div>
   <div class="wrap">
     <img class="hero-logo" src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
@@ -732,7 +732,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       </svg>
       <p class="fine">La cifra de «hasta 24 horas» es un objetivo indicado por el proveedor. La curva convencional es ilustrativa; la pérdida real de H₂ depende de la concentración, el recipiente, la temperatura y la manipulación. MILUJ verificará ambos perfiles de forma independiente antes de presentarlos como resultados medidos.</p>
     </div>
-    <p style="margin-top:36px"><a class="btn ghost" href="../water/">¿Qué hace que el agua esté viva? Lee más (EN) →</a></p>
+    <p style="margin-top:36px"><a class="btn ghost" href="water/">¿Qué hace que el agua esté viva? Lee más →</a></p>
   </div>
 </section>
 
@@ -848,7 +848,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     ['s08_cacao','Ceremonia','Ceremonias de cacao','Un ritual que abre el corazón, compartido en círculo.'],
     ['s09_genekeys','Autoconocimiento','Gene Keys','Un mapa contemplativo de dones y sombras.']
   ];
-  const card = (p, dup) => `<article class="card"${dup ? ' aria-hidden="true"' : ' tabindex="0"'}><img src="../assets/${p[0]}.webp" alt="${dup ? '' : p[2] + ' at MILUJ'}" loading="lazy"><div class="cap"><span class="tag">${p[1]}</span><h3>${p[2]}</h3><p>${p[3]}</p></div></article>`;
+  const card = (p, dup) => `<article class="card"${dup ? ' aria-hidden="true"' : ' tabindex="0"'}><img src="../assets/${p[0]}.webp" alt="${dup ? '' : p[2] + ' en MILUJ'}" loading="lazy"><div class="cap"><span class="tag">${p[1]}</span><h3>${p[2]}</h3><p>${p[3]}</p></div></article>`;
   $('#track').innerHTML = practices.map(p => card(p, false)).join('') + practices.map(p => card(p, true)).join('');
   const w = practices.map(p => p[2]).join('  ✦  ') + '  ✦  ';
   $('#words').textContent = w + w;

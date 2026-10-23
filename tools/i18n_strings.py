@@ -245,10 +245,11 @@ T = [
  "Údaj „až 24 hodín“ je cieľ uvádzaný dodávateľom. Krivka bežnej vody je ilustračná; skutočný úbytok H₂ závisí od koncentrácie, nádoby, teploty a zaobchádzania. MILUJ chce oba profily nezávisle overiť, skôr než ich predstaví ako namerané výsledky.",
  "La cifra de «hasta 24 horas» es un objetivo indicado por el proveedor. La curva convencional es ilustrativa; la pérdida real de H₂ depende de la concentración, el recipiente, la temperatura y la manipulación. MILUJ verificará ambos perfiles de forma independiente antes de presentarlos como resultados medidos."),
 ("up to 24 h (target)", "až 24 h (cieľ)", "hasta 24 h (objetivo)"),
-("<b>How it works</b>", "<b>Ako to funguje</b>", "<b>Cómo funciona</b>"),
+("How it works", "Ako to funguje", "Cómo funciona"),
 ("} of 08: ${", "} z 08: ${", "} de 08: ${"),
 ('alt="${c[1]} at MILUJ"', 'alt="${c[1]} v MILUJ"', 'alt="${c[1]} en MILUJ"'),
-("What makes water alive? Read the deep dive →", "Čo robí vodu živou? Prečítajte si viac (EN) →", "¿Qué hace que el agua esté viva? Lee más (EN) →"),
+("p[2] + ' at MILUJ'", "p[2] + ' v MILUJ'", "p[2] + ' en MILUJ'"),
+("What makes water alive? Read the deep dive →", "Čo robí vodu živou? Prečítajte si viac →", "¿Qué hace que el agua esté viva? Lee más →"),
 
 # ---- science ----
 ("The science track: eight technologies", "Vedecká línia: osem technológií", "La línea científica: ocho tecnologías"),

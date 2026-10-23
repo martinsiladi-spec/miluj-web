@@ -10,6 +10,10 @@
 <meta property="og:image" content="../assets/w1_spring.webp">
 <meta name="theme-color" content="#0B0E0C">
 <link rel="icon" href="../assets/x_logo_hero.webp">
+<link rel="alternate" hreflang="en" href="https://martinsiladi-spec.github.io/miluj-web/water/">
+<link rel="alternate" hreflang="sk" href="https://martinsiladi-spec.github.io/miluj-web/sk/water/">
+<link rel="alternate" hreflang="es" href="https://martinsiladi-spec.github.io/miluj-web/es/water/">
+<link rel="alternate" hreflang="x-default" href="https://martinsiladi-spec.github.io/miluj-web/water/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap">
@@ -355,6 +359,15 @@ section[id]{scroll-margin-top:var(--navh)}
 .uses-head{max-width:none!important}
 .hero-lead{font-size:clamp(20px,1.8vw,24px)!important;max-width:40ch!important;color:var(--ivory)!important}
 
+
+/* language switcher */
+.top-r{display:flex;align-items:center;gap:18px}
+.lang{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(11,14,12,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(245,239,226,.18)}
+.lang a{min-width:40px;padding:.5em .8em;border-radius:999px;text-align:center;font:500 13px/1 var(--body);letter-spacing:.06em;color:rgba(245,239,226,.75);text-decoration:none;transition:background-color .2s ease,color .2s ease}
+.lang a:hover{color:var(--ivory)}
+.lang a[aria-current="true"]{background:var(--ivory);color:var(--night)}
+@media (max-width:600px){.top-r{gap:10px}.top-r .back{display:none}}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
 .rv.in{opacity:1;transform:none}
@@ -392,7 +405,7 @@ section[id]{scroll-margin-top:var(--navh)}
 
 <section class="hero">
   <div class="bg"><img src="../assets/w1_spring.webp" alt="A clear mountain spring turning in a natural vortex inside a moss-covered stone basin in the jungle, morning light falling through the trees" fetchpriority="high"></div>
-  <div class="top wrap"><a href="../" aria-label="MILUJ Sanctuary home"><img src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum"></a><a class="back" href="../">← Back to MILUJ</a></div>
+  <div class="top wrap"><a href="../" aria-label="MILUJ Sanctuary home"><img src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum"></a><div class="top-r"><a class="back" href="../">← Back to MILUJ</a><nav class="lang" aria-label="Language"><a href="./" hreflang="en" lang="en" aria-current="true">EN</a><a href="../sk/water/" hreflang="sk" lang="sk">SK</a><a href="../es/water/" hreflang="es" lang="es">ES</a></nav></div></div>
   <div class="wrap">
     <p class="label hero-k">What makes water alive?</p>
     <h1>We are water.</h1>

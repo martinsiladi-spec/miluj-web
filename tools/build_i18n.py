@@ -1,25 +1,40 @@
-"""Build the Slovak and Spanish homepages from the English one.
+"""Build the Slovak and Spanish pages from the English ones.
 
     python3 tools/build_i18n.py
 
-index.html (English) is the only source. This script copies it to sk/index.html and es/index.html,
-translates every text it finds in tools/i18n_strings.py, points asset and page links one folder up,
-and sets the language switcher. It lists anything it could not translate, so new English text is
-never silently left behind: add a row to i18n_strings.py and run it again.
+The English pages are the only source:  index.html  and  water/index.html.
+This script writes  sk/index.html, sk/water/index.html, es/index.html, es/water/index.html:
+it translates every text listed in tools/i18n_strings.py and tools/i18n_water.py, points assets
+one folder further up, and sets the language switcher and <html lang>. It lists anything it could
+not translate (and exits with an error), so new English text is never silently left behind:
+add a row to the right file and run it again.
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from i18n_strings import T
+from i18n_strings import T as T_HOME
+from i18n_water import T as T_WATER
 from jsstrings import scan, human
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = {'sk': 1, 'es': 2}
+PAGES = ['', 'water/']                       # page folders, relative to the site root
 ATTRS = r'(alt|aria-label|content|title|placeholder)'
-SUBSTRINGS = ['up to 24 h (target)', '<b>How it works</b>', '} of 08: ${', 'alt="${c[1]} at MILUJ"']          # text that sits inside a longer JS template
+SUBSTRINGS = ["p[2] + ' at MILUJ'", '} of 08: ${', 'alt="${c[1]} at MILUJ"']   # text inside longer JS templates
 IGNORE = {'(prefers-reduced-motion: reduce)', '(hover: hover) and (pointer: fine)', 'POST', 'Content-Type', 'Accept', 'send failed',
           '"Noto Serif Armenian", Sylfaen, "Arial Unicode MS", serif', '500 22px Jost, sans-serif', 'MILUJ Sanctuary · new investor request',
-          '0110 MILUJ 1001 ✦ 0101 LOVE 1100 ◇ 0011 LIGHT 1010 △ 0111 HEART 1001 ○ 1101 TRUTH 0100 ', 'Vinyasa', 'Breathwork', 'Gene Keys'}
-SKIP_TEXT = re.compile(r'^@@NOTE[\d\s@NOTE]*@@$|^\d+ (min|h)$|^[\d\s.,:%·€→↗×–+-]*$|^MILUJ( Sanctuary| Bali)?$|^(EN|SK|ES)$')
+          '0110 MILUJ 1001 ✦ 0101 LOVE 1100 ◇ 0011 LIGHT 1010 △ 0111 HEART 1001 ○ 1101 TRUTH 0100 ', 'Vinyasa', 'Breathwork', 'Gene Keys',
+          'IntersectionObserver', 'Nature Medicine', 'Nanomedicine', 'EZ', 'arXiv ↗', '-45% 0px -50% 0px', '0px 0px -8% 0px'}
+SKIP_TEXT = re.compile(r'^@@NOTE[\d\s@NOTE]*@@$|^\d+ (min|h)$|^[\d\s.,:%·€→↗×–+-]*$|^MILUJ( Sanctuary| Bali)?$|^(EN|SK|ES)$'
+                       r'|^(H|O|H₂|H₂O|EZ|C)$|^H₂ \+ 2 •OH → 2 H₂O$|^≈ 20 min$|^[A-Z][\w .,/]*↗$|^Nature Medicine, 2007 ↗$')
+
+def text_nodes(fragment, d, missing):
+    """translate the text between tags of an HTML fragment"""
+    def node(m):
+        lead, text, trail = re.match(r'(\s*)(.*?)(\s*)$', m.group(1), re.S).groups()
+        if text in d: return '>' + lead + d[text] + trail + '<'
+        if text and re.search(r'[A-Za-z]{2,}', text) and '${' not in text and '`' not in text and not SKIP_TEXT.match(text) and text not in IGNORE: missing.add(text)
+        return m.group(0)
+    return re.sub(r'>([^<>]+)<', node, fragment)
 
 def translate_html(chunk, d, missing):
     out = []
@@ -28,72 +43,73 @@ def translate_html(chunk, d, missing):
             def attr(m):
                 v = m.group(2)
                 if v in d: return f'{m.group(1)}="{d[v]}"'
-                if re.search(r'[A-Za-z]{2,} [A-Za-z]', v) and not v.startswith('width=') and v not in IGNORE:
-                    missing.add(v)
+                if re.search(r'[A-Za-z]{2,} [A-Za-z]', v) and not v.startswith('width=') and v not in IGNORE: missing.add(v)
                 return m.group(0)
             out.append(re.sub(ATTRS + r'="([^"]*)"', attr, tok))
         else:
-            m = re.match(r'(\s*)(.*?)(\s*)$', tok, re.S); text = m.group(2)
-            if text in d: out.append(m.group(1) + d[text] + m.group(3))
-            else:
-                if text and re.search(r'[A-Za-z]{2,}', text) and not SKIP_TEXT.match(text): missing.add(text)
-                out.append(tok)
+            out.append(text_nodes('>' + tok + '<', d, missing)[1:-1])
     return ''.join(out)
 
 def translate_js(js, d, missing):
     out, last = [], 0
     for st, en, q, t in scan(js):
-        plain = t.replace("\\'", "'")
-        new = None
+        plain = t.replace("\\'", "'"); new = None
         if plain in d: new = d[plain]
-        elif q == '`':
+        else:
+            body = t
+            if re.search(r'<[a-z]', body):                       # HTML inside a string: translate its text nodes
+                body = text_nodes(body, d, missing)
             for k in SUBSTRINGS:
-                if k in t: t = t.replace(k, d[k]); new = t
-        if new is None:
-            if human(plain) and plain not in IGNORE and '${' not in plain and not SKIP_TEXT.match(plain): missing.add(plain)
-            continue
+                if k in body: body = body.replace(k, d[k])
+            if body != t: new = body.replace("\\'", "'")
+            elif human(plain) and plain not in IGNORE and '${' not in plain and not SKIP_TEXT.match(plain): missing.add(plain)
+        if new is None: continue
         if q == "'": new = new.replace("'", "\\'")
         out.append(js[last:st + 1] + new); last = en - 1
     out.append(js[last:])
     return ''.join(out)
 
-def build(lang):
-    col = LANGS[lang]
-    d = {row[0]: row[col] for row in T}
-    s = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
-    # the notes in the source are hidden working notes; they never need translating
-    notes = re.findall(r'<aside class="note.*?</aside>', s, re.S)
+def switcher(s, lang, page):
+    up = '../' * (1 + page.count('/'))            # from /<lang>/<page> back to the site root
+    href = {'en': up + page, lang: './'}
+    for other in LANGS:
+        if other != lang: href[other] = up + other + '/' + page
+    def link(m):
+        code = m.group(1)
+        cur = ' aria-current="true"' if code == lang else ''
+        return f'<a href="{href[code] or "./"}" hreflang="{code}" lang="{code}"{cur}>{code.upper()}</a>'
+    return re.sub(r'<a href="[^"]*" hreflang="(en|sk|es)" lang="(?:en|sk|es)"(?: aria-current="true")?>(?:EN|SK|ES)</a>', link, s)
+
+def build(lang, page, d):
+    src = os.path.join(ROOT, page, 'index.html')
+    s = open(src, encoding='utf-8').read()
+    notes = re.findall(r'<aside class="note.*?</aside>', s, re.S)   # hidden working notes stay as they are
     for i, n in enumerate(notes): s = s.replace(n, f'@@NOTE{i}@@')
     missing = set()
     parts = re.split(r'(<script\b.*?</script>|<style\b.*?</style>)', s, flags=re.S)
     for i, p in enumerate(parts):
         if p.startswith('<script'): parts[i] = translate_js(p, d, missing)
-        elif p.startswith('<style'): pass
-        else: parts[i] = translate_html(p, d, missing)
+        elif not p.startswith('<style'): parts[i] = translate_html(p, d, missing)
     s = ''.join(parts)
     for i, n in enumerate(notes): s = s.replace(f'@@NOTE{i}@@', n)
-    # one folder down: assets and the water page are one level up
-    s = re.sub(r'(["\'`(])assets/', r'\1../assets/', s)
-    s = s.replace('href="water/"', 'href="../water/"')
+    s = re.sub(r'(["\'`(])((?:\.\./)*)assets/', r'\1../\2assets/', s)   # one folder deeper: assets one more level up
     s = s.replace('<html lang="en">', f'<html lang="{lang}">', 1)
-    # language switcher as seen from /<lang>/
-    sw = {'en': '../', 'sk': '../sk/', 'es': '../es/'}
-    def link(m):
-        code = m.group(2)
-        cur = ' aria-current="true"' if code == lang else ''
-        return f'<a href="{sw[code]}" hreflang="{code}" lang="{code}"{cur}>{code.upper()}</a>'
-    s = re.sub(r'<a href="[^"]*" hreflang="(en|sk|es)" lang="(en|sk|es)"(?: aria-current="true")?>(?:EN|SK|ES)</a>',
-               lambda m: link(m), s)
-    os.makedirs(os.path.join(ROOT, lang), exist_ok=True)
-    open(os.path.join(ROOT, lang, 'index.html'), 'w', encoding='utf-8').write(s)
-    unused = [k for k in d if k not in open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read().replace("\\'", "'")]
-    return sorted(missing), unused
+    s = switcher(s, lang, page)
+    out = os.path.join(ROOT, lang, page, 'index.html')
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, 'w', encoding='utf-8').write(s)
+    return out, sorted(missing)
 
 if __name__ == '__main__':
     ok = True
-    for lang in LANGS:
-        missing, unused = build(lang)
-        print(f'{lang}/index.html written')
-        for m in missing: print(f'  not translated: {m[:110]}'); ok = False
-        for u in unused: print(f'  unused row (no longer on the page): {u[:110]}')
+    rows = T_HOME + T_WATER
+    for lang, col in LANGS.items():
+        d = {r[0]: r[col] for r in rows}
+        for page in PAGES:
+            out, missing = build(lang, page, d)
+            print(os.path.relpath(out, ROOT), 'written')
+            for m in missing: print(f'  not translated: {m[:110]}'); ok = False
+    sources = ''.join(open(os.path.join(ROOT, p, 'index.html'), encoding='utf-8').read() for p in PAGES).replace("\\'", "'")
+    for r in rows:
+        if r[0] not in sources: print(f'unused row (no longer on any page): {r[0][:100]}')
     sys.exit(0 if ok else 1)

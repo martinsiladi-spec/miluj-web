@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Živá voda · MILUJ Sanctuary</title>
+<meta name="description" content="Ako MILUJ chápe vodu: molekulárny poriadok, pohyb a molekulárny vodík, od jedného pohára až do bunky.">
+<meta property="og:title" content="Živá voda · MILUJ Sanctuary">
+<meta property="og:description" content="Rovnaké atómy, iný poriadok. Čo robí vodu živou a čo dokáže niesť.">
+<meta property="og:image" content="../../assets/w1_spring.webp">
+<meta name="theme-color" content="#0B0E0C">
+<link rel="icon" href="../../assets/x_logo_hero.webp">
+<link rel="alternate" hreflang="en" href="https://martinsiladi-spec.github.io/miluj-web/water/">
+<link rel="alternate" hreflang="sk" href="https://martinsiladi-spec.github.io/miluj-web/sk/water/">
+<link rel="alternate" hreflang="es" href="https://martinsiladi-spec.github.io/miluj-web/es/water/">
+<link rel="alternate" hreflang="x-default" href="https://martinsiladi-spec.github.io/miluj-web/water/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long scroll in the homepage's world. Dark night ground, a pinned "same atoms, different order" scene,
+   a living vortex for Schauberger, the sea-blue hydrogen chart, then the warm "one glass" synthesis and the honest lenses. */
+:root{
+  --night:#0B0E0C; --forest:#121813; --sea:#0A1B22; --ember:#17110C; --ivory:#F5EFE2; --paper:#FBF8F1;
+  --gold:#C2A25E; --gold-2:#E3CC94; --aqua:#9FC7D2; --ink:#1B1A15; --mute-d:rgba(245,239,226,.74); --mute-l:#5F5A4C;
+  --line-d:rgba(194,162,94,.30);
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --gut:max(16px, env(safe-area-inset-left, 0px)); --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --fs-h1:clamp(52px,8vw,124px); --fs-h2:clamp(40px,5vw,72px); --fs-h3:clamp(26px,2.6vw,36px); --fs-lead:20px; --fs-body:17px; --fs-small:14px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--ivory);font-family:var(--body);font-weight:300;font-size:var(--fs-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.label{font-size:15px;font-weight:500;letter-spacing:.01em;color:var(--gold-2)}
+section p:not(.label){max-width:65ch}
+.lead{font-size:var(--fs-lead);color:var(--ivory)}
+.muted{color:var(--mute-d)}
+.btn{display:inline-flex;align-items:center;gap:.6em;border-radius:999px;padding:.95em 1.6em;font:500 15px/1 var(--body);letter-spacing:.02em;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform 160ms var(--ease-out),background-color .2s ease}
+.btn.solid{background:var(--ivory);color:var(--night)}
+.btn.ghost{border-color:rgba(245,239,226,.45);color:var(--ivory)}
+.btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{transform:translateY(-2px)}}
+.sources a,.back{transition:color .2s ease}
+
+/* hero */
+.hero{position:relative;min-height:min(92svh,920px);display:flex;align-items:flex-end;overflow:hidden;padding-block:120px 72px}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;animation:kb 28s ease-in-out infinite alternate;transform-origin:50% 55%}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,12,.55) 0%,rgba(11,14,12,.12) 34%,rgba(11,14,12,.9) 100%)}
+.hero .wrap{position:relative;width:100%}
+.hero .top{position:absolute;z-index:3;top:calc(env(safe-area-inset-top,0px) + 22px);left:0;right:0;display:flex;justify-content:space-between;align-items:center}
+.hero .top img{width:clamp(120px,12vw,180px)}
+.back{font-size:15px;text-decoration:none;color:var(--mute-d);display:inline-flex;gap:.5em;align-items:center}
+.back:hover{color:var(--ivory)}
+.hero h1{font-size:var(--fs-h1);max-width:12ch}
+.hero .lead{margin-top:22px;max-width:46ch;color:var(--mute-d)}
+.cue{margin-top:40px;font-size:var(--fs-small);color:var(--mute-d);display:flex;align-items:center;gap:12px}
+.cue::after{content:"";width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+
+/* body water */
+.body{padding-block:140px 130px}
+.bw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.bw h2{font-size:var(--fs-h2)}
+.bw .lead{margin-top:22px}
+.bw-pick{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.bw-pick button{all:unset;cursor:pointer;padding:.7em 1.15em;border-radius:999px;border:1px solid rgba(245,239,226,.28);font-size:15px;color:var(--mute-d);transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.bw-pick button[aria-pressed="true"]{background:var(--ivory);color:var(--night);border-color:var(--ivory)}
+.bw-pick button:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+.bw-note{margin-top:22px;font-size:var(--fs-small);color:rgba(245,239,226,.55)}
+.vessel{justify-self:center;position:relative;width:min(300px,70vw);aspect-ratio:3/5}
+.vessel .glass{position:absolute;inset:0;border-radius:150px 150px 40px 40px;border:1.5px solid rgba(245,239,226,.35);overflow:hidden;background:rgba(245,239,226,.03)}
+.vessel .fill{position:absolute;left:0;right:0;bottom:0;height:100%;transform-origin:50% 100%;transform:scaleY(0);transition:transform 1.2s var(--ease-out);background:linear-gradient(180deg,rgba(159,199,210,.55),rgba(60,120,140,.85))}
+.vessel .wave{position:absolute;left:-50%;width:200%;height:24px;top:-12px;background:radial-gradient(12px 8px at 12px 12px,rgba(200,230,236,.7) 98%,transparent) 0 0/24px 24px repeat-x;animation:wave 3s linear infinite;opacity:.6}
+@keyframes wave{to{transform:translateX(24px)}}
+.vessel .pct{position:absolute;inset:auto 0 42%;text-align:center;font-family:var(--display);font-size:clamp(72px,9vw,120px);line-height:1;font-variant-numeric:tabular-nums lining-nums;color:var(--ivory)}
+.vessel .pct small{font-size:.45em}
+.vessel .cap{position:absolute;inset:auto 0 30%;text-align:center;font-size:15px;color:var(--ivory)}
+
+/* atoms scene */
+.atoms-intro{padding-block:40px 0}
+.atoms-intro figure{margin:0;border-radius:18px;overflow:hidden;position:relative}
+.atoms-intro figure img{width:100%;aspect-ratio:16/8;object-fit:cover}
+.atoms-intro figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:12px;font-size:var(--fs-small);color:rgba(245,239,226,.55)}
+.atoms-intro .head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end;margin-bottom:40px}
+.atoms-intro h2{font-size:var(--fs-h2)}
+.atoms{height:460vh;position:relative}
+.stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.a-stage{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center;height:100%}
+.a-steps{display:grid}
+.a-steps > *{grid-area:1/1}
+.a-step{opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),visibility 0s .5s}
+.a-step.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),visibility 0s}
+.a-step .k{font-family:var(--display);font-size:clamp(60px,7vw,104px);line-height:.9;color:var(--gold-2)}
+.a-step h3{font-size:var(--fs-h3);margin:12px 0 10px}
+.a-step p{color:var(--mute-d)}
+.a-step .fact{display:inline-block;margin-top:16px;font-size:var(--fs-small);color:var(--ivory);border-left:2px solid var(--gold);padding-left:12px}
+.a-track{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;font-size:var(--fs-small);color:rgba(245,239,226,.45)}
+.a-track span{transition:color .3s ease}
+.a-track span.on{color:var(--gold-2)}
+.a-canvas{position:relative;height:min(78svh,720px);width:100%}
+.a-canvas canvas{position:absolute;inset:0;width:100%;height:100%}
+.a-note{margin-top:14px;font-size:13px;line-height:1.5;color:rgba(245,239,226,.5);max-width:52ch}
+.a-legend{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:18px;font-size:13px;color:rgba(245,239,226,.6)}
+.a-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* order and movement: one idea per row, each with its own simple picture */
+.order{background:var(--forest);padding-block:140px}
+.o-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
+.order h2{font-size:var(--fs-h2)}
+.o-head .lead{color:var(--mute-d)}
+.o-group{margin-top:110px;padding-bottom:20px;max-width:760px}
+.o-group .label{font-size:17px}
+.o-intro{margin-top:14px;font-family:var(--display);font-size:clamp(26px,2.6vw,34px);line-height:1.25;color:var(--ivory)}
+.o-lens{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:15px;color:var(--mute-d)}
+.o-lens .dots3{margin:0}
+.o-lens .dots3 i{border-color:var(--gold-2)}
+.o-lens .dots3 i.on{background:var(--gold-2)}
+.idea{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,100px);align-items:center;padding-block:56px;border-top:1px solid rgba(194,162,94,.18)}
+.idea.flip .viz{order:-1}
+.idea .n{font-family:var(--display);font-size:22px;color:var(--gold-2)}
+.idea h3{font-size:clamp(34px,3.6vw,50px);margin:8px 0 18px}
+.order .idea p{font-size:20px;line-height:1.6;color:var(--mute-d);max-width:30em}
+.viz{margin:0;border-radius:14px;background:#C2A25E;overflow:hidden;width:100%;max-width:250px;aspect-ratio:1;justify-self:center}
+.viz.photo{max-width:520px;background:none;border-radius:0;overflow:visible}
+.viz.photo img{width:100%;height:100%;object-fit:contain}
+.viz svg{display:block;width:100%;height:100%}
+.o-honest{margin-top:70px;padding:24px 26px;border-radius:18px;background:rgba(245,239,226,.05);color:var(--mute-d);font-size:18px;line-height:1.6;max-width:none!important}
+.o-honest b{color:var(--gold-2);font-weight:500}
+@media (max-width:900px){
+  .o-head,.idea{grid-template-columns:1fr}
+  .order{padding-block:96px}
+  .o-group{margin-top:72px}
+  .idea{gap:24px;padding-block:40px}
+  .idea .viz,.idea.flip .viz{order:-1}
+  .order .idea p{font-size:18px}
+  .viz{max-width:200px}
+  .viz.photo{max-width:420px}
+  .o-honest{font-size:16px}
+}
+
+/* the journey of one glass: one pinned canvas zooming through four scales */
+.journey-intro{padding-block:140px 0}
+.j-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
+.journey-intro h2{font-size:var(--fs-h2)}
+.journey-intro .lead{color:var(--mute-d)}
+.journey{height:640vh;position:relative}
+.j-stage{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(24px,4vw,64px);align-items:center;height:100%}
+.j-steps{display:grid}
+.j-steps > *{grid-area:1/1}
+.j-step{opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),visibility 0s .5s}
+.j-step.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),visibility 0s}
+.j-step .k{font-family:var(--display);font-size:clamp(48px,5vw,76px);line-height:.9;color:var(--gold-2)}
+.j-step h3{font-size:var(--fs-h3);margin:12px 0 10px}
+.j-step p{color:var(--mute-d)}
+.j-step .fact{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:16px;font-size:var(--fs-small);color:var(--ivory);border-left:2px solid var(--gold);padding-left:12px}
+.j-step .dots3{margin:0}
+.j-step .dots3 i{border-color:var(--gold-2)}
+.j-step .dots3 i.on{background:var(--gold-2)}
+.j-step .eq{font-family:var(--display);font-size:20px;color:var(--gold-2);white-space:nowrap}
+.j-track{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;font-size:var(--fs-small);color:rgba(245,239,226,.45)}
+.j-track span{transition:color .3s ease}
+.j-track span.on{color:var(--gold-2)}
+.j-note{margin-top:14px;font-size:13px;line-height:1.5;color:rgba(245,239,226,.5);max-width:52ch}
+.j-canvas{position:relative;height:min(80svh,760px);width:100%}
+.j-canvas canvas{position:absolute;inset:0;width:100%;height:100%}
+.j-legend{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:rgba(245,239,226,.7);pointer-events:none}
+.j-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+@media (max-width:900px){
+  .j-head{grid-template-columns:1fr}
+  .journey-intro{padding-block:96px 0}
+  .j-stage{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;align-items:stretch;gap:8px;padding-top:calc(env(safe-area-inset-top,0px) + 16px);padding-bottom:20px}
+  .j-canvas{order:-1;height:100%;min-height:0}
+  .j-step .k{font-size:40px}
+  .j-step h3{font-size:24px;margin:6px 0}
+  .j-step p{font-size:15px}
+  .j-step .fact{margin-top:10px;font-size:13px}
+  .j-track{margin-top:12px;gap:10px;font-size:13px}
+  .j-note{display:none}
+  .j-legend{bottom:8px;font-size:12px;gap:4px 12px}
+}
+
+/* hydrogen */
+.h2{background:var(--sea);padding-block:140px}
+.h2-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end}
+.h2 h2{font-size:var(--fs-h2)}
+.h2-head p{color:var(--mute-d)}
+.chart{margin-top:48px;background:rgba(245,239,226,.04);border-radius:18px;padding:28px}
+.chart .top2{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+.chart h3{font-size:var(--fs-h3)}
+.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--mute-d)}
+.legend i{display:inline-block;width:22px;height:2px;background:var(--aqua);vertical-align:middle;margin-right:8px}
+.legend i.d{background:repeating-linear-gradient(90deg,var(--gold-2) 0 6px,transparent 6px 11px)}
+.chart svg{width:100%;height:auto;margin-top:18px;overflow:visible}
+.chart svg text{font-family:var(--body);font-size:13px;fill:rgba(245,239,226,.6)}
+.chart .fine{font-size:var(--fs-small);color:rgba(245,239,226,.6);margin-top:12px;max-width:80ch}
+
+/* one glass */
+.glass-sec{background:var(--ember);padding-block:140px}
+.g-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.g-grid figure{margin:0;border-radius:18px;overflow:hidden}
+.g-grid figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.glass-sec h2{font-size:var(--fs-h2)}
+.glass-sec .lead{margin-top:22px}
+.layers3{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:0}
+.layers3 li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0}
+.layers3 li + li{border-top:1px solid rgba(245,239,226,.1)}
+.layers3 .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:22px;color:var(--night);background:var(--gold-2)}
+.layers3 li:nth-child(2) .dot{background:var(--aqua)}
+.layers3 li:nth-child(3) .dot{background:var(--ivory)}
+.layers3 h3{font-size:24px;margin-bottom:4px}
+.layers3 p{color:var(--mute-d);font-size:16px}
+.check{margin-top:28px;padding:20px 22px;border-radius:16px;background:rgba(245,239,226,.05);color:var(--mute-d)}
+.check b{color:var(--ivory);font-weight:500}
+
+/* lenses + sources */
+.lenses{background:var(--paper);color:var(--ink);padding-block:130px}
+.lenses h2{font-size:var(--fs-h2)}
+.l-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:50px}
+.l-grid h3{font-size:30px;margin-bottom:10px}
+.l-grid p{color:var(--mute-l)}
+.dots3{display:inline-flex;gap:5px;margin-bottom:14px}
+.dots3 i{width:10px;height:10px;border-radius:50%;border:1.5px solid #8A6D2C}
+.dots3 i.on{background:#8A6D2C}
+.sources-wrap{margin-top:64px;border-top:1px solid rgba(27,26,21,.15)}
+.sources-wrap summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-family:var(--display);font-size:26px}
+.sources-wrap summary::-webkit-details-marker{display:none}
+.sources-wrap summary::after{content:"+";font-family:var(--body);font-weight:300;font-size:28px;color:#8A6D2C;transition:transform .3s var(--ease-out)}
+.sources-wrap[open] summary::after{transform:rotate(45deg)}
+.sources{margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 28px}
+.sources a{display:block;padding:12px 0;border-top:1px solid rgba(27,26,21,.12);text-decoration:none;font-size:15px;color:var(--ink)}
+.sources a span{display:block;color:var(--mute-l);font-size:var(--fs-small)}
+.sources a:hover{color:#7A5F1F}
+
+/* closing */
+.closing{padding-block:130px;text-align:center}
+.closing img{width:190px;margin:0 auto 30px;opacity:.95}
+.closing h2{font-size:var(--fs-h2);max-width:20ch;margin:0 auto}
+.closing p{margin:18px auto 0;color:var(--mute-d)}
+.closing .btn{margin-top:34px}
+
+
+/* step navigation, sticky under the hero */
+:root{--navh:52px}
+.wnav{position:sticky;top:0;z-index:50;height:var(--navh);background:rgba(11,14,12,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(194,162,94,.18)}
+.wnav ol{list-style:none;margin:0 auto;padding:0 var(--gut-r) 0 var(--gut);max-width:1240px;height:100%;display:flex;align-items:center;gap:26px;overflow-x:auto;scrollbar-width:none}
+.wnav ol::-webkit-scrollbar{display:none}
+.wnav a{display:inline-flex;gap:7px;align-items:baseline;white-space:nowrap;font-size:14px;color:rgba(245,239,226,.6);text-decoration:none;transition:color .2s ease}
+.wnav a b{font-weight:400;font-family:var(--display);font-size:16px;color:rgba(227,204,148,.6)}
+.wnav a:hover{color:var(--ivory)}
+.wnav a[aria-current="true"]{color:var(--ivory)}
+.wnav a[aria-current="true"] b{color:var(--gold-2)}
+.stick{top:var(--navh)!important;height:calc(100svh - var(--navh))!important}
+section[id]{scroll-margin-top:var(--navh)}
+.step-tag{display:inline-flex;align-items:center;gap:10px;padding:.45em 1em;border-radius:999px;border:1px solid rgba(194,162,94,.5);font-size:14px;font-weight:500;letter-spacing:.02em;color:var(--gold-2);margin-bottom:22px}
+.lenses .step-tag,.process .step-tag{color:#7A5F1F;border-color:rgba(138,109,44,.5)}
+
+/* gold symbol tiles (dark line on gold) */
+.sym{background:#C2A25E;border-radius:14px;aspect-ratio:1;overflow:hidden}
+.sym svg{display:block;width:100%;height:100%}
+
+/* 1 · philosophy */
+.philo{padding-block:130px 120px}
+.philo h2{font-size:var(--fs-h2);max-width:16ch}
+.philo .lead{margin-top:24px;max-width:46ch;font-size:22px;line-height:1.55}
+.pillars{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:stretch;margin-top:64px}
+.pillar{display:grid;justify-items:center;text-align:center;gap:6px;padding:10px 10px 30px;border-radius:24px;text-decoration:none;color:inherit;transition:background-color .3s ease}
+.pillar:hover{background:rgba(245,239,226,.04)}
+.pillar img{width:min(360px,100%);aspect-ratio:1;object-fit:contain;margin-bottom:6px;transition:transform .6s var(--ease-out)}
+.pillar:hover img{transform:scale(1.03)}
+.pillar .k{font-size:15px;color:var(--gold-2)}
+.pillar h3{font-size:clamp(36px,3.6vw,52px);margin:2px 0 8px}
+.pillar p{font-size:18px;color:var(--mute-d);max-width:28ch}
+.plus{align-self:center;font-family:var(--display);font-size:56px;line-height:1;color:var(--gold-2)}
+.uses-head{display:flex;align-items:center;gap:18px;margin:44px 0 22px;font-size:15px;color:var(--mute-d)}
+.uses-head::before,.uses-head::after{content:"";flex:1;height:1px;background:rgba(194,162,94,.3)}
+.uses{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.use{display:grid;grid-template-columns:170px 1fr;gap:22px;align-items:center;padding:12px 22px 12px 8px;border-radius:22px;border:1px solid rgba(194,162,94,.22);text-decoration:none;color:inherit;transition:border-color .25s ease}
+.use:hover{border-color:rgba(245,239,226,.5)}
+.use img{width:170px;aspect-ratio:1;object-fit:contain}
+.use h3{font-size:32px;margin-bottom:6px}
+.use p{font-size:16px;color:var(--mute-d)}
+@media (max-width:900px){.pillars{grid-template-columns:1fr}.plus{justify-self:center;font-size:44px}.uses{grid-template-columns:1fr}.pillar img{width:min(300px,86%)}.use{grid-template-columns:120px 1fr;gap:14px}.use img{width:120px}.philo{padding-block:96px}.philo .lead{font-size:19px}}
+
+/* 2 · why water: a short addition under the 99 % */
+.why-more{margin-top:26px;color:var(--mute-d);font-size:18px}
+
+/* 4 · hydrogen basics */
+.h2-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.h2-cards > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
+.h2-cards .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.h2-cards h3{font-size:clamp(26px,2.4vw,32px);margin:6px 0 10px}
+.h2-cards p{font-size:17px;color:var(--mute-d)}
+.h2-top{display:grid;grid-template-columns:minmax(0,1.1fr) 260px;gap:clamp(32px,5vw,80px);align-items:center;margin-top:56px}
+.h2-top p{font-size:20px;line-height:1.6;color:var(--ivory)}
+.h2-top .sym{max-width:260px;width:100%}
+@media (max-width:900px){.h2-cards,.h2-top{grid-template-columns:1fr}.h2-top .sym{max-width:200px}}
+
+/* 5 · one process */
+.process{background:var(--paper);color:var(--ink);padding-block:130px}
+.process h2{font-size:var(--fs-h2);max-width:18ch}
+.process .lead{margin-top:20px;color:var(--mute-l);max-width:52ch}
+.flow5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 40px minmax(0,1fr);gap:0;align-items:center;margin-top:64px}
+.f-step{display:grid;justify-items:center;text-align:center;gap:14px;position:relative}
+.f-step .sym{width:min(150px,100%)}
+.f-step b{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.f-step span{font-size:15px;color:var(--mute-l);max-width:22ch}
+.f-step:not(:nth-child(3))::after{content:"→";position:absolute;right:-12px;top:62px;font-size:28px;color:#8A6D2C}
+.f-fork{align-self:stretch;display:grid;place-items:center;font-size:28px;color:#8A6D2C}
+.f-out{display:grid;gap:22px}
+.f-out a{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit;padding:10px 14px;border-radius:14px;border:1px solid rgba(27,26,21,.14);transition:border-color .2s ease}
+.f-out a:hover{border-color:rgba(27,26,21,.4)}
+.f-out b{font-family:var(--display);font-weight:400;font-size:24px}
+.f-out span{display:block;font-size:14px;color:var(--mute-l)}
+@media (max-width:900px){.process{padding-block:96px}.flow5{grid-template-columns:1fr;gap:34px}.f-step:not(:nth-child(3))::after{content:"↓";right:auto;top:auto;bottom:-32px}.f-fork{display:none}.f-step .sym{width:120px}}
+
+/* 7 · the pool */
+.pool{background:var(--sea);padding-block:140px}
+.pool h2{font-size:var(--fs-h2);max-width:18ch}
+.pool .lead{margin-top:22px;max-width:50ch;color:var(--mute-d);font-size:20px}
+.pool-hero{margin:52px 0 0;border-radius:20px;overflow:hidden}
+.pool-hero img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 40%}
+.pool-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:56px}
+.pool-points > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
+.pool-points .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.pool-points h3{font-size:clamp(26px,2.4vw,32px);margin:6px 0 10px}
+.pool-points p{font-size:17px;color:var(--mute-d)}
+.pool-skin{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center;margin-top:80px}
+.pool-skin .sym{max-width:260px;width:100%}
+.pool-skin h3{font-size:clamp(30px,3vw,42px);margin-bottom:14px}
+.pool-skin p{font-size:19px;line-height:1.6;color:var(--mute-d)}
+.pool-skin p + p{margin-top:14px}
+.pool-lens{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:15px;color:var(--mute-d)}
+.pool-lens .dots3{margin:0}.pool-lens .dots3 i{border-color:var(--gold-2)}.pool-lens .dots3 i.on{background:var(--gold-2)}
+@media (max-width:900px){.pool{padding-block:96px}.pool-points,.pool-skin{grid-template-columns:1fr}.pool-hero img{aspect-ratio:4/3}.pool-skin .sym{max-width:200px}}
+
+/* 8 · summary list */
+.have{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.have li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;border-top:1px solid rgba(27,26,21,.12);font-size:18px;color:var(--ink)}
+.have li::before{content:"✓";color:#8A6D2C;font-weight:500}
+.have span{display:block;font-size:15px;color:var(--mute-l)}
+.lenses .sub{margin-top:90px;font-size:clamp(30px,3vw,40px)}
+@media (max-width:900px){.have{grid-template-columns:1fr}}
+
+.hero-k{margin-bottom:14px}
+.hero .bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,14,12,.78) 0%,rgba(11,14,12,.45) 38%,rgba(11,14,12,0) 65%)}
+.hero h1,.hero .lead{text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.hero > .wrap{z-index:2}
+.pillar{align-content:start}
+.uses-head{max-width:none!important}
+.hero-lead{font-size:clamp(20px,1.8vw,24px)!important;max-width:40ch!important;color:var(--ivory)!important}
+
+
+/* language switcher */
+.top-r{display:flex;align-items:center;gap:18px}
+.lang{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(11,14,12,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(245,239,226,.18)}
+.lang a{min-width:40px;padding:.5em .8em;border-radius:999px;text-align:center;font:500 13px/1 var(--body);letter-spacing:.06em;color:rgba(245,239,226,.75);text-decoration:none;transition:background-color .2s ease,color .2s ease}
+.lang a:hover{color:var(--ivory)}
+.lang a[aria-current="true"]{background:var(--ivory);color:var(--night)}
+@media (max-width:600px){.top-r{gap:10px}.top-r .back{display:none}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  :root{--fs-body:16px}
+  .bw,.atoms-intro .head,.h2-head,.g-grid,.l-grid{grid-template-columns:1fr}
+  .body,.h2,.glass-sec,.lenses,.closing{padding-block:96px}
+  .vessel{width:min(240px,62vw)}
+  .a-stage{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;align-items:stretch;gap:8px;padding-top:calc(env(safe-area-inset-top,0px) + 24px);padding-bottom:20px}
+  .a-canvas{order:-1;height:100%;min-height:0}
+  .a-step .k{font-size:44px}
+  .a-step h3{font-size:24px;margin:6px 0}
+  .a-step p{font-size:15px}
+  .a-step .fact{margin-top:10px;font-size:13px}
+  .a-track{margin-top:14px;gap:10px;font-size:13px}
+  .a-legend{display:none}
+  .atoms-intro figure img{aspect-ratio:4/3}
+  .atoms-intro figcaption{flex-direction:column;gap:4px}
+}
+@media (max-width:600px){
+  .chart{padding:20px 16px}
+  .chart svg text{font-size:34px}
+  .chart svg path{stroke-width:5}
+  .chart svg #cB{stroke-dasharray:12 12}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero .bg img,.cue::after,.vessel .wave{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .a-step,.j-step,.vessel .fill{transition:none}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="bg"><img src="../../assets/w1_spring.webp" alt="Čistý horský prameň krúžiaci v prirodzenom víre v machom obrastenej kamennej nádrži v džungli, ranné svetlo preniká cez stromy" fetchpriority="high"></div>
+  <div class="top wrap"><a href="../" aria-label="MILUJ Sanctuary – úvod"><img src="../../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum"></a><div class="top-r"><a class="back" href="../">← Späť na MILUJ</a><nav class="lang" aria-label="Jazyk"><a href="../../water/" hreflang="en" lang="en">EN</a><a href="./" hreflang="sk" lang="sk" aria-current="true">SK</a><a href="../../es/water/" hreflang="es" lang="es">ES</a></nav></div></div>
+  <div class="wrap">
+    <p class="label hero-k">Čo robí vodu živou?</p>
+    <h1>Sme voda.</h1>
+    <p class="lead hero-lead">A stávame sa vodou, ktorú pijeme. Približne do dvoch hodín sa každý pohár stane vodou vo vašom vnútri, okolo každej bunky. Preto v MILUJ voda nikdy nie je len čistá: je štruktúrovaná a obohatená molekulárnym vodíkom, vždy oboje spolu.</p>
+    <div class="cue">Posúvajte a sledujte vodu</div>
+  </div>
+</section>
+
+<nav class="wnav" aria-label="Časti tejto stránky"><ol>
+  <li><a href="#philosophy"><b>1</b>Filozofia</a></li><li><a href="#body"><b>2</b>Prečo voda</a></li><li><a href="#structure"><b>3</b>Štruktúrovanie</a></li><li><a href="#hydrogen"><b>4</b>Vodík</a></li>
+  <li><a href="#process"><b>5</b>Jeden proces</a></li><li><a href="#drink"><b>6</b>Voda, ktorú pijeme</a></li><li><a href="#pool"><b>7</b>Voda, do ktorej vstupujeme</a></li><li><a href="#science"><b>8</b>Zhrnutie</a></li>
+</ol></nav>
+
+<section class="philo" id="philosophy">
+  <div class="wrap">
+    <p class="label rv">Filozofia vody v MILUJ</p>
+    <h2 class="rv" style="margin-top:12px">Jedna voda. Dve vlastnosti.</h2>
+    <p class="lead rv">V MILUJ štruktúrovanie vody a jej obohatenie molekulárnym vodíkom vždy idú spolu. Je to jeden prístup k vode: k vode, ktorú hostia pijú, aj k vode, v ktorej sa kúpu.</p>
+    <div class="pillars">
+      <a class="pillar rv" href="#structure"><img src="../../assets/w4_vortex.webp" alt="Voda krúžiaca do víru" loading="lazy"><span class="k">Krok 1</span><h3>Štruktúrovaná</h3><p>Pohybovaná a usporiadaná tak, ako sa voda pohybuje v živom prameni.</p></a>
+      <span class="plus rv" aria-hidden="true">+</span>
+      <a class="pillar rv" href="#hydrogen"><img src="../../assets/p_hydrogen.webp" alt="Sklenená fľaša vody bohatej na vodík, plná jemných bubliniek" loading="lazy"><span class="k">Krok 2</span><h3>Bohatá na vodík</h3><p>Nesie rozpustený molekulárny vodík, ktorý vo vode vydrží hodiny.</p></a>
+    </div>
+    <p class="uses-head rv">Jedna voda, dva spôsoby použitia</p>
+    <div class="uses">
+      <a class="use rv" href="#drink"><img src="../../assets/p_drink.webp" alt="Pohár vody plný jemných stúpajúcich bubliniek" loading="lazy"><div><h3>Na pitie</h3><p>Podáva sa pri každom stole a z vlastného vodného systému útočiska.</p></div></a>
+      <a class="use rv" href="#pool"><img src="../../assets/p_pool.webp" alt="Hostia v bazéne pred Ascension Pyramid v noci" loading="lazy"><div><h3>Na kúpanie</h3><p>Bazén pred Ascension Pyramid s časťou bohatou na vodík.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="body" id="body">
+  <div class="wrap bw">
+    <div>
+      <p class="step-tag rv">Prečo začíname vodou</p>
+      <h2 class="rv">Koľko z vás je voda?</h2>
+      <p class="lead rv">Takmer celí. Molekuly vody sú také malé a je ich toľko, že približne 99 zo 100 molekúl vo vašom tele je voda. Každá ďalšia molekula, z ktorej ste, v nej žije, pracuje a pohybuje sa.</p>
+      <p class="why-more rv">Preto MILUJ začína vodou. Čokoľvek tu robíte, dych, pohyb, jedlo či odpočinok, deje sa to vo vode, z ktorej ste.</p>
+      <p class="bw-note rv">Počítané podľa počtu molekúl (Freitas, <i>Nanomedicine</i>, 1999).</p>
+    </div>
+    <div class="vessel rv" aria-live="polite">
+      <div class="glass"><div class="fill" id="bwFill"><div class="wave"></div></div></div>
+      <div class="pct"><span id="bwPct">99</span><small>%</small></div>
+      <div class="cap" id="bwCap">všetkých molekúl vo vašom tele</div>
+    </div>
+  </div>
+</section>
+
+<section class="atoms-intro" id="structure">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="step-tag rv">Krok 1 · Štruktúrovanie</p><h2 class="rv">Rovnaké atómy. Iný poriadok.</h2></div>
+      <p class="lead rv">Prvým krokom je poriadok. Chémia vám povie, z čoho je voda zložená. Štruktúra hovorí, ako je usporiadaná, a usporiadanie môže zmeniť všetko.</p>
+    </div>
+    <figure class="rv">
+      <img src="../../assets/w2_carbon.webp" alt="Grafitová ceruzka zanecháva na papieri mäkké sivé stopy vedľa žiarivého diamantu, ktorý láme svetlo do dúhy: oboje je čistý uhlík" loading="lazy">
+      <figcaption><span>Grafit z ceruzky a diamant: oboje je čistý uhlík.</span><span>Pokračujte v scrollovaní: atómy sa preusporiadajú.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="atoms" id="atoms" aria-label="Uhlík a voda: ako molekulárny poriadok mení látku">
+  <div class="stick">
+    <div class="wrap a-stage">
+      <div>
+        <div class="a-steps" aria-live="polite">
+          <div class="a-step on"><div class="k">C</div><h3>Grafit: uhlík v posuvných vrstvách</h3><p>V ceruzke tvoria atómy uhlíka ploché šesťuholníkové vrstvy voľne položené na sebe. Pri dotyku sa od seba posúvajú, preto je grafit dosť mäkký na písanie.</p><span class="fact">Tvrdosť 1–2 na Mohsovej stupnici</span></div>
+          <div class="a-step"><div class="k">C</div><h3>Diamant: ten istý uhlík, uzamknutý v 3D</h3><p>Usporiadajte presne tie isté atómy do pevnej trojrozmernej mriežky, kde je každý viazaný so štyrmi susedmi, a uhlík sa stane najtvrdším prírodným materiálom na Zemi, čírym a žiarivým.</p><span class="fact">Tvrdosť 10 na Mohsovej stupnici</span></div>
+          <div class="a-step"><div class="k">H₂O</div><h3>Bežná voda: nepokojná sieť</h3><p>Tekutú vodu držia pohromade vodíkové väzby, ktoré sa každú sekundu biliónkrát rozpadajú a znova vznikajú. Jej poriadok je prchavý a formuje ho teplota, pohyb, minerály a povrchy, ktorých sa dotýka.</p><span class="fact">Každá vodíková väzba vydrží asi biliontinu sekundy</span></div>
+          <div class="a-step"><div class="k">EZ</div><h3>Štruktúrovaná voda: poriadok na rozhraní</h3><p>Pri povrchoch, ktoré priťahujú vodu, napríklad pri membránach a bielkovinách v našich bunkách, sa voda môže zoradiť do usporiadaných šesťuholníkových vrstiev. Výskumník Gerald Pollack to nazýva vylučovacia zóna (EZ voda) a opisuje ju ako štvrté skupenstvo vody. Iní vedci jeho pozorovania vysvetľujú inak; otázka je otvorená a aktívne sa skúma.</p><span class="fact">Uvádzané EZ vrstvy: hrúbka až stovky mikrónov</span></div>
+        </div>
+        <div class="a-track" aria-hidden="true"><span class="on">Grafit</span><span>Diamant</span><span>Voda</span><span>Štruktúrovaná voda</span></div>
+        <p class="a-note">Grafit, diamant aj každá molekula vody sú nakreslené v skutočnej geometrii; tekutá a štruktúrovaná voda sú zjednodušené snímky. Pollackov vlastný model sa v detailoch líši a zatiaľ nie je overený.</p>
+      </div>
+      <div class="a-canvas"><canvas id="atomCanvas" aria-hidden="true"></canvas>
+        <div class="a-legend" id="aLegend" aria-hidden="true"><span><i style="background:#B9C0C4"></i>Uhlík</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="o-head">
+      <div>
+        <p class="step-tag rv">Krok 1 · Štruktúrovanie</p>
+        <h2 class="rv">Voda, ktorá sa sama zhromažďuje.</h2>
+      </div>
+      <p class="lead rv">Čistá voda je len začiatok. Dvaja výskumníci skúmali, ako sa voda sama usporadúva: pri povrchoch, ktorých sa dotýka, a v tom, ako sa pohybuje.</p>
+    </div>
+
+    <div class="o-group">
+      <p class="label rv">Na rozhraní · Gerald Pollack</p>
+      <p class="o-intro rv">Gerald Pollack, bioinžinier z Washingtonskej univerzity, opisuje štvrté skupenstvo vody medzi kvapalinou a ľadom. Jeho laboratórium o ňom uvádza štyri veci.</p>
+      <p class="o-lens rv"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span>Uvádza jedno laboratórium, predmet diskusie</p>
+    </div>
+    <div class="idea">
+      <div class="idea-text"><span class="n rv">01</span><h3 class="rv">Pri povrchoch sa sama usporiada.</h3><p class="rv">Pri povrchoch, ktoré priťahujú vodu, ako sú bunkové membrány a kolagén, sa voda zoradí do vrstiev ako plást. Ďalej od nich zostáva nepokojná.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: plást"><polygon points="295.0,224.0 295.0,276.0 250.0,302.0 205.0,276.0 205.0,224.0 250.0,198.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="385.1,224.0 385.1,276.0 340.1,302.0 295.0,276.0 295.0,224.0 340.1,198.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="340.1,302.0 340.1,354.0 295.0,380.0 250.0,354.0 250.0,302.0 295.0,276.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="250.0,302.0 250.0,354.0 205.0,380.0 159.9,354.0 159.9,302.0 205.0,276.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="205.0,224.0 205.0,276.0 159.9,302.0 114.9,276.0 114.9,224.0 159.9,198.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="250.0,146.0 250.0,198.0 205.0,224.0 159.9,198.0 159.9,146.0 205.0,120.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polygon points="340.1,146.0 340.1,198.0 295.0,224.0 250.0,198.0 250.0,146.0 295.0,120.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></figure>
+    </div>
+    <div class="idea flip">
+      <div class="idea-text"><span class="n rv">02</span><h3 class="rv">Drží náboj ako batéria.</h3><p class="rv">Usporiadaná vrstva je záporná, voda za ňou kladná. Pollack opisuje, ako týmto rozdielom rozsvietil malú LED diódu.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: batéria"><rect x="95" y="170" width="290" height="160" rx="26" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="385" y="215" width="26" height="70" rx="8" fill="#121813"/>
+<rect x="125" y="200" width="150" height="100" rx="12" fill="#121813" fill-opacity=".25"/>
+<path d="M160 250 H210" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M310 250 H350 M330 230 V270" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></figure>
+    </div>
+    <div class="idea">
+      <div class="idea-text"><span class="n rv">03</span><h3 class="rv">Pohybuje sa sama.</h3><p class="rv">V pokuse z roku 2013 prúdila voda trubicami, ktoré ju priťahujú, bez pumpy a bez tlaku, ktorý by ju poháňal.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: voda, ktorá tečie sama"><path d="M110 190 C180 154 245 226 320 190" stroke="#121813" stroke-opacity="0.55" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M110 250 C180 214 245 286 320 250" stroke="#121813" stroke-opacity="1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M110 310 C180 274 245 346 320 310" stroke="#121813" stroke-opacity="0.55" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M340 214 L388 250 L340 286" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></figure>
+    </div>
+    <div class="idea flip">
+      <div class="idea-text"><span class="n rv">04</span><h3 class="rv">Svetlo ju zväčšuje.</h3><p class="rv">Infračervené svetlo, teplo slnka aj nášho vlastného tela, v jeho pokusoch rozšírilo usporiadanú vrstvu.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: slnko"><circle cx="250" cy="250" r="72" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="250" cy="250" r="44" fill="#121813" fill-opacity=".25"/><path d="M362.0 250.0 L410.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M347.0 306.0 L388.6 330.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M306.0 347.0 L330.0 388.6" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M250.0 362.0 L250.0 410.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M194.0 347.0 L170.0 388.6" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M153.0 306.0 L111.4 330.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M138.0 250.0 L90.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M153.0 194.0 L111.4 170.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M194.0 153.0 L170.0 111.4" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M250.0 138.0 L250.0 90.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M306.0 153.0 L330.0 111.4" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M347.0 194.0 L388.6 170.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></figure>
+    </div>
+
+    <div class="o-group">
+      <p class="label rv">V pohybe · Viktor Schauberger</p>
+      <p class="o-intro rv">Rakúsky lesník (1885–1958) celý život pozoroval vodu v divokých horských potokoch.</p>
+      <p class="o-lens rv"><span class="dots3"><i class="on"></i><i></i><i></i></span>Myšlienka, podľa ktorej MILUJ uvádza svoju vodu do pohybu</p>
+    </div>
+    <div class="idea">
+      <div class="idea-text"><span class="n rv">05</span><h3 class="rv">Zdravá voda sa točí.</h3><p class="rv">V divokom potoku voda zriedka tečie rovno. Točí sa, chladí a zhromažďuje sa vo víroch, smeruje dovnútra namiesto toho, aby tlačila von.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: špirálový vír"><path d="M415.0 250.0 L413.3 266.5 L410.1 282.6 L405.2 298.3 L398.8 313.3 L391.0 327.5 L381.8 340.8 L371.4 353.0 L359.9 364.1 L347.4 373.9 L334.0 382.3 L319.9 389.4 L305.3 394.9 L290.2 398.9 L275.0 401.4 L259.6 402.3 L244.3 401.7 L229.2 399.5 L214.5 395.9 L200.3 390.8 L186.8 384.4 L174.0 376.6 L162.2 367.7 L151.4 357.7 L141.7 346.7 L133.2 334.9 L126.0 322.3 L120.1 309.1 L115.6 295.5 L112.5 281.6 L110.9 267.6 L110.6 253.5 L111.8 239.6 L114.4 225.9 L118.3 212.6 L123.4 199.9 L129.8 187.8 L137.4 176.5 L146.0 166.1 L155.5 156.7 L165.9 148.3 L177.0 141.0 L188.6 135.0 L200.8 130.2 L213.3 126.6 L226.0 124.4 L238.8 123.4 L251.6 123.8 L264.2 125.4 L276.4 128.3 L288.2 132.3 L299.5 137.5 L310.2 143.8 L320.0 151.0 L329.1 159.2 L337.2 168.1 L344.3 177.8 L350.4 188.0 L355.4 198.8 L359.2 209.9 L361.9 221.3 L363.4 232.8 L363.7 244.3 L362.9 255.7 L360.9 266.9 L357.9 277.7 L353.8 288.1 L348.7 298.0 L342.7 307.2 L335.8 315.7 L328.2 323.4 L319.9 330.3 L311.0 336.2 L301.6 341.2 L291.9 345.1 L281.9 348.1 L271.7 350.0 L261.5 350.8 L251.3 350.6 L241.2 349.4 L231.4 347.2 L222.0 344.1 L213.0 340.1 L204.6 335.2 L196.7 329.5 L189.5 323.1 L183.1 316.1 L177.4 308.5 L172.6 300.5 L168.7 292.1 L165.6 283.4 L163.5 274.5 L162.3 265.6 L162.0 256.6 L162.6 247.8 L164.1 239.1 L166.4 230.8 L169.5 222.7 L173.4 215.1 L178.0 208.0 L183.3 201.5 L189.1 195.6 L195.4 190.4 L202.2 185.9 L209.3 182.1 L216.6 179.1 L224.2 176.9 L231.9 175.5 L239.5 174.8 L247.2 175.0 L254.7 175.9 L261.9 177.6 L268.9 179.9 L275.6 182.9 L281.8 186.6 L287.6 190.8 L292.8 195.5 L297.5 200.7 L301.6 206.2 L305.0 212.1 L307.8 218.2 L310.0 224.5 L311.4 230.9 L312.2 237.3 L312.4 243.7 L311.9 250.0 L310.7 256.1 L309.0 262.0 L306.7 267.6 L303.9 272.9 L300.6 277.8 L296.9 282.3 L292.8 286.3 L288.3 289.8 L283.6 292.8 L278.7 295.3 L273.7 297.2 L268.5 298.6 L263.3 299.4 L258.2 299.7 L253.1 299.4 L248.2 298.6 L243.4 297.4 L238.9 295.7 L234.6 293.6 L230.7 291.1 L227.1 288.2 L223.9 285.0 L221.0 281.6 L218.6 278.0 L216.6 274.2 L215.1 270.4 L214.0 266.4 L213.3 262.4 L213.0 258.5 L213.2 254.7 L213.7 250.9 L214.6 247.3 L215.9 243.9 L217.5 240.8 L219.3 237.9 L221.4 235.2 L223.7 232.9 L226.2 230.8 L228.9 229.1 L231.6 227.8 L234.4 226.7 L237.2 226.0 L240.0 225.6 L242.7 225.5 L245.4 225.7 L247.9 226.2 L250.3 226.9 L252.5 227.9 L254.5 229.0 L256.4 230.4 L258.0 231.9 L259.3 233.5 L260.5 235.2 L261.4 236.9 L262.0 238.7 L262.4 240.5 L262.6 242.2 L262.6 243.9 L262.4 245.5 L262.0 246.9 L261.4 248.3 L260.7 249.5 L259.9 250.5 L259.0 251.4 L258.0 252.1 L257.0 252.6 L255.9 252.9 L254.9 253.0 L253.9 253.0 L253.0 252.8 L252.2 252.5 L251.4 252.0 L250.8 251.4 L250.3 250.8 L250.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="250" cy="250" r="9" fill="#121813"/></svg></figure>
+    </div>
+    <div class="idea flip">
+      <div class="idea-text"><span class="n rv">06</span><h3 class="rv">„Živá“ a „mŕtva“ voda.</h3><p class="rv">Vodu tlačenú rovnými rúrami Schauberger nazýval „mŕtvou“, vodu, ktorá môže víriť a dýchať, „živou“. Práve tento pohyb dáva MILUJ svojej vode skôr, než sa k nej čokoľvek pridá.</p></div>
+      <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: rovná čiara vedľa špirály"><path d="M105 250 H210" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188 230 L212 250 L188 270" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<line x1="236" y1="180" x2="236" y2="320" stroke="#121813" stroke-opacity=".18" stroke-width="3"/>
+<path d="M408.0 250.0 L407.4 256.3 L406.2 262.6 L404.5 268.6 L402.4 274.5 L399.8 280.2 L396.8 285.6 L393.3 290.7 L389.5 295.5 L385.3 300.0 L380.7 304.0 L375.9 307.7 L370.8 310.9 L365.5 313.7 L360.1 316.0 L354.4 317.9 L348.7 319.3 L342.9 320.2 L337.1 320.6 L331.3 320.6 L325.6 320.1 L319.9 319.1 L314.4 317.7 L309.1 315.8 L303.9 313.5 L299.0 310.8 L294.4 307.7 L290.0 304.3 L286.0 300.6 L282.3 296.6 L278.9 292.3 L276.0 287.7 L273.4 283.0 L271.2 278.1 L269.5 273.1 L268.2 268.0 L267.3 262.8 L266.9 257.6 L266.9 252.4 L267.3 247.2 L268.1 242.2 L269.3 237.2 L270.9 232.4 L272.9 227.8 L275.3 223.4 L278.0 219.2 L281.0 215.3 L284.3 211.7 L287.8 208.3 L291.6 205.3 L295.6 202.7 L299.8 200.4 L304.1 198.4 L308.6 196.8 L313.1 195.6 L317.7 194.8 L322.3 194.4 L326.8 194.3 L331.4 194.6 L335.9 195.3 L340.2 196.4 L344.5 197.8 L348.5 199.5 L352.4 201.5 L356.1 203.8 L359.6 206.5 L362.8 209.3 L365.7 212.4 L368.4 215.7 L370.8 219.2 L372.8 222.8 L374.5 226.6 L375.9 230.5 L377.0 234.4 L377.7 238.4 L378.1 242.4 L378.2 246.4 L378.0 250.3 L377.4 254.2 L376.5 258.0 L375.3 261.6 L373.9 265.2 L372.1 268.5 L370.1 271.7 L367.9 274.7 L365.4 277.5 L362.8 280.0 L360.0 282.3 L357.0 284.3 L353.9 286.1 L350.7 287.6 L347.4 288.8 L344.0 289.7 L340.6 290.4 L337.2 290.7 L333.9 290.8 L330.5 290.6 L327.2 290.1 L324.0 289.3 L320.9 288.3 L317.9 287.1 L315.1 285.6 L312.4 283.9 L309.9 282.1 L307.6 280.0 L305.5 277.8 L303.6 275.4 L301.9 272.9 L300.5 270.4 L299.2 267.7 L298.2 264.9 L297.5 262.2 L297.0 259.4 L296.7 256.6 L296.7 253.8 L296.9 251.0 L297.3 248.4 L297.9 245.7 L298.7 243.2 L299.8 240.8 L301.0 238.5 L302.4 236.4 L303.9 234.4 L305.6 232.5 L307.4 230.8 L309.3 229.3 L311.3 228.0 L313.4 226.9 L315.6 225.9 L317.7 225.2 L320.0 224.6 L322.2 224.3 L324.4 224.1 L326.6 224.1 L328.7 224.3 L330.8 224.7 L332.8 225.2 L334.8 225.9 L336.6 226.7 L338.3 227.7 L340.0 228.8 L341.5 230.0 L342.8 231.4 L344.1 232.8 L345.1 234.3 L346.1 235.8 L346.9 237.4 L347.5 239.0 L348.0 240.7 L348.4 242.3 L348.5 244.0 L348.6 245.6 L348.5 247.2 L348.3 248.7 L347.9 250.2 L347.5 251.7 L346.9 253.0 L346.2 254.3 L345.4 255.5 L344.6 256.5 L343.7 257.5 L342.7 258.4 L341.7 259.2 L340.6 259.8 L339.5 260.4 L338.4 260.8 L337.2 261.1 L336.1 261.3 L335.0 261.4 L334.0 261.4 L332.9 261.3 L331.9 261.1 L331.0 260.9 L330.1 260.5 L329.2 260.1 L328.5 259.6 L327.8 259.1 L327.2 258.5 L326.6 257.9 L326.2 257.3 L325.8 256.6 L325.5 255.9 L325.3 255.2 L325.2 254.6 L325.1 253.9 L325.2 253.3 L325.2 252.7 L325.4 252.1 L325.6 251.6 L325.9 251.1 L326.2 250.7 L326.5 250.4 L326.9 250.1 L327.3 249.8 L327.7 249.7 L328.1 249.6 L328.5 249.5 L328.9 249.6 L329.3 249.7 L329.7 249.8 L330.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="330" cy="250" r="7" fill="#121813"/></svg></figure>
+    </div>
+
+    <p class="o-honest rv"><b>Ako to čítať.</b> Ide o pozorovania a interpretácie, o ktorých sa diskutuje. Iní výskumníci vysvetľujú Pollackove pokusy známou fyzikou, napríklad difúzioforézou, a „živá voda“ je Schaubergerov pohľad, nie ustálený vedecký pojem. MILUJ pripravuje svoju vodu v duchu oboch.</p>
+  </div>
+</section>
+
+<section class="h2" id="hydrogen">
+  <div class="wrap">
+    <div class="h2-head">
+      <div>
+        <p class="step-tag rv">Krok 2 · Vodík</p>
+        <h2 class="rv">Vodík, udržaný dosť dlho na to, aby na ňom záležalo.</h2>
+      </div>
+      <p class="rv">Keď je voda štruktúrovaná, druhý krok pridá molekulárny vodík. Tu je, čo to je a prečo je najťažšie udržať ho vo vode.</p>
+    </div>
+    <div class="h2-top">
+      <p class="rv">Každá molekula vody už vodík obsahuje, ale je pevne viazaný na kyslík ako H₂O. Molekulárny vodík, H₂, je niečo iné: dva atómy vodíka spojené samostatne, drobná molekula plynu, ktorá sa rozpustí medzi molekulami vody bez zmeny chuti, farby či vône.</p>
+      <div class="sym rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: molekula vody, H2O, vedľa molekuly vodíka, H2"><circle cx="150" cy="265" r="62" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="150" y="285" text-anchor="middle" font-family="Georgia,serif" font-size="58" fill="#121813">O</text>
+<circle cx="88" cy="170" r="34" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="212" cy="170" r="34" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="88" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H</text><text x="212" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H</text>
+<line x1="250" y1="120" x2="250" y2="380" stroke="#121813" stroke-opacity=".3" stroke-width="3"/>
+<circle cx="335" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="415" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="335" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text><text x="415" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text>
+<text x="150" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂O</text><text x="375" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂</text></svg></div>
+    </div>
+    <div class="h2-cards">
+      <div class="rv"><span class="n">01</span><h3>Najmenšia molekula</h3><p>H₂ meria približne 0,3 nanometra a voľne sa pohybuje vodou aj tkanivami a bunkovými membránami tela.</p></div>
+      <div class="rv"><span class="n">02</span><h3>Rýchlo uniká</h3><p>Z bežnej vodíkovej vody väčšina H₂ unikne asi do 20 minút od otvorenia, dávno predtým, než sa vypije.</p></div>
+      <div class="rv"><span class="n">03</span><h3>Systém MILUJ ho udrží</h3><p>Vodík sa rozpustí v štruktúrovanej vode a udržiava ho v nej patentovaný retenčný systém, podľa špecifikácie dodávateľa až 24 hodín.</p></div>
+    </div>
+    <div class="chart rv" id="chart">
+      <div class="top2"><h3>Ako dlho zostáva H₂ vo vode?</h3>
+        <div class="legend"><span><i></i>Bežná vodíková voda (ilustračne)</span><span><i class="d"></i>Systém MILUJ, špecifikácia dodávateľa</span></div></div>
+      <svg viewBox="0 0 920 300" role="img" aria-label="Ilustračný graf: bežná vodíková voda stratí väčšinu H2 asi za 20 minút; systém MILUJ má za cieľ udržať ho až 24 hodín">
+        <g id="grid"></g>
+        <path id="cA" fill="none" stroke="#9FC7D2" stroke-width="2.5"/>
+        <path id="cB" fill="none" stroke="#E3CC94" stroke-width="2.5" stroke-dasharray="7 7"/>
+        <g id="marks"></g>
+      </svg>
+      <p class="fine">Údaj „až 24 hodín“ je špecifikácia dodávateľa patentovaného retenčného systému. Krivka bežnej vody je ilustračná; skutočný úbytok H₂ závisí od koncentrácie, nádoby, teploty a zaobchádzania. </p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <p class="step-tag rv">Oba kroky spolu</p>
+    <h2 class="rv">Jedna príprava. Dva spôsoby, ako sa s ňou stretnúť.</h2>
+    <p class="lead rv">Každá kvapka vody MILUJ prejde rovnakým postupom, či skončí v pohári, alebo v bazéne.</p>
+    <div class="flow5">
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: čistá kvapka vody"><path d="M250 85 C250 85 145 215 145 290 A105 105 0 0 0 355 290 C355 215 250 85 250 85 Z" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M200 300 A52 52 0 0 0 238 345" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><b>Čistá</b><span>Filtrovaná a minerálne vyvážená</span></div>
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a spiral"><path d="M415.0 250.0 L413.3 266.5 L410.1 282.6 L405.2 298.3 L398.8 313.3 L391.0 327.5 L381.8 340.8 L371.4 353.0 L359.9 364.1 L347.4 373.9 L334.0 382.3 L319.9 389.4 L305.3 394.9 L290.2 398.9 L275.0 401.4 L259.6 402.3 L244.3 401.7 L229.2 399.5 L214.5 395.9 L200.3 390.8 L186.8 384.4 L174.0 376.6 L162.2 367.7 L151.4 357.7 L141.7 346.7 L133.2 334.9 L126.0 322.3 L120.1 309.1 L115.6 295.5 L112.5 281.6 L110.9 267.6 L110.6 253.5 L111.8 239.6 L114.4 225.9 L118.3 212.6 L123.4 199.9 L129.8 187.8 L137.4 176.5 L146.0 166.1 L155.5 156.7 L165.9 148.3 L177.0 141.0 L188.6 135.0 L200.8 130.2 L213.3 126.6 L226.0 124.4 L238.8 123.4 L251.6 123.8 L264.2 125.4 L276.4 128.3 L288.2 132.3 L299.5 137.5 L310.2 143.8 L320.0 151.0 L329.1 159.2 L337.2 168.1 L344.3 177.8 L350.4 188.0 L355.4 198.8 L359.2 209.9 L361.9 221.3 L363.4 232.8 L363.7 244.3 L362.9 255.7 L360.9 266.9 L357.9 277.7 L353.8 288.1 L348.7 298.0 L342.7 307.2 L335.8 315.7 L328.2 323.4 L319.9 330.3 L311.0 336.2 L301.6 341.2 L291.9 345.1 L281.9 348.1 L271.7 350.0 L261.5 350.8 L251.3 350.6 L241.2 349.4 L231.4 347.2 L222.0 344.1 L213.0 340.1 L204.6 335.2 L196.7 329.5 L189.5 323.1 L183.1 316.1 L177.4 308.5 L172.6 300.5 L168.7 292.1 L165.6 283.4 L163.5 274.5 L162.3 265.6 L162.0 256.6 L162.6 247.8 L164.1 239.1 L166.4 230.8 L169.5 222.7 L173.4 215.1 L178.0 208.0 L183.3 201.5 L189.1 195.6 L195.4 190.4 L202.2 185.9 L209.3 182.1 L216.6 179.1 L224.2 176.9 L231.9 175.5 L239.5 174.8 L247.2 175.0 L254.7 175.9 L261.9 177.6 L268.9 179.9 L275.6 182.9 L281.8 186.6 L287.6 190.8 L292.8 195.5 L297.5 200.7 L301.6 206.2 L305.0 212.1 L307.8 218.2 L310.0 224.5 L311.4 230.9 L312.2 237.3 L312.4 243.7 L311.9 250.0 L310.7 256.1 L309.0 262.0 L306.7 267.6 L303.9 272.9 L300.6 277.8 L296.9 282.3 L292.8 286.3 L288.3 289.8 L283.6 292.8 L278.7 295.3 L273.7 297.2 L268.5 298.6 L263.3 299.4 L258.2 299.7 L253.1 299.4 L248.2 298.6 L243.4 297.4 L238.9 295.7 L234.6 293.6 L230.7 291.1 L227.1 288.2 L223.9 285.0 L221.0 281.6 L218.6 278.0 L216.6 274.2 L215.1 270.4 L214.0 266.4 L213.3 262.4 L213.0 258.5 L213.2 254.7 L213.7 250.9 L214.6 247.3 L215.9 243.9 L217.5 240.8 L219.3 237.9 L221.4 235.2 L223.7 232.9 L226.2 230.8 L228.9 229.1 L231.6 227.8 L234.4 226.7 L237.2 226.0 L240.0 225.6 L242.7 225.5 L245.4 225.7 L247.9 226.2 L250.3 226.9 L252.5 227.9 L254.5 229.0 L256.4 230.4 L258.0 231.9 L259.3 233.5 L260.5 235.2 L261.4 236.9 L262.0 238.7 L262.4 240.5 L262.6 242.2 L262.6 243.9 L262.4 245.5 L262.0 246.9 L261.4 248.3 L260.7 249.5 L259.9 250.5 L259.0 251.4 L258.0 252.1 L257.0 252.6 L255.9 252.9 L254.9 253.0 L253.9 253.0 L253.0 252.8 L252.2 252.5 L251.4 252.0 L250.8 251.4 L250.3 250.8 L250.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="250" cy="250" r="9" fill="#121813"/></svg></div><b>Štruktúrovaná</b><span>Prejde vírom, ako v horskom potoku</span></div>
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: molekula vodíka, dva spojené atómy"><circle cx="195" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="305" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="195" cy="250" r="16" fill="#121813"/><circle cx="305" cy="250" r="16" fill="#121813"/></svg></div><b>Bohatá na vodík</b><span>Molekulárny H₂ rozpustený a udržaný</span></div>
+      <div class="f-fork rv" aria-hidden="true">⟶</div>
+      <div class="f-out rv">
+        <a href="#drink"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: pohár vody"><path d="M160 110 H340 L315 400 H185 Z" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M172 200 H328" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M178 200 H322 L311 392 H189 Z" fill="#121813" fill-opacity=".18"/><circle cx="225" cy="330" r="7" fill="#121813"/><circle cx="262" cy="290" r="6" fill="#121813"/><circle cx="240" cy="250" r="5" fill="#121813"/><circle cx="280" cy="350" r="8" fill="#121813"/><circle cx="210" cy="270" r="5" fill="#121813"/></svg></div><div><b>Na pitie</b><span>Cesta telom</span></div></a>
+        <a href="#pool"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: voda v bazéne"><path d="M80 150 H420" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 240 Q122.5 214 165.0 240 Q207.5 266 250.0 240 Q292.5 214 335.0 240 Q377.5 266 420.0 240" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 302 Q122.5 276 165.0 302 Q207.5 328 250.0 302 Q292.5 276 335.0 302 Q377.5 328 420.0 302" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 364 Q122.5 338 165.0 364 Q207.5 390 250.0 364 Q292.5 338 335.0 364 Q377.5 390 420.0 364" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><b>Na kúpanie</b><span>Cez pokožku, v bazéne</span></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="glass-sec" id="drink">
+  <div class="wrap g-grid">
+    <figure class="rv"><img src="../../assets/w3_glass.webp" alt="Vysoký pohár čistej vody, ktorá sa jemne točí v špirále, plný drobných stúpajúcich vodíkových bubliniek, vedľa sklenenej karafy v sále MILUJ" loading="lazy"></figure>
+    <div>
+      <p class="step-tag rv">Použitie 1 · Voda, ktorú pijeme</p>
+      <h2 class="rv">Živá voda, ktorá si drží vodík.</h2>
+      <p class="lead rv">Poriadok aj nosič v jednom pohári: štruktúrovaná, minerálne vyvážená voda, nasýtená molekulárnym vodíkom a stabilizovaná patentovaným retenčným systémom.</p>
+      <ol class="layers3">
+        <li class="rv"><span class="dot">1</span><div><h3>Čistá</h3><p>Filtrovaná a minerálne vyvážená: vo vode nie je nič, čo tam nemá byť.</p></div></li>
+        <li class="rv"><span class="dot">2</span><div><h3>Štruktúrovaná</h3><p>Pripravená vírivým pohybom v duchu Schaubergera, aby sa obnovil poriadok živého prameňa.</p></div></li>
+        <li class="rv"><span class="dot">3</span><div><h3>Nasýtená vodíkom</h3><p>Molekulárny vodík rozpustený a udržaný hodiny namiesto minút, takže je vo vode aj vtedy, keď ju pijete.</p></div></li>
+      </ol>
+      <p class="check rv"><b>Kde ju nájdete.</b> Podáva sa pri každom stole v reštaurácii a čerpá sa z vlastného vodného systému útočiska. Nižšie sledujte jeden pohár, od prvého dúšku až do jedinej bunky.</p>
+    </div>
+  </div>
+</section>
+
+<section class="journey-intro" id="journey">
+  <div class="wrap j-head">
+    <div>
+      <p class="label rv">Použitie 1 · Cesta jedného pohára</p>
+      <h2 class="rv" style="margin-top:12px">Z pohára až do bunky.</h2>
+    </div>
+    <p class="lead rv">Sledujte jeden pohár vody MILUJ telom, do fascií, do jedinej bunky až dolu k mitochondriám, kde vzniká vaša energia.</p>
+  </div>
+</section>
+
+<section class="journey" id="journeyScene" aria-label="Animácia: človek vypije pohár vody bohatej na vodík; voda sa rozšíri telom, tečie medzi vrstvami fascií, vstúpi do bunky cez aquaporínové kanály a v mitochondrii sa molekulárny vodík stretne s hydroxylovými radikálmi a oboje sa zmení na vodu">
+  <div class="stick">
+    <div class="wrap j-stage">
+      <div>
+        <div class="j-steps" aria-live="polite">
+          <div class="j-step on"><div class="k">01</div><h3>Jeden pohár</h3><p>Čistá, minerálne vyvážená voda, ktorá prešla vírom a nesie molekulárny vodík: H₂, najmenšiu molekulu, aká existuje.</p><span class="fact">Dva atómy vodíka, asi 0,3 nanometra</span></div>
+          <div class="j-step"><div class="k">02</div><h3>Do každej časti vás</h3><p>Voda prechádza do krvi hlavne cez tenké črevo. Objaví sa v nej do piatich minút a približne do dvoch hodín sa rovnomerne rozptýli v celej vode vášho tela.</p><span class="fact"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span>Overená fyziológia</span></div>
+          <div class="j-step"><div class="k">03</div><h3>Rieky vo vás</h3><p>Fascie obaľujú každý sval a orgán jednou súvislou sieťou. Medzi ich vrstvami tečie tekutina a voda viazaná v hyalurónane im umožňuje kĺzať. Keď tkanivo vyschne, vrstvy sa zlepia a pohyb stuhne.</p><span class="fact"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span>Nový výskum</span></div>
+          <div class="j-step"><div class="k">04</div><h3>Do bunky</h3><p>Voda vstupuje do každej bunky cez aquaporíny, bielkovinové kanály, z ktorých každý prepustí asi miliardu molekúl vody za sekundu. H₂ kanál nepotrebuje: je dosť malý na to, aby prešiel priamo membránou.</p><span class="fact"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span>Overená fyziológia · Nobelova cena 2003</span></div>
+          <div class="j-step"><div class="k">05</div><h3>Kde vzniká energia</h3><p>Mitochondrie menia potravu a kyslík na energiu a pri práci z nich unikne niekoľko agresívnych radikálov. V štúdii z roku 2007 H₂ neutralizoval ten najagresívnejší, hydroxylový radikál, a oba sa zmenili na vodu. Nakoľko to pomáha ľuďom, sa ešte skúma.</p><span class="fact"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span>Nový výskum <span class="eq">H₂ + 2 •OH → 2 H₂O</span></span></div>
+        </div>
+        <div class="j-track" aria-hidden="true"><span class="on">Pohár</span><span>Telo</span><span>Fascie</span><span>Bunka</span><span>Mitochondrie</span></div>
+        <p class="j-note">Zjednodušená cesta, nie v mierke. Molekuly sú nakreslené ako bodky; radikál a jeho reakcia s H₂ vychádzajú zo štúdie v časopise <i>Nature Medicine</i> (2007).</p>
+      </div>
+      <div class="j-canvas"><canvas id="jCanvas" aria-hidden="true"></canvas><div class="j-legend" id="jLegend" aria-hidden="true"></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="pool" id="pool">
+  <div class="wrap">
+    <p class="step-tag rv">Použitie 2 · Voda, do ktorej vstupujeme</p>
+    <h2 class="rv">Bazén z tej istej vody.</h2>
+    <p class="lead rv">Bazén pred Ascension Pyramid je naplnený tou istou štruktúrovanou vodou ako každý pohár v MILUJ a jedna jeho časť je obohatená molekulárnym vodíkom. Tu sa voda stretáva s telom zvonka.</p>
+    <figure class="pool-hero rv"><img src="../../assets/t11_h2pool.webp" alt="Hostia odpočívajú v noci vo vonkajšom vodíkovom bazéne pred Ascension Pyramid, voda plná jemných stúpajúcich bubliniek" loading="lazy"></figure>
+    <div class="pool-points">
+      <div class="rv"><span class="n">01</span><h3>Tá istá voda</h3><p>Vyčistená, minerálne vyvážená a štruktúrovaná presne rovnakým postupom ako voda, ktorú pijete.</p></div>
+      <div class="rv"><span class="n">02</span><h3>Časť bohatá na vodík</h3><p>Jedna časť bazéna nesie rozpustený molekulárny vodík, takže si môžete vybrať, či budete odpočívať v nej.</p></div>
+      <div class="rv"><span class="n">03</span><h3>Súčasť dňa</h3><p>Pod šírym nebom po dychovej, pohybovej či zvukovej praxi: čas vznášať sa, schladiť sa a nechať telo upokojiť.</p></div>
+    </div>
+    <div class="pool-skin">
+      <div class="sym rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: vodík prechádza z vody cez pokožku"><path d="M70 120 Q132 94 195 120 T320 120 T445 120" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="60" y="250" width="380" height="70" rx="10" fill="#121813" fill-opacity=".16"/><path d="M60 250 H440 M60 320 H440" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="130" cy="180" r="11" fill="#121813"/><circle cx="250" cy="200" r="11" fill="#121813"/><circle cx="370" cy="170" r="11" fill="#121813"/><circle cx="190" cy="285" r="11" fill="#121813"/><circle cx="310" cy="285" r="11" fill="#121813"/><circle cx="150" cy="390" r="11" fill="#121813"/><circle cx="270" cy="410" r="11" fill="#121813"/><circle cx="390" cy="380" r="11" fill="#121813"/><path d="M250 150 V445 M228 422 L250 446 L272 422" stroke="#121813" stroke-opacity=".45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+      <div>
+        <h3 class="rv">Cez pokožku, nie cez trávenie.</h3>
+        <p class="rv">Keď pijete, voda a vodík idú dlhšou cestou, cez žalúdok a črevá. V bazéne je kontakt priamy: H₂ je dosť malý na to, aby prešiel pokožkou, kým odpočívate vo vode.</p>
+        <p class="rv">V štúdii z roku 2023 sa vodík z teplého kúpeľa bohatého na vodík objavil v krvi do dvoch minút. Štúdia bola robená na zvieratách; čo to znamená pre ľudí, sa ešte skúma.</p>
+        <p class="pool-lens rv"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span>Nový výskum</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lenses" id="science">
+  <div class="wrap">
+    <p class="step-tag rv">Zhrnutie</p>
+    <h2 class="rv">Čo MILUJ spája.</h2>
+    <ul class="have">
+      <li class="rv"><div>Voda vyčistená a minerálne vyvážená<span>Základ všetkého, čo nasleduje</span></div></li>
+      <li class="rv"><div>Štruktúrovaná vírivým pohybom<span>V duchu Schaubergerovej živej vody</span></div></li>
+      <li class="rv"><div>Obohatená molekulárnym vodíkom<span>Udržiavaná patentovaným retenčným systémom</span></div></li>
+      <li class="rv"><div>Pitná voda z vlastného systému útočiska<span>Pri každom stole v reštaurácii</span></div></li>
+      <li class="rv"><div>Bazén z tej istej vody<span>S časťou bohatou na vodík, pred Ascension Pyramid</span></div></li>
+      <li class="rv"><div>Jeden prístup, zvnútra aj zvonka<span>Tá istá voda, ktorú pijete aj v ktorej sa kúpete</span></div></li>
+    </ul>
+    <h2 class="rv sub">Tri šošovky. Jeden poctivý jazyk.</h2>
+    <div class="l-grid">
+      <div class="rv"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span><h3>Overená fyziológia</h3><p>Voda je prostredím každého procesu v našich bunkách aj medzi nimi a normálna hydratácia je pre fungovanie človeka nevyhnutná. Molekulárna štruktúra mení vlastnosti látky, ako ukazuje uhlík.</p></div>
+      <div class="rv"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span><h3>Nový výskum</h3><p>Molekulárny vodík sa skúma pre účinky na oxidačnú signalizáciu a bunkové procesy; klinické dôkazy sa ešte len vyvíjajú. Usporiadaná voda pri povrchoch (EZ voda) je opísaná a je predmetom diskusie.</p></div>
+      <div class="rv"><span class="dots3"><i class="on"></i><i></i><i></i></span><h3>Prístup MILUJ</h3><p>Štruktúrovaná voda v Schaubergerovom zmysle a vodík udržaný stabilný hodiny sú dva princípy, na ktorých MILUJ pripravuje svoju vodu, na pitie aj pre bazén, v ktorom sa hostia kúpu.</p></div>
+    </div>
+    <details class="sources-wrap">
+      <summary>Výskumný kontext</summary>
+      <div class="sources">
+      <a href="https://www.ncbi.nlm.nih.gov/books/NBK482447/" target="_blank" rel="noopener">Telesné tekutiny a ich priestory<span>NCBI Bookshelf ↗</span></a>
+      <a href="https://www.nanomedicine.com/NMI/3.1.htm" target="_blank" rel="noopener">Molekulárne zloženie tela<span>Freitas, Nanomedicine ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5639468/" target="_blank" rel="noopener">Štruktúra tekutej vody<span>PMC ↗</span></a>
+      <a href="https://arxiv.org/abs/1909.06822" target="_blank" rel="noopener">Javy vylučovacej zóny vo vode: kritický prehľad<span>arXiv ↗</span></a>
+      <a href="https://www.pollacklab.org/single-post/2013/04/30/flow-through-horizontal-tubes-submerged-in-water-in-the-absence-of-a-pressure-gradient-me" target="_blank" rel="noopener">Prúdenie trubicami bez pumpy<span>Pollack Laboratory, 2013 ↗</span></a>
+      <a href="https://pks.or.at/?p=189" target="_blank" rel="noopener">Viktor Schauberger: život a dielo<span>Archív rodiny Schaubergerovcov (PKS) ↗</span></a>
+      <a href="https://link.springer.com/article/10.1007/s00421-011-2194-7" target="_blank" rel="noopener">Ako rýchlo sa vypitá voda dostane do krvi<span>Péronnet et al., Eur J Appl Physiol, 2012 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5869738/" target="_blank" rel="noopener">Priestory s tekutinou v spojivovom tkanive<span>Scientific Reports, 2018 ↗</span></a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/34202183/" target="_blank" rel="noopener">Fascie a hyalurónan<span>PubMed ↗</span></a>
+      <a href="https://www.nobelprize.org/prizes/chemistry/2003/summary/" target="_blank" rel="noopener">Aquaporíny, vodné kanály bunky<span>Nobelova cena za chémiu 2003 ↗</span></a>
+      <a href="https://www.nature.com/articles/nm1577" target="_blank" rel="noopener">H₂ ako selektívny antioxidant<span>Nature Medicine, 2007 ↗</span></a>
+      <a href="https://amscd.termedia.pl/Direct-evidence-of-hydrogen-absorption-from-the-skin-a-pig-study,165963,0,2.html" target="_blank" rel="noopener">Vodík vstrebaný pokožkou počas kúpeľa<span>Arch Med Sci Civil Dis, 2023 (štúdia na zvieratách) ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10816294/" target="_blank" rel="noopener">Vodíková voda: systematický prehľad<span>NIH / PMC ↗</span></a>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <img src="../../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
+    <h2 class="rv">Voda je prostredím života.</h2>
+    <p class="rv">Zmeňte prostredie a telo môže odpovedať.</p>
+    <a class="btn solid rv" href="../">Späť na celú víziu MILUJ →</a>
+  </div>
+</section>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress = el => { const r = el.getBoundingClientRect(); const span = r.height - innerHeight; return span > 0 ? clamp(-r.top / span, 0, 1) : clamp(1 - r.top / innerHeight, 0, 1); };
+
+  /* reveal on entry (content is visible without script; the class is added only when script runs) */
+  const rvs = [...document.querySelectorAll('.rv')];
+  if (!reduce && 'IntersectionObserver' in window) {
+    rvs.forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); });
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    rvs.forEach(el => { if (!el.classList.contains('in')) io.observe(el); });
+  } else rvs.forEach(el => el.classList.add('in'));
+
+  /* body water: pick a person, the vessel fills */
+  const fill = $('#bwFill'), pct = $('#bwPct'), cap = $('#bwCap');
+  let shownPct = 0;
+  const setPct = p => {
+    fill.style.transform = `scaleY(${p / 100})`;
+    if (reduce) { pct.textContent = p; return; }
+    const t0 = performance.now();
+    const step = n => { const t = clamp((n - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - t, 3); pct.textContent = Math.round(p * e); if (t < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const bwIO = new IntersectionObserver(es => { if (es[0].isIntersecting) { setPct(99); bwIO.disconnect(); } }, { threshold: .4 });
+  bwIO.observe($('.vessel'));
+
+  /* ---------- atoms: one set of 72 particles morphs graphite → diamond → liquid water → structured (EZ) water ---------- */
+  const N = 72, NO = 24;   // water states: particles 0–23 are oxygen, 24–71 hydrogen
+  const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(7);
+  const centre = pts => { const c = [0, 0, 0]; pts.forEach(p => { c[0] += p[0]; c[1] += p[1]; c[2] += p[2]; }); c.forEach((v, i) => c[i] = v / pts.length); return pts.map(p => [p[0] - c[0], p[1] - c[1], p[2] - c[2]]); };
+  const nearest = (pts, n) => pts.map(p => [p, Math.hypot(...p)]).sort((a, b) => a[1] - b[1]).slice(0, n).map(x => x[0]);
+  const honey = (z, n, pucker = 0) => {   // a honeycomb (graphene-like) layer, n atoms nearest its centre
+    const pts = [], a = 1;
+    for (let i = -5; i <= 5; i++) for (let j = -5; j <= 5; j++) {
+      const x = a * 1.5 * i, y = a * Math.sqrt(3) * (j + (i % 2 ? .5 : 0));
+      pts.push([x - .5, y, z + pucker], [x + .5, y, z - pucker]);
+    }
+    return nearest(pts, n);
+  };
+  // 1 graphite: three loosely stacked sheets
+  const G0 = centre([...honey(-2.1, 24), ...honey(0, 24), ...honey(2.1, 24)]);
+  const G = G0.map(([x, y, z]) => [x, z, y]);
+  // 2 diamond: diamond-cubic lattice
+  const D = (() => { const base = [[0,0,0],[0,.5,.5],[.5,0,.5],[.5,.5,0]], pts = [], a = 2.3;
+    for (let i = -2; i <= 2; i++) for (let j = -2; j <= 2; j++) for (let k = -2; k <= 2; k++) base.forEach(b => { pts.push([(i + b[0]) * a, (j + b[1]) * a, (k + b[2]) * a]); pts.push([(i + b[0] + .25) * a, (j + b[1] + .25) * a, (k + b[2] + .25) * a]); });
+    return centre(nearest(pts.map(p => [p[0] - .3, p[1] - .3, p[2] - .3]), N)); })();
+  // helper: place two hydrogens around an oxygen (bond ~0.55, angle ~104.5°)
+  const addH = (o, dir, roll) => { const ang = 104.5 * Math.PI / 180 / 2, L = .55;
+    const u = dir, v = [Math.cos(roll), Math.sin(roll), 0], w = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
+    const wl = Math.hypot(...w) || 1; const ww = w.map(x => x / wl);
+    return [1, -1].map(s => [0, 1, 2].map(i => o[i] + L * (Math.cos(ang) * u[i] + s * Math.sin(ang) * ww[i]))); };
+  // 3 liquid water: molecules scattered at random
+  const W = (() => { const O = [], H = [];
+    while (O.length < NO) { const p = [(rnd() - .5) * 7.5, (rnd() - .5) * 7.5, (rnd() - .5) * 7.5]; if (Math.hypot(...p) < 3.9 && O.every(q => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]) > 1.25)) O.push(p); }
+    O.forEach(o => { const t = rnd() * Math.PI * 2, f = Math.acos(2 * rnd() - 1); H.push(...addH(o, [Math.sin(f) * Math.cos(t), Math.sin(f) * Math.sin(t), Math.cos(f)], rnd() * 6)); });
+    return centre([...O, ...H]); })();
+  // 4 structured (EZ-like) water: two puckered hexagonal sheets, hydrogens pointing along the lattice
+  // 4 structured water, simplified as an ice-like lattice: oxygens on the same tetrahedral (diamond) order,
+  //   each donating two hydrogens to neighbours and receiving hydrogen bonds from the others
+  let SW = [];
+  const S = (() => { const a = 3.3, pts = [], base = [[0,0,0],[0,.5,.5],[.5,0,.5],[.5,.5,0]];
+    for (let i = -2; i <= 2; i++) for (let j = -2; j <= 2; j++) for (let k = -2; k <= 2; k++) base.forEach(b => { pts.push([(i + b[0]) * a, (j + b[1]) * a, (k + b[2]) * a, 0]); pts.push([(i + b[0] + .25) * a, (j + b[1] + .25) * a, (k + b[2] + .25) * a, 1]); });
+    const sh = pts.map(p => [p[0] - .4, p[1] - .4, p[2] - .4, p[3]]);
+    const O = sh.map(p => [p, Math.hypot(p[0], p[1], p[2])]).sort((x, y) => x[1] - y[1]).slice(0, NO).map(x => x[0]);
+    const cO = centre(O.map(p => p.slice(0, 3))), nn = a * Math.sqrt(3) / 4 * 1.1, L = .55;
+    const TET = [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(v => v.map(x => x / Math.sqrt(3)));
+    const donated = new Set(), H = [];
+    O.forEach((o, i) => { const sign = o[3] ? -1 : 1, dirs = [];
+      for (let j = 0; j < NO && dirs.length < 2; j++) { if (j === i || donated.has(j + '>' + i)) continue; const d = [O[j][0] - o[0], O[j][1] - o[1], O[j][2] - o[2]], l = Math.hypot(...d);
+        if (l < nn) { dirs.push(d.map(x => x / l)); donated.add(i + '>' + j); SW.push([NO + i * 2 + dirs.length - 1, j]); } }
+      for (const t of TET) { if (dirs.length >= 2) break; const v = t.map(x => x * sign); if (dirs.every(d => d[0] * v[0] + d[1] * v[1] + d[2] * v[2] < .9)) dirs.push(v); }
+      dirs.forEach(d => H.push([cO[i][0] + d[0] * L, cO[i][1] + d[1] * L, cO[i][2] + d[2] * L])); });
+    return [...cO, ...H]; })();
+  const STATES = [G, D, W, S];
+  // bonds per state
+  const bondsFor = (P, kind) => { const out = [];
+    if (kind === 'c') { for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) { const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1], P[i][2] - P[j][2]); if (d < 1.12 && Math.abs(P[i][2] - P[j][2]) < .4 || (P === D && d < 1.05)) out.push([i, j, 1]); } }
+    else { for (let o = 0; o < NO; o++) { out.push([o, NO + o * 2, 1], [o, NO + o * 2 + 1, 1]); }
+      if (kind === 's') for (let i = 0; i < NO; i++) for (let j = i + 1; j < NO; j++) { const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1], P[i][2] - P[j][2]); if (d < 3.3 * Math.sqrt(3) / 4 * 1.1) out.push([i, j, 0]); } }
+    return out; };
+  const BONDS = [bondsFor(G0, 'c'), bondsFor(D, 'c'), bondsFor(W, 'w'), bondsFor(S, 's')];
+  // liquid water: each hydrogen may hold one short-lived hydrogen bond to a neighbouring oxygen
+  for (let h = NO; h < N; h++) { const own = (h - NO) >> 1; let best = -1, bd = 1.3;
+    for (let o = 0; o < NO; o++) { if (o === own) continue; const d = Math.hypot(W[h][0] - W[o][0], W[h][1] - W[o][1], W[h][2] - W[o][2]); if (d < bd) { bd = d; best = o; } }
+    if (best >= 0) BONDS[2].push([h, best, 0]); }
+  // diamond bonds: nearest neighbours (4 each)
+  BONDS[1] = (() => { const out = []; for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) { const d = Math.hypot(D[i][0] - D[j][0], D[i][1] - D[j][1], D[i][2] - D[j][2]); if (d < 2.3 * .45) out.push([i, j, 1]); } return out; })();
+
+  const cv = $('#atomCanvas'), cx = cv.getContext('2d'), atoms = $('#atoms');
+  const steps = [...document.querySelectorAll('.a-step')], track = [...document.querySelectorAll('.a-track span')], legend = $('#aLegend');
+  const LEG = ['<span><i style="background:#B9C0C4"></i>Uhlík</span>', '<span><i style="background:#EAF6FF"></i>Uhlík</span>', '<span><i style="background:#9FC7D2"></i>Kyslík</span><span><i style="background:#F5EFE2"></i>Vodík</span><span><i style="background:#E3CC94"></i>Vodíková väzba</span>', '<span><i style="background:#9FC7D2"></i>Kyslík</span><span><i style="background:#F5EFE2"></i>Vodík</span><span><i style="background:#E3CC94"></i>Vodíková väzba</span>'];
+  let aShown = 0, aStep = -1, aVis = false;
+  new IntersectionObserver(es => { aVis = es[0].isIntersecting; }).observe(atoms);
+  const size = () => { const d = Math.min(2, devicePixelRatio || 1); cv.width = Math.round(cv.offsetWidth * d); cv.height = Math.round(cv.offsetHeight * d); };
+  size(); addEventListener('resize', size);
+  // scroll → state: hold, morph, hold … (4 holds, 3 morphs)
+  const KEYS = [[0, .16], [.27, .43], [.54, .70], [.81, 1]];
+  const stateAt = p => { for (let i = 0; i < 3; i++) { const a = KEYS[i][1], b = KEYS[i + 1][0]; if (p < a) return [i, i, 0]; if (p < b) return [i, i + 1, smooth(a, b, p)]; } return [3, 3, 0]; };
+  const COL = { c0: [185, 192, 196], c1: [234, 246, 255], o: [159, 199, 210], h: [245, 239, 226] };
+  const mix = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
+  const colourOf = (k, i) => k === 0 ? COL.c0 : k === 1 ? COL.c1 : (i < NO ? COL.o : COL.h);
+  const radiusOf = (k, i) => k < 2 ? .24 : k === 3 ? (i < NO ? .27 : .15) : (i < NO ? .34 : .19);
+  const drawAtoms = (t, p) => {
+    const W2 = cv.width, H2 = cv.height; cx.clearRect(0, 0, W2, H2);
+    const [a, b, f] = stateAt(p);
+    const scale = Math.min(W2, H2) / 10.5, cxp = W2 / 2, cyp = H2 / 2 - H2 * .02;
+    const ry = (reduce ? 0 : t * .15) + p * 1.6, rx = -.32 + .1 * Math.sin(p * 3);
+    const cyr = Math.cos(ry), syr = Math.sin(ry), cxr = Math.cos(rx), sxr = Math.sin(rx);
+    const jit = (k, i, d) => (k === 2 && !reduce) ? .08 * Math.sin(t * 2.3 + i * 1.7 + d * 2.1) : 0;
+    const proj = [];
+    for (let i = 0; i < N; i++) {
+      const A = STATES[a][i], B = STATES[b][i];
+      let x = A[0] + (B[0] - A[0]) * f, y = A[1] + (B[1] - A[1]) * f, z = A[2] + (B[2] - A[2]) * f;
+      const w = (a === 2 ? 1 - f : 0) + (b === 2 ? f : 0); x += jit(2, i, 0) * w * 3; y += jit(2, i, 1) * w * 3; z += jit(2, i, 2) * w * 3;
+      const x1 = x * cyr + z * syr, z1 = -x * syr + z * cyr, y1 = y * cxr - z1 * sxr, z2 = y * sxr + z1 * cxr;
+      const per = 9 / (9 + z2);
+      proj.push([cxp + x1 * scale * per, cyp + y1 * scale * per, z2, per, i]);
+    }
+    // bonds of both neighbouring states, faded by the morph
+    [[a, 1 - f], [b, f]].forEach(([k, al]) => { if (al < .02) return; BONDS[k].forEach(([i, j, strong]) => {
+      const P = proj[i], Q = proj[j], dz = (P[2] + Q[2]) / 2, depth = clamp(.55 - dz / 10, .2, 1);
+      cx.strokeStyle = strong ? `rgba(245,239,226,${(.42 * al * depth).toFixed(3)})` : `rgba(227,204,148,${(.55 * al * depth).toFixed(3)})`;
+      cx.lineWidth = (strong ? 1.6 : 1.2) * (P[3] + Q[3]) / 2 * (W2 / 900 + .4);
+      if (!strong) cx.setLineDash([4 * (W2 / 900 + .4), 5 * (W2 / 900 + .4)]); else cx.setLineDash([]);
+      cx.beginPath(); cx.moveTo(P[0], P[1]); cx.lineTo(Q[0], Q[1]); cx.stroke(); }); });
+    cx.setLineDash([]);
+    proj.sort((u, v) => u[2] - v[2]).forEach(([x, y, z, per, i]) => {
+      const c = mix(colourOf(a, i), colourOf(b, i), f), r = (radiusOf(a, i) + (radiusOf(b, i) - radiusOf(a, i)) * f) * scale * per;
+      const light = clamp(.62 - z / 9, .28, 1);
+      const g = cx.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r);
+      g.addColorStop(0, `rgba(255,255,255,${(.9 * light).toFixed(3)})`); g.addColorStop(.35, `rgba(${c.map(Math.round).join(',')},${light.toFixed(3)})`); g.addColorStop(1, `rgba(${c.map(v => Math.round(v * .35)).join(',')},${light.toFixed(3)})`);
+      cx.fillStyle = g; cx.beginPath(); cx.arc(x, y, r, 0, 7); cx.fill();
+    });
+    // a soft glow when the lattice is diamond
+    const dg = (a === 1 ? 1 - f : 0) + (b === 1 ? f : 0);
+    if (dg > .02) { const gl = cx.createRadialGradient(cxp, cyp, 0, cxp, cyp, Math.min(W2, H2) * .45); gl.addColorStop(0, `rgba(220,240,255,${(.10 * dg).toFixed(3)})`); gl.addColorStop(1, 'rgba(220,240,255,0)'); cx.fillStyle = gl; cx.fillRect(0, 0, W2, H2); }
+    const st = p < (KEYS[0][1] + KEYS[1][0]) / 2 ? 0 : p < (KEYS[1][1] + KEYS[2][0]) / 2 ? 1 : p < (KEYS[2][1] + KEYS[3][0]) / 2 ? 2 : 3;
+    if (st !== aStep) { aStep = st; steps.forEach((s, i) => s.classList.toggle('on', i === st)); track.forEach((s, i) => s.classList.toggle('on', i === st)); legend.innerHTML = LEG[st]; }
+  };
+
+  /* ---------- journey of one glass: one canvas, four nested scales (body → fascia → cell → mitochondrion) ---------- */
+  const jSec = $('#journeyScene'), jc = $('#jCanvas'), jx = jc.getContext('2d');
+  const lA = document.createElement('canvas'), lAx = lA.getContext('2d');
+  let jd = 1, JW = 0, JH = 0, jVis = false, jShown = 0, jStep = -1, jLegI = -1;
+  new IntersectionObserver(es => { jVis = es[0].isIntersecting; }).observe(jSec);
+  const jsize = () => { jd = Math.min(2, devicePixelRatio || 1); JW = jc.width = lA.width = Math.round(jc.offsetWidth * jd); JH = jc.height = lA.height = Math.round(jc.offsetHeight * jd); };
+  jsize(); addEventListener('resize', jsize);
+  const jr = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(11);
+  const AQ = '159,199,210', IV = '245,239,226', GO = '227,204,148', BL = '61,139,255', CO = '229,140,106';
+  const rgba = (c, a) => `rgba(${c},${clamp(a, 0, 1).toFixed(3)})`;
+  // scroll timeline: holds and three zooms; step texts switch at STEPAT
+  const ZOOM = [[.30, .40], [.52, .62], [.74, .84]], STEPAT = [0, .14, .35, .57, .79], ZF = 9;
+  const FOCUS = [[.047, .12], [.07, -.05], [.16, -.1]];          // where the next, smaller world sits inside the current one
+  const BG = [[11, 14, 12], [11, 22, 24], [10, 24, 30], [14, 18, 15]];
+  const camAt = p => { for (let i = 0; i < 3; i++) { const [a, b] = ZOOM[i]; if (p < a) return [i, 0]; if (p < b) return [i, (p - a) / (b - a)]; } return [3, 0]; };
+  const JLEG = [
+    `<span><i style="background:#9FC7D2"></i>Voda</span><span><i style="background:#FFFFFF"></i>H₂</span>`,
+    `<span><i style="background:#F5EFE2"></i>Kolagénové vlákna</span><span><i style="background:#9FC7D2"></i>Tekutina</span><span><i style="background:#FFFFFF"></i>H₂</span>`,
+    `<span><i style="background:#9FC7D2"></i>Voda</span><span><i style="background:#E3CC94"></i>Aquaporínový kanál</span><span><i style="background:#FFFFFF"></i>H₂</span>`,
+    `<span><i style="background:#FFFFFF"></i>H₂</span><span><i style="background:#E58C6A"></i>Hydroxylový radikál •OH</span><span><i style="background:#3D8BFF"></i>Vzniknutá voda</span>`
+  ];
+  const jSteps = [...document.querySelectorAll('.j-step')], jTrack = [...document.querySelectorAll('.j-track span')], jLeg = $('#jLegend');
+
+  // small geometry helpers (all scene drawing happens in local units; lw() converts screen pixels)
+  let JS = 1; const lw = n => n * jd / JS;
+  const line = (c, a, b, w) => { c.lineWidth = w; c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(b[0], b[1]); c.stroke(); };
+  const disc = (c, x, y, r, col) => { c.fillStyle = col; c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill(); };
+  const glow = (c, x, y, r, col, a) => { const g = c.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, rgba(col, a)); g.addColorStop(1, rgba(col, 0)); c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2); };
+  const poly = pts => { let L = 0; const cum = [0]; for (let i = 1; i < pts.length; i++) { L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); cum.push(L); } return { pts, cum, L }; };
+  const at = (P, f) => { const s = clamp(f, 0, 1) * P.L; let i = 1; while (i < P.cum.length - 1 && P.cum[i] < s) i++; const a = P.pts[i - 1], b = P.pts[i], t = (s - P.cum[i - 1]) / ((P.cum[i] - P.cum[i - 1]) || 1); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; };
+  const strokePart = (c, P, f) => { if (f <= 0) return; c.beginPath(); c.moveTo(P.pts[0][0], P.pts[0][1]); const s = f * P.L; for (let i = 1; i < P.pts.length; i++) { if (P.cum[i] <= s) c.lineTo(P.pts[i][0], P.pts[i][1]); else { const q = at(P, f); c.lineTo(q[0], q[1]); break; } } c.stroke(); };
+  const ik = (s, h, L1, L2) => { const dx = h[0] - s[0], dy = h[1] - s[1], d = Math.min(Math.hypot(dx, dy), L1 + L2 - 1e-4), a = Math.acos(clamp((L1 * L1 + d * d - L2 * L2) / (2 * L1 * d), -1, 1)), b = Math.atan2(dy, dx);
+    const e1 = [s[0] + L1 * Math.cos(b + a), s[1] + L1 * Math.sin(b + a)], e2 = [s[0] + L1 * Math.cos(b - a), s[1] + L1 * Math.sin(b - a)]; return (e1[1] + .3 * e1[0]) > (e2[1] + .3 * e2[0]) ? e1 : e2; };
+
+  /* scene 0 · the body: a figure drinks, water spreads */
+  // a smooth, mannequin-like figure in the style of the homepage crowd: dark bronze with a warm rim,
+  // which starts to glow from within as the water spreads through it
+  const half = [[.019, -.35], [.021, -.322], [.05, -.31], [.085, -.297], [.098, -.278], [.094, -.25], [.082, -.215], [.075, -.16], [.064, -.1], [.068, -.045], [.082, 0], [.082, .06],
+    [.073, .14], [.062, .225], [.064, .29], [.056, .36], [.043, .412], [.06, .432], [.058, .447], [.022, .447], [.02, .415], [.022, .34], [.018, .24], [.016, .15], [.007, .07]];
+  const OUTLINE = [...half, [0, .058], ...half.slice().reverse().map(p => [-p[0], p[1]])];
+  const smoothPath = (c, pts) => { const n = pts.length; c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 0; i < n; i++) { const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+      c.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]); } c.closePath(); };
+  const SHL = [-.079, -.272], ELL = [-.102, -.135], WRL = [-.107, -.01];
+  const SHR = [.079, -.272], WR0 = [.107, -.01], WR1 = [.056, -.305];
+  const mir = pts => pts.map(p => [-p[0], p[1]]);
+  const armL = [[-.005, -.2], [-.05, -.262], [-.082, -.275], [-.1, -.2], [-.106, -.1], [-.109, -.02]];
+  const legL = [[.002, -.07], [-.03, -.02], [-.046, .06], [-.045, .215], [-.044, .33], [-.036, .41]];
+  const THROAT = poly([[.012, -.352], [.004, -.32], [0, -.27], [0, -.19], [.01, -.12], [.016, -.085]]);
+  const RIVERS = [[legL, .05], [mir(legL), .08], [armL, .22], [mir(armL), .25], [[[0, -.29], [0, -.35], [.004, -.405]], .34],
+    [[[.002, -.1], [-.035, -.15], [-.056, -.2]], .14], [[[.01, -.1], [.04, -.16], [.056, -.2]], .16], [[[0, -.2], [-.035, -.24]], .2], [[[0, -.2], [.035, -.24]], .21],
+    [[[-.045, .215], [-.03, .3]], .3], [[[.045, .215], [.03, .3]], .32]].map(([pts, d]) => ({ P: poly(pts), d }));
+  const limb = (c, s, e, w, extra) => { const dx = w[0] - e[0], dy = w[1] - e[1], L = Math.hypot(dx, dy) || 1;
+    line(c, s, e, .036 + extra); line(c, e, w, .027 + extra);
+    c.save(); c.translate(w[0] + dx / L * .022, w[1] + dy / L * .022); c.rotate(Math.atan2(dy, dx) - Math.PI / 2);
+    c.beginPath(); c.ellipse(0, 0, .015 + extra / 2, .024 + extra / 2, 0, 0, 6.2832); c.fill(); c.restore(); };
+  const torsoShape = (c, extra) => { smoothPath(c, OUTLINE); c.fill(); if (extra) { c.lineWidth = extra; c.stroke(); }
+    c.beginPath(); c.ellipse(0, -.396, .041 + extra / 2, .053 + extra / 2, 0, 0, 6.2832); c.fill();
+    limb(c, SHL, ELL, WRL, extra); };
+  const armShape = (c, extra, e, w) => limb(c, SHR, e, w, extra);
+  // three passes per part: soft glow with a warm rim, then the body colour, so overlaps stay clean
+  const figurePart = (c, shape, spread) => {
+    const rim = 1.8 * jd / JS, warm = `rgba(255,214,160,${(.42 + .45 * spread).toFixed(3)})`;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    c.save(); c.shadowColor = `rgba(255,196,128,${(.3 + .55 * spread).toFixed(3)})`; c.shadowBlur = (12 + 34 * spread) * jd;
+    c.fillStyle = c.strokeStyle = warm; shape(c, rim); c.restore();
+    const g = c.createLinearGradient(0, -.46, 0, .45), k = spread;
+    g.addColorStop(0, `rgb(${Math.round(58 + 150 * k)},${Math.round(49 + 128 * k)},${Math.round(40 + 96 * k)})`);
+    g.addColorStop(.45, `rgb(${Math.round(48 + 136 * k)},${Math.round(40 + 112 * k)},${Math.round(32 + 80 * k)})`);
+    g.addColorStop(1, `rgb(${Math.round(36 + 110 * k)},${Math.round(30 + 88 * k)},${Math.round(24 + 60 * k)})`);
+    c.fillStyle = c.strokeStyle = g; shape(c, 0);
+  };
+  const drawBody = (c, p, T) => {
+    const raise = smooth(.02, .08, p) - smooth(.125, .165, p), tip = smooth(.065, .11, p) - smooth(.12, .145, p), sip = smooth(.07, .125, p);
+    const spread = smooth(.15, .29, p), down = smooth(.075, .17, p);
+    const wr = [WR0[0] + (WR1[0] - WR0[0]) * raise, WR0[1] + (WR1[1] - WR0[1]) * raise], elbow = ik(SHR, wr, .145 - .05 * raise, .13 - .02 * raise);   // the arm foreshortens as it comes forward
+    const fd = Math.hypot(wr[0] - elbow[0], wr[1] - elbow[1]) || 1, hand = [wr[0] + (wr[0] - elbow[0]) / fd * .022, wr[1] + (wr[1] - elbow[1]) / fd * .022];
+    // warm light on the floor and behind the figure, as on the homepage
+    c.save(); c.translate(0, .45); c.scale(1, .22); glow(c, 0, 0, .3, '255,200,130', .1 + .4 * spread); c.restore();
+    glow(c, 0, -.05, .5, '255,200,130', .04 + .14 * spread);
+    figurePart(c, torsoShape, spread);
+    // inner light rising from the core as the water arrives
+    if (spread > 0) { c.save(); smoothPath(c, OUTLINE); c.clip(); glow(c, 0, -.12, .32, '255,236,200', .45 * spread); c.restore(); }
+    figurePart(c, (cc, x) => armShape(cc, x, elbow, wr), spread);
+    // water arriving: throat, then rivers into every limb
+    c.lineCap = 'round';
+    c.strokeStyle = rgba(AQ, .25); c.lineWidth = lw(7); strokePart(c, THROAT, down);
+    c.strokeStyle = rgba(AQ, .9); c.lineWidth = lw(1.8); strokePart(c, THROAT, down);
+    const gut = smooth(.12, .2, p) * (1 - .4 * spread); if (gut > 0) glow(c, .014, -.08, .05, AQ, .55 * gut);
+    RIVERS.forEach(({ P, d }) => { const f = clamp((spread - d) / .55, 0, 1); if (!f) return;
+      c.strokeStyle = rgba('40,110,135', .35); c.lineWidth = lw(5); strokePart(c, P, f);
+      c.strokeStyle = rgba(AQ, .95); c.lineWidth = lw(1.6); strokePart(c, P, f);
+      for (let i = 0; i < 4; i++) { const q = at(P, ((T * .35 + i / 4) % 1) * f); disc(c, q[0], q[1], lw(2.2), rgba('200,235,245', 1)); }
+      for (let i = 0; i < 2; i++) { const q = at(P, ((T * .75 + i / 2 + .3) % 1) * f); disc(c, q[0], q[1], lw(1.8), 'rgba(255,255,255,1)'); } });
+    if (down > 0 && down < 1) for (let i = 0; i < 5; i++) { const q = at(THROAT, ((T * .9 + i / 5) % 1) * down); disc(c, q[0], q[1], lw(2), rgba(AQ, 1)); }
+    // the glass, held in the right hand, tipping towards the lips
+    c.save(); c.translate(hand[0], hand[1]); c.rotate(-1.15 * tip); c.translate(0, -.016);
+    const gw = .019, gb = .015, gh = .03, lvl = 1 - .92 * sip;
+    c.beginPath(); c.moveTo(-gw, -gh); c.lineTo(gw, -gh); c.lineTo(gb, gh); c.lineTo(-gb, gh); c.closePath();
+    c.fillStyle = 'rgba(245,239,226,.12)'; c.fill();
+    c.save(); c.clip(); const top = gh - 2 * gh * lvl * .9;
+    c.fillStyle = rgba(AQ, .7); c.fillRect(-gw, top, gw * 2, gh * 2);
+    for (let i = 0; i < 7; i++) { const u = (T * .5 + i / 7) % 1, y = gh - u * (gh - top) * .95, x = (((i * 37) % 13) / 13 - .5) * gb * 1.6; disc(c, x, y, lw(1.1), rgba('255,255,255', .9 * (1 - u))); }
+    c.restore();
+    c.strokeStyle = rgba(IV, .85); c.lineWidth = lw(1.4); c.stroke(); c.restore();
+    // the next world: a ring on the thigh just before we fall into it
+    const ring = smooth(.24, .29, p);
+    if (ring > 0) { c.strokeStyle = rgba(GO, .7 * ring); c.lineWidth = lw(1.3); c.beginPath(); c.arc(FOCUS[0][0], FOCUS[0][1], .05 + .006 * Math.sin(T * 3), 0, 6.2832); c.stroke(); }
+  };
+
+  /* scene 1 · fascia: wavy collagen fibres, fluid running between the layers */
+  const FIB = Array.from({ length: 34 }, (_, i) => ({ y: -1.25 + i * .074 + (jr() - .5) * .025, a: .006 + jr() * .01, w: 5 + jr() * 6, ph: jr() * 6.28, al: .14 + jr() * .22, lw: .9 + jr() * 1.4 }));
+  const CELLS = [[-.3, .19, .034, .5], [.34, .28, .03, -.3], [-.22, -.33, .031, .9], [.4, -.31, .028, .2], [-.46, -.06, .028, 0], [.15, .45, .03, .6]];
+  const FH2 = Array.from({ length: 26 }, () => ({ x: jr() * 2.4 - 1.2, y: jr() * 2.4 - 1.2, v: .05 + jr() * .05, ph: jr() * 6.28 }));
+  const drawFascia = (c, p, T) => {
+    const hyd = smooth(.4, .5, p), ang = -.32;
+    c.save(); c.rotate(ang);
+    FIB.forEach((f, i) => {
+      const y0 = f.y * (1 + .1 * hyd) + .006 * Math.sin(T * .5 + i);
+      if (i % 3 === 1) {   // fluid channel between two layers
+        c.strokeStyle = rgba(AQ, .05 + .13 * hyd); c.lineWidth = .028 + .012 * hyd;
+        c.beginPath(); for (let x = -1.5; x <= 1.5; x += .05) { const y = y0 + .037 + f.a * .6 * Math.sin(x * f.w * 1.6 + f.ph); x === -1.5 ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke();
+        for (let j = 0; j < 6; j++) { const x = ((T * .07 * (1 + hyd) + j / 6 + i * .37) % 1) * 3 - 1.5, y = y0 + .037 + f.a * .6 * Math.sin(x * f.w * 1.6 + f.ph); disc(c, x, y, lw(2.2), rgba(AQ, .45 + .5 * hyd)); }
+      }
+      c.strokeStyle = rgba(IV, f.al + .12 * hyd); c.lineWidth = lw(f.lw);
+      c.beginPath(); for (let x = -1.5; x <= 1.5; x += .02) { const y = y0 + f.a * Math.sin(x * f.w * Math.PI + f.ph + T * .25); x === -1.5 ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke();
+    });
+    c.restore();
+    // cells resting in the web; the gold-ringed one is where we go next
+    CELLS.forEach(([x, y, r, a]) => { c.save(); c.translate(x, y); c.rotate(a); c.scale(1.3, .8); disc(c, 0, 0, r, 'rgb(13,24,26)'); c.restore();
+      c.save(); c.translate(x, y); c.rotate(a); c.scale(1.3, .8); c.strokeStyle = rgba(IV, .5); c.lineWidth = lw(1.2); c.beginPath(); c.arc(0, 0, r, 0, 6.2832); c.restore(); c.stroke(); disc(c, x - r * .2, y, r * .35, rgba(IV, .12)); });
+    const [tx, ty] = FOCUS[1], tr = .042;
+    disc(c, tx, ty, tr, 'rgb(12,28,34)'); glow(c, tx, ty, tr * 1.6, AQ, .25 + .25 * hyd);
+    c.strokeStyle = rgba(IV, .75); c.lineWidth = lw(1.4); c.beginPath(); c.arc(tx, ty, tr, 0, 6.2832); c.stroke();
+    disc(c, tx - .009, ty + .007, .011, rgba(IV, .14));
+    const ring = smooth(.46, .51, p); if (ring > 0) { c.strokeStyle = rgba(GO, .75 * ring); c.lineWidth = lw(1.3); c.beginPath(); c.arc(tx, ty, tr + .012 + .003 * Math.sin(T * 3), 0, 6.2832); c.stroke(); }
+    FH2.forEach(h => { const x = ((h.x + T * h.v + 1.2) % 2.4) - 1.2, y = h.y + .02 * Math.sin(T + h.ph); disc(c, x, y, lw(1.6), 'rgba(255,255,255,.85)'); });
+  };
+
+  /* scene 2 · the cell: water through aquaporins, H₂ straight through the membrane */
+  const MITOS = [[.16, -.1, 0, .047], [-.21, -.13, .8, .04], [.05, .2, -.3, .04], [-.23, .17, .25, .037], [.22, .12, 1.2, .04], [-.02, -.22, .3, .037]];
+  const AQP = Array.from({ length: 12 }, (_, i) => i / 12 * 6.2832 + .13);
+  const CH2 = Array.from({ length: 18 }, (_, i) => ({ a: i / 18 * 6.2832 + jr() * .3, s: .16 + jr() * .08, o: jr() }));
+  const smallMito = (c, x, y, a, hl) => { const hh = hl * .47;
+    c.save(); c.translate(x, y); c.rotate(a); c.beginPath(); c.roundRect ? c.roundRect(-hl, -hh, hl * 2, hh * 2, hh) : c.rect(-hl, -hh, hl * 2, hh * 2);
+    c.fillStyle = rgba(GO, .16); c.fill(); c.strokeStyle = rgba(GO, .8); c.lineWidth = lw(1.2); c.stroke();
+    c.strokeStyle = rgba(GO, .45); c.lineWidth = lw(.9); c.beginPath(); for (let i = 0; i <= 8; i++) { const xx = -hl * .75 + i * hl * .1875; c.lineTo(xx, (i % 2 ? .6 : -.6) * hh); } c.stroke(); c.restore(); };
+  const drawCell = (c, p, T) => {
+    const hyd = smooth(.63, .72, p), R = .34 + .035 * hyd;
+    glow(c, 0, 0, R * 1.35, AQ, .1 + .12 * hyd);
+    const g = c.createRadialGradient(-.05, -.05, .02, 0, 0, R); g.addColorStop(0, rgba(AQ, .1 + .14 * hyd)); g.addColorStop(1, rgba(AQ, .04 + .08 * hyd));
+    disc(c, 0, 0, R, 'rgb(10,24,30)'); disc(c, 0, 0, R, g);
+    // nucleus
+    disc(c, -.09, .07, .1, rgba(IV, .05)); c.strokeStyle = rgba(IV, .4); c.lineWidth = lw(1.2); c.beginPath(); c.arc(-.09, .07, .1, 0, 6.2832); c.stroke(); disc(c, -.07, .05, .028, rgba(GO, .2));
+    MITOS.forEach(([x, y, a, hl]) => smallMito(c, x, y, a, hl));
+    // membrane: two leaflets
+    c.strokeStyle = rgba(IV, .75); c.lineWidth = lw(2); c.beginPath(); c.arc(0, 0, R, 0, 6.2832); c.stroke();
+    c.strokeStyle = rgba(IV, .3); c.lineWidth = lw(1.1); c.beginPath(); c.arc(0, 0, R - .013, 0, 6.2832); c.stroke();
+    // aquaporins and the water filing through them
+    AQP.forEach((a, i) => { const cs = Math.cos(a), sn = Math.sin(a), tx = -sn, ty = cs;
+      c.strokeStyle = rgba(GO, .95); c.lineCap = 'round';
+      for (const k of [-1, 1]) line(c, [cs * (R + .018) + tx * k * .008, sn * (R + .018) + ty * k * .008], [cs * (R - .03) + tx * k * .008, sn * (R - .03) + ty * k * .008], lw(2.4));
+      for (let j = 0; j < 3; j++) { const u = (T * .3 * (.55 + hyd) + j / 3 + i * .21) % 1, r = R + .1 - u * .2, al = Math.min(1, u * 4, (1 - u) * 3);
+        disc(c, cs * r, sn * r, lw(2.3), rgba(AQ, al)); } });
+    CH2.forEach(h => { const u = (T * h.s + h.o) % 1, r = .62 - u * .58, a = h.a + .15 * Math.sin(u * 6 + h.o * 6), al = Math.min(1, u * 5, (1 - u) * 4);
+      disc(c, Math.cos(a) * r, Math.sin(a) * r, lw(1.7), rgba('255,255,255', .9 * al)); });
+    const ring = smooth(.68, .73, p); if (ring > 0) { const [tx, ty] = FOCUS[2]; c.strokeStyle = rgba(GO, .75 * ring); c.lineWidth = lw(1.3); c.beginPath(); c.arc(tx, ty, .066 + .004 * Math.sin(T * 3), 0, 6.2832); c.stroke(); }
+  };
+
+  /* scene 3 · the mitochondrion: H₂ meets •OH and both become water */
+  const CRI = Array.from({ length: 9 }, (_, i) => { const x = -.3 + i * .075, top = i % 2 === 0, L = .17 + .05 * Math.abs(Math.sin(i * 1.7)); return { x, y0: top ? -.178 : .178, y1: top ? -.178 + L : .178 - L }; });
+  const SITES = CRI.map((k, i) => { const a = jr() * 6.2832; return { x: k.x + (i % 2 ? .02 : -.02), y: k.y1 + (k.y0 < 0 ? .025 : -.025), dx: Math.cos(a), dy: Math.sin(a), off: i * .41 + jr() * .3, w: [Math.cos(a + 1.9), Math.sin(a + 1.9)] }; });
+  const MH2 = Array.from({ length: 12 }, () => ({ x: jr() * 2 - 1, y: jr() * 1.4 - .7, v: .04 + jr() * .05, ph: jr() * 6.28 }));
+  const drawMito = (c, p, T) => {
+    const cap = (inset) => { c.beginPath(); const x = -.42 + inset, y = -.2 + inset, w = .84 - 2 * inset, h = .4 - 2 * inset; c.roundRect ? c.roundRect(x, y, w, h, h / 2) : c.rect(x, y, w, h); };
+    glow(c, 0, 0, .6, GO, .07);
+    cap(0); c.fillStyle = 'rgb(24,26,20)'; c.fill(); c.fillStyle = rgba(GO, .07); c.fill(); c.strokeStyle = rgba(GO, .8); c.lineWidth = lw(2.2); c.stroke();
+    cap(.022); c.strokeStyle = rgba(GO, .45); c.lineWidth = lw(1.4); c.stroke();
+    c.lineCap = 'round';
+    CRI.forEach((k, i) => { c.strokeStyle = rgba(GO, .4); line(c, [k.x, k.y0], [k.x, k.y1], .03); c.strokeStyle = 'rgb(27,28,21)'; line(c, [k.x, k.y0], [k.x, k.y1], .013);
+      const u = (T * .4 + i * .23) % 1; disc(c, k.x, k.y0 + (k.y1 - k.y0) * u, lw(1.6), rgba(GO, .9 * Math.sin(u * Math.PI))); });
+    MH2.forEach(h => { const x = ((h.x + T * h.v + 1) % 2) - 1, y = h.y + .03 * Math.sin(T * .8 + h.ph); disc(c, x, y, lw(1.5), 'rgba(255,255,255,.55)'); });
+    // each reaction site cycles: a radical appears, H₂ arrives, both turn into two droplets of water
+    SITES.forEach(s => { const ph = ((T + s.off * 3.6) / 3.6) % 1;
+      if (ph < .56) { const a = Math.min(1, ph / .12) * (ph > .52 ? (.56 - ph) / .04 : 1), jt = .004 * Math.sin(T * 17 + s.off * 9);
+        glow(c, s.x + jt, s.y, .032, CO, .55 * a); disc(c, s.x + jt, s.y, lw(3), rgba(CO, a)); }
+      if (ph > .18 && ph < .56) { const u = (ph - .18) / .36, e = u * u * (3 - 2 * u), d = .5 * (1 - e);
+        disc(c, s.x + s.dx * d, s.y + s.dy * d, lw(2.4), rgba('255,255,255', Math.min(1, u * 4))); glow(c, s.x + s.dx * d, s.y + s.dy * d, .02, '255,255,255', .35 * Math.min(1, u * 4)); }
+      if (ph >= .54 && ph < .66) { const u = (ph - .54) / .12; c.strokeStyle = rgba('255,240,210', .8 * (1 - u)); c.lineWidth = lw(1.5); c.beginPath(); c.arc(s.x, s.y, .01 + .04 * u, 0, 6.2832); c.stroke(); }
+      if (ph >= .56) { const u = (ph - .56) / .44, d = .015 + .09 * Math.sqrt(u), a = Math.min(1, u * 6) * (1 - u);
+        for (const k of [-1, 1]) { const x = s.x + s.w[0] * d * k, y = s.y + s.w[1] * d * k; glow(c, x, y, .024, BL, .5 * a); disc(c, x, y, lw(2.6), rgba(BL, a)); } } });
+  };
+  const SCENES = [drawBody, drawFascia, drawCell, drawMito];
+
+  // draw scene k with its local origin at (ox, oy) and scale s, optionally faded in through a soft round mask
+  const paint = (c, k, s, ox, oy, p, T, mask) => {
+    JS = s; c.setTransform(s, 0, 0, s, ox, oy); SCENES[k](c, p, T); c.setTransform(1, 0, 0, 1, 0, 0);
+    if (mask) { const r = mask * s, g = c.createRadialGradient(ox, oy, r * .55, ox, oy, r); g.addColorStop(0, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      c.globalCompositeOperation = 'destination-in'; c.fillStyle = g; c.fillRect(0, 0, JW, JH); c.globalCompositeOperation = 'source-over'; }
+  };
+  const drawJourney = (T, p) => {
+    const [k, t] = camAt(p), e = t * t * (3 - 2 * t), U = Math.min(JW, JH) * .96, C = [JW / 2, JH / 2];
+    const b0 = BG[k], b1 = BG[Math.min(3, k + 1)], bg = b0.map((v, i) => Math.round(v + (b1[i] - v) * e));
+    jx.setTransform(1, 0, 0, 1, 0, 0); jx.globalAlpha = 1; jx.fillStyle = `rgb(${bg})`; jx.fillRect(0, 0, JW, JH);
+    const s0 = U * Math.pow(ZF, e), F = FOCUS[Math.min(2, k)];
+    const ox = C[0] - F[0] * e * s0, oy = C[1] - F[1] * e * s0;
+    if (t <= 0) paint(jx, k, U, C[0], C[1], p, T, 0);
+    else {
+      const a0 = 1 - smooth(.5, .95, t), a1 = smooth(.08, .55, t);
+      if (a0 > 0) { jx.globalAlpha = a0; paint(jx, k, s0, ox, oy, p, T, 0); jx.globalAlpha = 1; }
+      lAx.setTransform(1, 0, 0, 1, 0, 0); lAx.clearRect(0, 0, JW, JH);
+      paint(lAx, k + 1, s0 / ZF, ox + F[0] * s0, oy + F[1] * s0, p, T, .62 + 2.6 * e * e);
+      jx.globalAlpha = a1; jx.drawImage(lA, 0, 0); jx.globalAlpha = 1;
+    }
+    // soft vignette so the world falls away at the edges
+    const v = jx.createRadialGradient(C[0], C[1], Math.min(JW, JH) * .34, C[0], C[1], Math.min(JW, JH) * .53);
+    v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(11,14,12,1)'); jx.fillStyle = v; jx.fillRect(0, 0, JW, JH);
+    // copy and legend follow the scroll position
+    let si = 0; STEPAT.forEach((a, i) => { if (p >= a) si = i; });
+    if (si !== jStep) { jStep = si; jSteps.forEach((el, i) => el.classList.toggle('on', i === si)); jTrack.forEach((el, i) => el.classList.toggle('on', i === si)); }
+    const li = Math.min(3, k + (e > .5 ? 1 : 0)); if (li !== jLegI) { jLegI = li; jLeg.innerHTML = JLEG[li]; }
+  };
+
+  /* ---------- hydrogen chart (same as the homepage) ---------- */
+  const narrow = innerWidth < 600, X0 = narrow ? 120 : 70, X1 = narrow ? 890 : 900, Y0 = narrow ? 560 : 250, Y1 = narrow ? 40 : 20;
+  if (narrow) $('#chart svg').setAttribute('viewBox', '0 0 920 640');
+  // time axis in two zones: the first 20 minutes (where ordinary H₂ water loses its hydrogen) and then the hours up to 24 h
+  const ZS = narrow ? .32 : .18;
+  const lx = m => X0 + (m <= 20 ? Math.sqrt(m / 20) * ZS : ZS + (1 - ZS) * (m - 20) / 1420) * (X1 - X0);
+  const ly = v => Y0 - (v / 100) * (Y0 - Y1);
+  let g = '';
+  [0,25,50,75,100].forEach(v => g += `<line x1="${X0}" x2="${X1}" y1="${ly(v)}" y2="${ly(v)}" stroke="rgba(245,239,226,${v ? .08 : .25})"/><text x="${X0 - 12}" y="${ly(v) + (narrow ? 11 : 4)}" text-anchor="end">${v}%</text>`);
+  [...(narrow ? [] : [[1,'1 min']]),[5,'5 min'],[20,'20 min'],[360,'6 h'],[720,'12 h'],[1080,'18 h'],[1440,'24 h']].forEach(([m,t]) => g += `<line x1="${lx(m)}" x2="${lx(m)}" y1="${Y1}" y2="${Y0}" stroke="rgba(245,239,226,.06)"/><text x="${lx(m)}" y="${Y0 + (narrow ? 50 : 24)}" text-anchor="middle">${t}</text>`);
+  { const bx = lx(20) + (narrow ? 30 : 16), by = Y0; g += `<path d="M${bx - 7} ${by + 8} l8 -16 M${bx + 1} ${by + 8} l8 -16" stroke="rgba(245,239,226,.55)" stroke-width="${narrow ? 3 : 1.5}" fill="none"/>`; }
+  $('#grid').innerHTML = g;
+  const path = pts => pts.map((p, i) => (i ? 'L' : 'M') + lx(p[0]).toFixed(1) + ' ' + ly(p[1]).toFixed(1)).join(' ');
+  $('#cA').setAttribute('d', path([[0,100],[1,99],[2,95],[3,89],[4,82],[6,68],[8,55],[10,44],[13,30],[16,20],[20,12],[30,5],[45,2],[60,1],[120,0],[1440,0]]));
+  $('#cB').setAttribute('d', path([[0,100],[5,99],[20,98],[60,96],[360,90],[720,87],[1080,84],[1440,82]]));
+  $('#marks').innerHTML = `<circle cx="${lx(20)}" cy="${ly(12)}" r="${narrow ? 9 : 5}" fill="#9FC7D2"/><text x="${lx(20) + 10}" y="${ly(12) - 10}" style="fill:#9FC7D2">≈ 20 min</text><circle cx="${lx(1440)}" cy="${ly(82)}" r="${narrow ? 9 : 5}" fill="#E3CC94"/><text x="${lx(1440) - 10}" y="${narrow ? ly(82) + 52 : ly(82) - 14}" text-anchor="end" style="fill:#E3CC94">až 24 h (cieľ)</text>`;
+  const chIO = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; chIO.disconnect(); if (reduce) return;
+    const a = $('#cA'), la = a.getTotalLength(); a.style.strokeDasharray = la;
+    a.animate([{ strokeDashoffset: la }, { strokeDashoffset: 0 }], { duration: 1600, easing: 'cubic-bezier(.3,.7,.2,1)' });
+    $('#cB').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1400, delay: 600, fill: 'backwards' });
+    $('#marks').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 1500, fill: 'backwards' }); }, { threshold: .35 });
+  chIO.observe($('#chart'));
+
+
+  /* step navigation: mark the section in view */
+  const navLinks = [...document.querySelectorAll('.wnav a')];
+  const navIO = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return;
+    const id = e.target.id; navLinks.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.setAttribute('aria-current', on); if (on) { const ol = a.closest('ol'); ol.scrollTo({ left: a.parentElement.offsetLeft - ol.clientWidth / 2 + a.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' }); } }); }), { rootMargin: '-45% 0px -50% 0px' });
+  ['philosophy', 'body', 'structure', 'hydrogen', 'process', 'drink', 'pool', 'science'].forEach(id => { const el = document.getElementById(id); if (el) navIO.observe(el); });
+
+  /* one loop, drawing only what is on screen; scroll damping is frame-rate independent */
+  let last = performance.now();
+  const loop = now => {
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const k = reduce ? 1 : 1 - Math.exp(-dt * 7.7);
+    if (aVis) { aShown += (progress(atoms) - aShown) * k; drawAtoms(now / 1000, aShown); }
+    if (jVis) { const jp = progress(jSec); jShown += (jp - jShown) * k; drawJourney(reduce ? 0 : now / 1000, jShown); }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
