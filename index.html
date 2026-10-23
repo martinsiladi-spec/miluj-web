@@ -645,7 +645,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       <div class="layer-now" aria-live="polite">
         <div class="ct" id="lyCt">From the grounds into one house</div>
         <h3 id="lyH">One Temple</h3>
-        <p id="lyP">Each of the 21 Temple Houses begins as one intention. Keep scrolling: its layers appear one by one.</p>
+        <p id="lyP">Each of the 22 Temple Houses is built around its own healing focus. Keep scrolling: its layers appear one by one.</p>
         <span class="chip" id="lyChip"></span>
       </div>
       <div class="ticks" id="ticks"></div>
@@ -706,7 +706,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     <h2>Two water systems. One living environment.</h2>
     <div class="w-grid">
       <article class="w-card"><img src="assets/t12_alchemy.webp" alt="Glass vessel with spiralling water and a copper coil in a stone niche" loading="lazy"><div class="in"><p class="eyebrow">How water is prepared</p><h3>Structured water</h3><p>Purity, mineral balance and preparation, studied through measurable physical properties.</p></div></article>
-      <article class="w-card"><img src="assets/t11_h2pool.webp" alt="Guests relaxing at night in the outdoor hydrogen pool in front of the Ascension Pyramid, the water full of fine rising bubbles" loading="lazy" style="object-position:50% 40%"><div class="in"><p class="eyebrow">What water carries</p><h3>Hydrogen immersion</h3><p>Molecular H₂ dissolved in water: a promising, still-emerging field of research.</p></div></article>
+      <article class="w-card"><img src="assets/t11_h2pool.webp" alt="Guests relaxing at night in the outdoor hydrogen pool in front of the Ascension Pyramid, the water full of fine rising bubbles" loading="lazy" style="object-position:50% 40%"><div class="in"><p class="eyebrow">What water carries</p><h3>Hydrogen immersion</h3><p>A hydrogen-rich section of the pool, where H₂ reaches the body through the skin as you rest in the water. A promising, still-emerging field of research.</p></div></article>
     </div>
     <div class="chart" id="chart">
       <div class="top"><h3>How long does H₂ stay in the water?</h3>
@@ -1056,7 +1056,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     if (comp >= .5) li = 6;
     if (li === lastLy) return; lastLy = li;
     const chip = $('#lyChip');
-    if (li === -1) { $('#lyCt').textContent = 'From the grounds into one house'; $('#lyH').textContent = 'One Temple'; $('#lyP').textContent = 'Each of the 21 Temple Houses begins as one intention. Keep scrolling: its layers appear one by one.'; chip.textContent = ''; }
+    if (li === -1) { $('#lyCt').textContent = 'From the grounds into one house'; $('#lyH').textContent = 'One Temple'; $('#lyP').textContent = 'Each of the 22 Temple Houses is built around its own healing focus. Keep scrolling: its layers appear one by one.'; chip.textContent = ''; }
     else if (li === 6) { $('#lyCt').textContent = 'All six layers'; $('#lyH').textContent = 'One space. One field.'; $('#lyP').textContent = 'Nothing is selected in isolation. Every layer is composed to support the others, during meditation, silence, rest and sleep.'; chip.textContent = ''; }
     else { $('#lyCt').textContent = `Layer ${li + 1} of 6`; $('#lyH').textContent = layers[li][0]; $('#lyP').textContent = layers[li][1]; chip.textContent = layers[li][2]; }
     ticks.querySelectorAll('i').forEach((t, k) => { t.classList.toggle('on', li === 6 || k < li); t.classList.toggle('now', k === li); });
@@ -1074,7 +1074,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const sci = [
     ['sc0_hydrogen','Hydrogen water','Molecular H₂ dissolved in drinking water, served from a system designed for extended retention.','H₂ is the smallest molecule. Research is exploring its role in oxidative signalling and recovery.',2,'Emerging research'],
     ['sc1_mud','Volcanic mud wraps','Mineral-rich clays and peloids, warmed and applied to the body on a stone bed.','Heat and minerals in close contact with skin: a traditional practice with a growing body of studies on joints and recovery.',2,'Emerging research'],
-    ['sc2_salt','Salt therapy','A dry-salt room with walls of salt blocks, and mineral baths with sea salt and magnesium.','Fine salt particles in the air and minerals in warm water, used for breathing comfort and deep relaxation.',2,'Emerging research'],
+    ['sc2_salt','Mineral salts','Mineral salts added to the water and the kitchen to replenish what the body uses every day: magnesium, potassium, calcium and trace elements.','Minerals carry nerve signals, muscle contraction and the body\'s fluid balance. Heat, sweat and practice use them up; each stay is designed to restore them.',3,'Established physiology'],
     ['sc3_sound','Sound frequencies','Gongs, bowls and tuned frequencies in the sound chamber beneath the pyramid.','Rhythm and resonance invite the nervous system toward a slower, calmer state, visible here as patterns in water.',2,'Emerging research'],
     ['sc4_healy','Healy bioresonance','A small wearable microcurrent device used for guided frequency sessions.','Offered as a complementary experience. MILUJ makes no medical claims for it and documents how guests respond.',1,'MILUJ exploration'],
     ['sc5_light','Circadian light','Light that follows the sun indoors, and red-lens glasses after sunset.','Light is the body\'s main clock signal. Bright light by day and red light at night support natural melatonin release.',3,'Established physiology'],
@@ -1099,7 +1099,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   /* masterplan */
   const pins = [
     ['The Ascension Pyramid','Central shala for breath, movement, sound and ceremony.',61.8,40.5],
-    ['Pool & gardens','Water at the heart of the grounds (function to confirm).',48,39],
+    ['Pool & gardens','Filled with the sanctuary’s prepared water. One section is hydrogen-rich, so resting in the pool brings H₂ to the body through the skin.',48,39],
     ['Temple Houses · north','A row of private Temples along the upper edge.',61,15],
     ['Temple Houses · garden court','Temples clustered around a shared garden.',74,40],
     ['Temple Houses · south','A row of private Temples along the lower edge.',60,64],
@@ -1138,7 +1138,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const copies = [
     'Concept masterplan. Tap a point to see what stands there. Keep scrolling and the Temple Houses light up.',
     'The grounds fall quiet, and the private Temples come forward.',
-    'Every house is a Temple, not only the yoga shala. Each one is built around its own intention.',
+    'All 22 houses are Temples, not only the yoga shala. Each one holds its own healing focus.',
     'Three rows, one field: the Temple Houses wrap around the pyramid at the heart of MILUJ.'
   ];
   let planShown = 0, lastCopy = 0;

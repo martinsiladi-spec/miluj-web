@@ -11,7 +11,7 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
   - Starý web má aj verzie `/sk` a `/es`.
 - **Projekt:** MILUJ Sanctuary, healing & retreat centrum na Bali (Karangasem):
   - Ascension Pyramid a podzemná zvuková sála;
-  - 21 Temple Houses („coded accommodation“);
+  - 22 Temple Houses („coded accommodation“), každý s iným zameraním na liečenie;
   - vegetariánska reštaurácia s komunitnou halou;
   - štruktúrovaná a vodíková voda;
   - valuácia €5,7 M.
@@ -213,14 +213,13 @@ Spraviť až keď budú hotové všetky podstránky.
 
 ## 9. Otvorené úlohy
 
-1. **Prerobiť `/temple-houses`** v štýle úvodnej stránky (pôvodný obsah prečítať v paneli prehliadača).
+1. ~~Prerobiť `/temple-houses`~~: Martin 23. 10. rozhodol, že **podstránku Temple Houses zatiaľ nerobíme**, stačí sekcia Grounds na úvodnej stránke.
 2. Rozhodnúť o **SK/ES verziách** (`/sk`, `/es`) a prípadne preložiť.
 3. **Prepnúť doménu** (bod 8).
-4. Otvorené otázky od Martina:
-   - ktorý z 22 domov na mape nie je Temple House (web hovorí 21);
-   - funkcia bazéna (bod 2 mapy);
-   - roky do časovej osi „Journey“;
-   - čo presne znamenajú „soli“;
-   - masterplan vo vyššom rozlíšení (≥ 4 000 px).
+4. Odpovede od Martina (23. 10., zapracované na webe):
+   - **všetkých 22 domov sú Temple Houses**, každý s iným zameraním na liečenie;
+   - **bazén** je zásobený vodou systému, jeho časť je vodíková, liečenie prebieha aj cez pokožku pri pobyte v bazéne;
+   - **soli = minerálne soli** na doplnenie minerálov v tele (karta v Science track prepísaná, ●●● Established physiology). Obrázok `sc2_salt` stále ukazuje soľnú jaskyňu, treba nový;
+   - stále otvorené: roky do časovej osi „Journey“, masterplan vo vyššom rozlíšení (≥ 4 000 px).
 5. Ponúknuté a neurobené: prelet celým areálom (skica → 3D → realita).
 6. Neskôr možno: investorská prezentácia namiesto formulára; Chladni / frekvencie k izbám.
