@@ -102,8 +102,8 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 
 23. 10. (večer) preusporiadaná podľa Martinovho zadania do **8 krokov s jasnou postupnosťou**. Hlavná myšlienka hneď v úvode: **v MILUJ sa štruktúrovanie vody a obohatenie molekulárnym vodíkom vždy prepájajú – jedna voda na pitie aj do bazéna.** Vodík je vysvetlený PRED animáciou pitia. Pod hero je **sticky navigácia** (`.wnav`, 8 položiek, zvýrazňuje aktuálnu sekciu; pinned scény majú `top: var(--navh)`).
 
-0. **Hero:** `w1_spring.webp`, lead s filozofiou.
-1. **Filozofia** (`#philosophy`): „One water. Two qualities.“ Dva piliere (Structured + Hydrogen-rich) a dve použitia (To drink, To bathe in), všetko klikateľné na príslušné kroky.
+0. **Hero:** `w1_spring.webp`, nad nadpisom štítok „What makes water alive?“, nadpis **„We are water.“**, lead „And we become the water we drink…“ (~2 h, Péronnet 2012) + prečo štruktúrovaná a vodíková voda. Ľavá strana fotky stmavená kvôli čitateľnosti.
+1. **Filozofia** (`#philosophy`): „One water. Two qualities.“ Dva piliere s veľkými fotkami s mäkkým okrajom: Structured = vír `w4_vortex`, Hydrogen-rich = Martinova fotka fľaše s bublinkami `p_hydrogen`. Dve použitia: To drink (`p_drink`, výrez z `w3_glass`), To bathe in (`p_pool`, výrez z `t11_h2pool`). Všetko klikateľné na príslušné kroky.
 2. **Prečo voda** (`#body`): 99 % molekúl (Freitas) + veta, prečo MILUJ začína vodou.
 3. **Krok 1 · Štruktúrovanie** (`#structure` → `#atoms` → `#order`): grafit/diamant, 3D častice; potom „Water that gathers itself.“ – 6 myšlienok s malými zlatými symbolmi (250 px, tmavé čiary na #C2A25E), pri 05 Martinova fotka víru `w4_vortex.webp` s rozpusteným okrajom; box „How to read this“.
 4. **Krok 2 · Vodík** (`#hydrogen`): H₂O vs H₂ (symbol), 3 karty (najmenšia molekula / rýchlo uniká / systém MILUJ ho drží – patentovaný retenčný systém, podľa dodávateľa až 24 h), graf.
