@@ -100,21 +100,19 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 
 ## 4. Podstránka `/water` (`water/index.html`): „What makes water alive?“
 
-Prestavaná 23. 10. na 8 sekcií, aby bola jasná a zrozumiteľná (Martin: „príliš chaotické“). Odstránené: diagram mitochondrií (dýchací reťazec), samostatná sekcia Fascie, citát Purity, karty Fuchs / Mu Shik Jhon / Schwenk.
+23. 10. (večer) preusporiadaná podľa Martinovho zadania do **8 krokov s jasnou postupnosťou**. Hlavná myšlienka hneď v úvode: **v MILUJ sa štruktúrovanie vody a obohatenie molekulárnym vodíkom vždy prepájajú – jedna voda na pitie aj do bazéna.** Vodík je vysvetlený PRED animáciou pitia. Pod hero je **sticky navigácia** (`.wnav`, 8 položiek, zvýrazňuje aktuálnu sekciu; pinned scény majú `top: var(--navh)`).
 
-1. **Hero:** `w1_spring.webp`, logo, „← Back to MILUJ“.
-2. **How much of you is water?** Len údaj 99 % všetkých molekúl (Freitas, 1999). Percentá podľa hmotnosti Martin **nechce**.
-3. **Same atoms. Different order.** `w2_carbon.webp` + pinned 3D canvas 72 častíc: grafit → diamant → bežná voda → štruktúrovaná voda (ľadová mriežka).
-4. **Order and movement** (`#order`): „Water that gathers itself.“ Šesť samostatných myšlienok, každá s veľkým textom (h3 ~50 px, text 20 px) a statickým symbolom (dlaždica max. 250 px): tmavé čiary na zlatej ploche #C2A25E (Martin schválil obrátené farby, tmavšie zlato). 01 plást, 02 batéria, 03 pohyb (vlnky so šípkou), 04 slnko, 06 šípka vs. špirála. Pri 05 je Martinova fotka víru `w4_vortex.webp` s rozpusteným okrajom (priehľadné pozadie), max. 520 px. Animácie a vír canvas odstránené. Na konci box „How to read this“.
-5. **The journey of one glass** (`#journey` intro + `#journeyScene` pinned, 640vh). Jedno plátno, štyri vnorené mierky so zoomom ×9:
-   - postava v štýle davu z úvodnej stránky (hladká figurína, tmavý bronz s teplým lemom; s vodou sa rozžiari ako zlatá postava z videa) vypije pohár H₂ vody, voda tečie hrdlom a riekami do končatín (5 min v krvi, ~2 h rovnomerne v telesnej vode, Péronnet 2012);
-   - zoom do stehna: fascie, kolagénové vlákna, tekutina medzi vrstvami, bunky;
-   - zoom do bunky: aquaporíny (~1 mld. molekúl/s, Nobel 2003), H₂ prechádza membránou priamo;
-   - zoom do mitochondrie: H₂ + 2 •OH → 2 H₂O (Ohsawa 2007, ●●○ emerging research).
-   - Texty krokov vľavo (na mobile pod plátnom), legenda dole na plátne. Kód: `/* ---------- journey of one glass` v skripte, časová os `ZOOM`/`STEPAT`, ohniská `FOCUS`.
-6. **Hydrogen chart** (`#hydrogen`), pozri vyššie.
-7. **One glass** (`#glass`): `w3_glass.webp`, Pure / Structured / Hydrogen-saturated, „How we will check it“.
-8. **Tri šošovky** (`#science`) + **zdroje v rozbaľovacom `<details>`** + záver „Water is the medium of life.“
+0. **Hero:** `w1_spring.webp`, lead s filozofiou.
+1. **Filozofia** (`#philosophy`): „One water. Two qualities.“ Dva piliere (Structured + Hydrogen-rich) a dve použitia (To drink, To bathe in), všetko klikateľné na príslušné kroky.
+2. **Prečo voda** (`#body`): 99 % molekúl (Freitas) + veta, prečo MILUJ začína vodou.
+3. **Krok 1 · Štruktúrovanie** (`#structure` → `#atoms` → `#order`): grafit/diamant, 3D častice; potom „Water that gathers itself.“ – 6 myšlienok s malými zlatými symbolmi (250 px, tmavé čiary na #C2A25E), pri 05 Martinova fotka víru `w4_vortex.webp` s rozpusteným okrajom; box „How to read this“.
+4. **Krok 2 · Vodík** (`#hydrogen`): H₂O vs H₂ (symbol), 3 karty (najmenšia molekula / rýchlo uniká / systém MILUJ ho drží – patentovaný retenčný systém, podľa dodávateľa až 24 h), graf.
+5. **Spojenie** (`#process`, svetlé pozadie): Clean → Structured → Hydrogen-rich → To drink / To bathe in.
+6. **Voda, ktorú pijeme** (`#drink` + `#journey` + `#journeyScene`): pohár `w3_glass` (Pure / Structured / Hydrogen-saturated, „Where you find it“), potom animácia cesty pohára (postava → fascie → bunka → mitochondria).
+7. **Voda, do ktorej vstupujeme** (`#pool`): `t11_h2pool`, 3 body (rovnaká voda, vodíková časť, súčasť dňa), „Through the skin, not the gut.“ + štúdia 2023 (H₂ z kúpeľa v krvi do 2 min, zvieratá, ●●○).
+8. **Zhrnutie** (`#science`, svetlé): „What MILUJ brings together.“ (6 bodov), tri šošovky (tretia = „MILUJ approach“), zdroje v `<details>`, záver.
+
+Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · summary list */`; symboly generované ako inline SVG 500×500.
 
 ## 5. Dizajn systém
 
@@ -161,8 +159,9 @@ Prestavaná 23. 10. na 8 sekcií, aby bola jasná a zrozumiteľná (Martin: „p
   - ●●● Established physiology;
   - ●●○ Emerging research;
   - ●○○ MILUJ exploration.
+- **Opis vybavenia bez „budeme merať/overovať“** (Martin 23. 10.): web opisuje, čo MILUJ má a ako to funguje; vedecký výskum ostáva ako vysvetľujúci kontext so šošovkami.
 - **Bez zdravotných sľubov.** Silné tvrdenia („zázraky“, „neštruktúrovaná voda berie energiu“, „živá voda“) sa podávajú ako pohľad Schaubergera alebo MILUJ, ktorý sa bude **merať a nezávisle overovať**.
-- **24 h retencia H₂** je vždy „supplier-stated target“.
+- **24 h retencia H₂** je vždy uvedená ako špecifikácia dodávateľa.
 - **EZ voda a štvrté skupenstvo:** pozorovania Pollackovho labu, vo vede diskutované.
 - **Vedome vynechané** z Martinových podkladov (video „Lekce 1“):
   - „hlavnou úlohou nervov je vedenie zvuku“ (len menšinová hypotéza, Heimburg a Jackson);

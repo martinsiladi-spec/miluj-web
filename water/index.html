@@ -244,6 +244,106 @@ section p:not(.label){max-width:65ch}
 .closing p{margin:18px auto 0;color:var(--mute-d)}
 .closing .btn{margin-top:34px}
 
+
+/* step navigation, sticky under the hero */
+:root{--navh:52px}
+.wnav{position:sticky;top:0;z-index:50;height:var(--navh);background:rgba(11,14,12,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(194,162,94,.18)}
+.wnav ol{list-style:none;margin:0 auto;padding:0 var(--gut-r) 0 var(--gut);max-width:1240px;height:100%;display:flex;align-items:center;gap:26px;overflow-x:auto;scrollbar-width:none}
+.wnav ol::-webkit-scrollbar{display:none}
+.wnav a{display:inline-flex;gap:7px;align-items:baseline;white-space:nowrap;font-size:14px;color:rgba(245,239,226,.6);text-decoration:none;transition:color .2s ease}
+.wnav a b{font-weight:400;font-family:var(--display);font-size:16px;color:rgba(227,204,148,.6)}
+.wnav a:hover{color:var(--ivory)}
+.wnav a[aria-current="true"]{color:var(--ivory)}
+.wnav a[aria-current="true"] b{color:var(--gold-2)}
+.stick{top:var(--navh)!important;height:calc(100svh - var(--navh))!important}
+section[id]{scroll-margin-top:var(--navh)}
+.step-tag{display:inline-flex;align-items:center;gap:10px;padding:.45em 1em;border-radius:999px;border:1px solid rgba(194,162,94,.5);font-size:14px;font-weight:500;letter-spacing:.02em;color:var(--gold-2);margin-bottom:22px}
+.lenses .step-tag,.process .step-tag{color:#7A5F1F;border-color:rgba(138,109,44,.5)}
+
+/* gold symbol tiles (dark line on gold) */
+.sym{background:#C2A25E;border-radius:14px;aspect-ratio:1;overflow:hidden}
+.sym svg{display:block;width:100%;height:100%}
+
+/* 1 · philosophy */
+.philo{padding-block:130px 120px}
+.philo h2{font-size:var(--fs-h2);max-width:16ch}
+.philo .lead{margin-top:24px;max-width:46ch;font-size:22px;line-height:1.55}
+.pillars{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:stretch;margin-top:64px}
+.pillar{display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:center;padding:24px;border-radius:20px;background:rgba(245,239,226,.04);border:1px solid rgba(194,162,94,.25);text-decoration:none;color:inherit;transition:border-color .25s ease,background-color .25s ease}
+.pillar:hover{border-color:rgba(194,162,94,.6);background:rgba(245,239,226,.06)}
+.pillar .k{font-size:14px;color:var(--gold-2)}
+.pillar h3{font-size:clamp(30px,3vw,40px);margin:4px 0 8px}
+.pillar p{font-size:17px;color:var(--mute-d)}
+.plus{align-self:center;font-family:var(--display);font-size:56px;line-height:1;color:var(--gold-2)}
+.uses-head{display:flex;align-items:center;gap:18px;margin:44px 0 22px;font-size:15px;color:var(--mute-d)}
+.uses-head::before,.uses-head::after{content:"";flex:1;height:1px;background:rgba(194,162,94,.3)}
+.uses{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.use{display:grid;grid-template-columns:84px 1fr;gap:20px;align-items:center;padding:18px 22px;border-radius:18px;border:1px dashed rgba(245,239,226,.22);text-decoration:none;color:inherit;transition:border-color .25s ease}
+.use:hover{border-color:rgba(245,239,226,.5)}
+.use h3{font-size:28px;margin-bottom:4px}
+.use p{font-size:16px;color:var(--mute-d)}
+@media (max-width:900px){.pillars{grid-template-columns:1fr}.plus{justify-self:center;font-size:44px}.uses{grid-template-columns:1fr}.pillar{grid-template-columns:96px 1fr;gap:18px;padding:18px}.philo{padding-block:96px}.philo .lead{font-size:19px}}
+
+/* 2 · why water: a short addition under the 99 % */
+.why-more{margin-top:26px;color:var(--mute-d);font-size:18px}
+
+/* 4 · hydrogen basics */
+.h2-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.h2-cards > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
+.h2-cards .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.h2-cards h3{font-size:clamp(26px,2.4vw,32px);margin:6px 0 10px}
+.h2-cards p{font-size:17px;color:var(--mute-d)}
+.h2-top{display:grid;grid-template-columns:minmax(0,1.1fr) 260px;gap:clamp(32px,5vw,80px);align-items:center;margin-top:56px}
+.h2-top p{font-size:20px;line-height:1.6;color:var(--ivory)}
+.h2-top .sym{max-width:260px;width:100%}
+@media (max-width:900px){.h2-cards,.h2-top{grid-template-columns:1fr}.h2-top .sym{max-width:200px}}
+
+/* 5 · one process */
+.process{background:var(--paper);color:var(--ink);padding-block:130px}
+.process h2{font-size:var(--fs-h2);max-width:18ch}
+.process .lead{margin-top:20px;color:var(--mute-l);max-width:52ch}
+.flow5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 40px minmax(0,1fr);gap:0;align-items:center;margin-top:64px}
+.f-step{display:grid;justify-items:center;text-align:center;gap:14px;position:relative}
+.f-step .sym{width:min(150px,100%)}
+.f-step b{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.1}
+.f-step span{font-size:15px;color:var(--mute-l);max-width:22ch}
+.f-step:not(:nth-child(3))::after{content:"→";position:absolute;right:-12px;top:62px;font-size:28px;color:#8A6D2C}
+.f-fork{align-self:stretch;display:grid;place-items:center;font-size:28px;color:#8A6D2C}
+.f-out{display:grid;gap:22px}
+.f-out a{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit;padding:10px 14px;border-radius:14px;border:1px solid rgba(27,26,21,.14);transition:border-color .2s ease}
+.f-out a:hover{border-color:rgba(27,26,21,.4)}
+.f-out b{font-family:var(--display);font-weight:400;font-size:24px}
+.f-out span{display:block;font-size:14px;color:var(--mute-l)}
+@media (max-width:900px){.process{padding-block:96px}.flow5{grid-template-columns:1fr;gap:34px}.f-step:not(:nth-child(3))::after{content:"↓";right:auto;top:auto;bottom:-32px}.f-fork{display:none}.f-step .sym{width:120px}}
+
+/* 7 · the pool */
+.pool{background:var(--sea);padding-block:140px}
+.pool h2{font-size:var(--fs-h2);max-width:18ch}
+.pool .lead{margin-top:22px;max-width:50ch;color:var(--mute-d);font-size:20px}
+.pool-hero{margin:52px 0 0;border-radius:20px;overflow:hidden}
+.pool-hero img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 40%}
+.pool-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:56px}
+.pool-points > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
+.pool-points .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.pool-points h3{font-size:clamp(26px,2.4vw,32px);margin:6px 0 10px}
+.pool-points p{font-size:17px;color:var(--mute-d)}
+.pool-skin{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center;margin-top:80px}
+.pool-skin .sym{max-width:260px;width:100%}
+.pool-skin h3{font-size:clamp(30px,3vw,42px);margin-bottom:14px}
+.pool-skin p{font-size:19px;line-height:1.6;color:var(--mute-d)}
+.pool-skin p + p{margin-top:14px}
+.pool-lens{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:15px;color:var(--mute-d)}
+.pool-lens .dots3{margin:0}.pool-lens .dots3 i{border-color:var(--gold-2)}.pool-lens .dots3 i.on{background:var(--gold-2)}
+@media (max-width:900px){.pool{padding-block:96px}.pool-points,.pool-skin{grid-template-columns:1fr}.pool-hero img{aspect-ratio:4/3}.pool-skin .sym{max-width:200px}}
+
+/* 8 · summary list */
+.have{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.have li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;border-top:1px solid rgba(27,26,21,.12);font-size:18px;color:var(--ink)}
+.have li::before{content:"✓";color:#8A6D2C;font-weight:500}
+.have span{display:block;font-size:15px;color:var(--mute-l)}
+.lenses .sub{margin-top:90px;font-size:clamp(30px,3vw,40px)}
+@media (max-width:900px){.have{grid-template-columns:1fr}}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
 .rv.in{opacity:1;transform:none}
@@ -284,16 +384,41 @@ section p:not(.label){max-width:65ch}
   <div class="top wrap"><a href="../" aria-label="MILUJ Sanctuary home"><img src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum"></a><a class="back" href="../">← Back to MILUJ</a></div>
   <div class="wrap">
     <h1>What makes water alive?</h1>
-    <p class="lead">Clean is only the beginning. At MILUJ we look at what water is made of, how its molecules are ordered, how it moves, and what it can carry into the body.</p>
+    <p class="lead">At MILUJ, water is structured and enriched with molecular hydrogen, always together: for the water guests drink and the water they bathe in.</p>
     <div class="cue">Scroll to follow the water</div>
+  </div>
+</section>
+
+<nav class="wnav" aria-label="Sections of this page"><ol>
+  <li><a href="#philosophy"><b>1</b>Philosophy</a></li><li><a href="#body"><b>2</b>Why water</a></li><li><a href="#structure"><b>3</b>Structuring</a></li><li><a href="#hydrogen"><b>4</b>Hydrogen</a></li>
+  <li><a href="#process"><b>5</b>One process</a></li><li><a href="#drink"><b>6</b>The water we drink</a></li><li><a href="#pool"><b>7</b>The water we enter</a></li><li><a href="#science"><b>8</b>Summary</a></li>
+</ol></nav>
+
+<section class="philo" id="philosophy">
+  <div class="wrap">
+    <p class="label rv">The MILUJ philosophy of water</p>
+    <h2 class="rv" style="margin-top:12px">One water. Two qualities.</h2>
+    <p class="lead rv">At MILUJ, structuring water and enriching it with molecular hydrogen always go together. It is one approach to water: the water guests drink, and the water they bathe in.</p>
+    <div class="pillars">
+      <a class="pillar rv" href="#structure"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a spiral"><path d="M415.0 250.0 L413.3 266.5 L410.1 282.6 L405.2 298.3 L398.8 313.3 L391.0 327.5 L381.8 340.8 L371.4 353.0 L359.9 364.1 L347.4 373.9 L334.0 382.3 L319.9 389.4 L305.3 394.9 L290.2 398.9 L275.0 401.4 L259.6 402.3 L244.3 401.7 L229.2 399.5 L214.5 395.9 L200.3 390.8 L186.8 384.4 L174.0 376.6 L162.2 367.7 L151.4 357.7 L141.7 346.7 L133.2 334.9 L126.0 322.3 L120.1 309.1 L115.6 295.5 L112.5 281.6 L110.9 267.6 L110.6 253.5 L111.8 239.6 L114.4 225.9 L118.3 212.6 L123.4 199.9 L129.8 187.8 L137.4 176.5 L146.0 166.1 L155.5 156.7 L165.9 148.3 L177.0 141.0 L188.6 135.0 L200.8 130.2 L213.3 126.6 L226.0 124.4 L238.8 123.4 L251.6 123.8 L264.2 125.4 L276.4 128.3 L288.2 132.3 L299.5 137.5 L310.2 143.8 L320.0 151.0 L329.1 159.2 L337.2 168.1 L344.3 177.8 L350.4 188.0 L355.4 198.8 L359.2 209.9 L361.9 221.3 L363.4 232.8 L363.7 244.3 L362.9 255.7 L360.9 266.9 L357.9 277.7 L353.8 288.1 L348.7 298.0 L342.7 307.2 L335.8 315.7 L328.2 323.4 L319.9 330.3 L311.0 336.2 L301.6 341.2 L291.9 345.1 L281.9 348.1 L271.7 350.0 L261.5 350.8 L251.3 350.6 L241.2 349.4 L231.4 347.2 L222.0 344.1 L213.0 340.1 L204.6 335.2 L196.7 329.5 L189.5 323.1 L183.1 316.1 L177.4 308.5 L172.6 300.5 L168.7 292.1 L165.6 283.4 L163.5 274.5 L162.3 265.6 L162.0 256.6 L162.6 247.8 L164.1 239.1 L166.4 230.8 L169.5 222.7 L173.4 215.1 L178.0 208.0 L183.3 201.5 L189.1 195.6 L195.4 190.4 L202.2 185.9 L209.3 182.1 L216.6 179.1 L224.2 176.9 L231.9 175.5 L239.5 174.8 L247.2 175.0 L254.7 175.9 L261.9 177.6 L268.9 179.9 L275.6 182.9 L281.8 186.6 L287.6 190.8 L292.8 195.5 L297.5 200.7 L301.6 206.2 L305.0 212.1 L307.8 218.2 L310.0 224.5 L311.4 230.9 L312.2 237.3 L312.4 243.7 L311.9 250.0 L310.7 256.1 L309.0 262.0 L306.7 267.6 L303.9 272.9 L300.6 277.8 L296.9 282.3 L292.8 286.3 L288.3 289.8 L283.6 292.8 L278.7 295.3 L273.7 297.2 L268.5 298.6 L263.3 299.4 L258.2 299.7 L253.1 299.4 L248.2 298.6 L243.4 297.4 L238.9 295.7 L234.6 293.6 L230.7 291.1 L227.1 288.2 L223.9 285.0 L221.0 281.6 L218.6 278.0 L216.6 274.2 L215.1 270.4 L214.0 266.4 L213.3 262.4 L213.0 258.5 L213.2 254.7 L213.7 250.9 L214.6 247.3 L215.9 243.9 L217.5 240.8 L219.3 237.9 L221.4 235.2 L223.7 232.9 L226.2 230.8 L228.9 229.1 L231.6 227.8 L234.4 226.7 L237.2 226.0 L240.0 225.6 L242.7 225.5 L245.4 225.7 L247.9 226.2 L250.3 226.9 L252.5 227.9 L254.5 229.0 L256.4 230.4 L258.0 231.9 L259.3 233.5 L260.5 235.2 L261.4 236.9 L262.0 238.7 L262.4 240.5 L262.6 242.2 L262.6 243.9 L262.4 245.5 L262.0 246.9 L261.4 248.3 L260.7 249.5 L259.9 250.5 L259.0 251.4 L258.0 252.1 L257.0 252.6 L255.9 252.9 L254.9 253.0 L253.9 253.0 L253.0 252.8 L252.2 252.5 L251.4 252.0 L250.8 251.4 L250.3 250.8 L250.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="250" cy="250" r="9" fill="#121813"/></svg></div><div><span class="k">Step 1</span><h3>Structured</h3><p>Moved and ordered the way water moves in a living spring.</p></div></a>
+      <span class="plus rv" aria-hidden="true">+</span>
+      <a class="pillar rv" href="#hydrogen"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a hydrogen molecule, two atoms joined"><circle cx="195" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="305" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="195" cy="250" r="16" fill="#121813"/><circle cx="305" cy="250" r="16" fill="#121813"/></svg></div><div><span class="k">Step 2</span><h3>Hydrogen-rich</h3><p>Carrying dissolved molecular hydrogen, held in the water for hours.</p></div></a>
+    </div>
+    <p class="uses-head rv">One water, used in two ways</p>
+    <div class="uses">
+      <a class="use rv" href="#drink"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a glass of water"><path d="M160 110 H340 L315 400 H185 Z" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M172 200 H328" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M178 200 H322 L311 392 H189 Z" fill="#121813" fill-opacity=".18"/><circle cx="225" cy="330" r="7" fill="#121813"/><circle cx="262" cy="290" r="6" fill="#121813"/><circle cx="240" cy="250" r="5" fill="#121813"/><circle cx="280" cy="350" r="8" fill="#121813"/><circle cx="210" cy="270" r="5" fill="#121813"/></svg></div><div><h3>To drink</h3><p>Served at every table and from the sanctuary’s own water system.</p></div></a>
+      <a class="use rv" href="#pool"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: water in a pool"><path d="M80 150 H420" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 240 Q122.5 214 165.0 240 Q207.5 266 250.0 240 Q292.5 214 335.0 240 Q377.5 266 420.0 240" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 302 Q122.5 276 165.0 302 Q207.5 328 250.0 302 Q292.5 276 335.0 302 Q377.5 328 420.0 302" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 364 Q122.5 338 165.0 364 Q207.5 390 250.0 364 Q292.5 338 335.0 364 Q377.5 390 420.0 364" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><h3>To bathe in</h3><p>The pool in front of the Ascension Pyramid, with a hydrogen-rich section.</p></div></a>
+    </div>
   </div>
 </section>
 
 <section class="body" id="body">
   <div class="wrap bw">
     <div>
+      <p class="step-tag rv">Why we begin with water</p>
       <h2 class="rv">How much of you is water?</h2>
       <p class="lead rv">Almost all of you. Water molecules are so small and so many that about 99 of every 100 molecules in your body are water. Every other molecule you are made of lives, works and moves in it.</p>
+      <p class="why-more rv">That is why MILUJ begins with water. Whatever you do here, breath, movement, food or rest, it happens in the water you are made of.</p>
       <p class="bw-note rv">Counted by number of molecules (Freitas, <i>Nanomedicine</i>, 1999).</p>
     </div>
     <div class="vessel rv" aria-live="polite">
@@ -307,8 +432,8 @@ section p:not(.label){max-width:65ch}
 <section class="atoms-intro" id="structure">
   <div class="wrap">
     <div class="head">
-      <h2 class="rv">Same atoms. Different order.</h2>
-      <p class="lead rv">Chemistry tells you what water is made of. Structure tells you how it is arranged, and arrangement can change everything.</p>
+      <div><p class="step-tag rv">Step 1 · Structuring</p><h2 class="rv">Same atoms. Different order.</h2></div>
+      <p class="lead rv">The first step is order. Chemistry tells you what water is made of. Structure tells you how it is arranged, and arrangement can change everything.</p>
     </div>
     <figure class="rv">
       <img src="../assets/w2_carbon.webp" alt="A graphite pencil leaving soft grey marks on paper beside a brilliant diamond throwing rainbow light: both are pure carbon" loading="lazy">
@@ -341,8 +466,8 @@ section p:not(.label){max-width:65ch}
   <div class="wrap">
     <div class="o-head">
       <div>
-        <p class="label rv">Order and movement</p>
-        <h2 class="rv" style="margin-top:12px">Water that gathers itself.</h2>
+        <p class="step-tag rv">Step 1 · Structuring</p>
+        <h2 class="rv">Water that gathers itself.</h2>
       </div>
       <p class="lead rv">Clean water is only the beginning. Two researchers looked at how water orders itself: at the surfaces it touches, and in the way it moves.</p>
     </div>
@@ -375,27 +500,98 @@ section p:not(.label){max-width:65ch}
     <div class="o-group">
       <p class="label rv">In motion · Viktor Schauberger</p>
       <p class="o-intro rv">The Austrian forester (1885–1958) spent his life watching water in wild mountain streams.</p>
-      <p class="o-lens rv"><span class="dots3"><i class="on"></i><i></i><i></i></span>A view MILUJ sets out to measure</p>
+      <p class="o-lens rv"><span class="dots3"><i class="on"></i><i></i><i></i></span>The idea behind how MILUJ moves its water</p>
     </div>
     <div class="idea">
       <div class="idea-text"><span class="n rv">05</span><h3 class="rv">Healthy water spirals.</h3><p class="rv">In a wild stream water rarely runs straight. It turns, cools and gathers itself in vortices, moving inward instead of pushing outward.</p></div>
       <figure class="viz photo rv"><img src="../assets/w4_vortex.webp" alt="Water spiralling into a vortex, its surface drawn into fine, curving bands" loading="lazy"></figure>
     </div>
     <div class="idea flip">
-      <div class="idea-text"><span class="n rv">06</span><h3 class="rv">“Living” and “dead” water.</h3><p class="rv">Water forced through straight pipes Schauberger called “dead”, water allowed to swirl and breathe “living”. MILUJ prepares its water through vortex movement, and will measure what that changes.</p></div>
+      <div class="idea-text"><span class="n rv">06</span><h3 class="rv">“Living” and “dead” water.</h3><p class="rv">Water forced through straight pipes Schauberger called “dead”, water allowed to swirl and breathe “living”. This is the movement MILUJ gives its water before anything else is added.</p></div>
       <figure class="viz rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a straight line beside a spiral"><path d="M105 250 H210" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188 230 L212 250 L188 270" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <line x1="236" y1="180" x2="236" y2="320" stroke="#121813" stroke-opacity=".18" stroke-width="3"/>
 <path d="M408.0 250.0 L407.4 256.3 L406.2 262.6 L404.5 268.6 L402.4 274.5 L399.8 280.2 L396.8 285.6 L393.3 290.7 L389.5 295.5 L385.3 300.0 L380.7 304.0 L375.9 307.7 L370.8 310.9 L365.5 313.7 L360.1 316.0 L354.4 317.9 L348.7 319.3 L342.9 320.2 L337.1 320.6 L331.3 320.6 L325.6 320.1 L319.9 319.1 L314.4 317.7 L309.1 315.8 L303.9 313.5 L299.0 310.8 L294.4 307.7 L290.0 304.3 L286.0 300.6 L282.3 296.6 L278.9 292.3 L276.0 287.7 L273.4 283.0 L271.2 278.1 L269.5 273.1 L268.2 268.0 L267.3 262.8 L266.9 257.6 L266.9 252.4 L267.3 247.2 L268.1 242.2 L269.3 237.2 L270.9 232.4 L272.9 227.8 L275.3 223.4 L278.0 219.2 L281.0 215.3 L284.3 211.7 L287.8 208.3 L291.6 205.3 L295.6 202.7 L299.8 200.4 L304.1 198.4 L308.6 196.8 L313.1 195.6 L317.7 194.8 L322.3 194.4 L326.8 194.3 L331.4 194.6 L335.9 195.3 L340.2 196.4 L344.5 197.8 L348.5 199.5 L352.4 201.5 L356.1 203.8 L359.6 206.5 L362.8 209.3 L365.7 212.4 L368.4 215.7 L370.8 219.2 L372.8 222.8 L374.5 226.6 L375.9 230.5 L377.0 234.4 L377.7 238.4 L378.1 242.4 L378.2 246.4 L378.0 250.3 L377.4 254.2 L376.5 258.0 L375.3 261.6 L373.9 265.2 L372.1 268.5 L370.1 271.7 L367.9 274.7 L365.4 277.5 L362.8 280.0 L360.0 282.3 L357.0 284.3 L353.9 286.1 L350.7 287.6 L347.4 288.8 L344.0 289.7 L340.6 290.4 L337.2 290.7 L333.9 290.8 L330.5 290.6 L327.2 290.1 L324.0 289.3 L320.9 288.3 L317.9 287.1 L315.1 285.6 L312.4 283.9 L309.9 282.1 L307.6 280.0 L305.5 277.8 L303.6 275.4 L301.9 272.9 L300.5 270.4 L299.2 267.7 L298.2 264.9 L297.5 262.2 L297.0 259.4 L296.7 256.6 L296.7 253.8 L296.9 251.0 L297.3 248.4 L297.9 245.7 L298.7 243.2 L299.8 240.8 L301.0 238.5 L302.4 236.4 L303.9 234.4 L305.6 232.5 L307.4 230.8 L309.3 229.3 L311.3 228.0 L313.4 226.9 L315.6 225.9 L317.7 225.2 L320.0 224.6 L322.2 224.3 L324.4 224.1 L326.6 224.1 L328.7 224.3 L330.8 224.7 L332.8 225.2 L334.8 225.9 L336.6 226.7 L338.3 227.7 L340.0 228.8 L341.5 230.0 L342.8 231.4 L344.1 232.8 L345.1 234.3 L346.1 235.8 L346.9 237.4 L347.5 239.0 L348.0 240.7 L348.4 242.3 L348.5 244.0 L348.6 245.6 L348.5 247.2 L348.3 248.7 L347.9 250.2 L347.5 251.7 L346.9 253.0 L346.2 254.3 L345.4 255.5 L344.6 256.5 L343.7 257.5 L342.7 258.4 L341.7 259.2 L340.6 259.8 L339.5 260.4 L338.4 260.8 L337.2 261.1 L336.1 261.3 L335.0 261.4 L334.0 261.4 L332.9 261.3 L331.9 261.1 L331.0 260.9 L330.1 260.5 L329.2 260.1 L328.5 259.6 L327.8 259.1 L327.2 258.5 L326.6 257.9 L326.2 257.3 L325.8 256.6 L325.5 255.9 L325.3 255.2 L325.2 254.6 L325.1 253.9 L325.2 253.3 L325.2 252.7 L325.4 252.1 L325.6 251.6 L325.9 251.1 L326.2 250.7 L326.5 250.4 L326.9 250.1 L327.3 249.8 L327.7 249.7 L328.1 249.6 L328.5 249.5 L328.9 249.6 L329.3 249.7 L329.7 249.8 L330.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="330" cy="250" r="7" fill="#121813"/></svg></figure>
     </div>
 
-    <p class="o-honest rv"><b>How to read this.</b> These are observations and interpretations, and they are debated. Other researchers explain Pollack’s experiments with known physics such as diffusiophoresis, and “living water” is Schauberger’s view, not an established scientific term. MILUJ builds on both openly, and tests them.</p>
+    <p class="o-honest rv"><b>How to read this.</b> These are observations and interpretations, and they are debated. Other researchers explain Pollack’s experiments with known physics such as diffusiophoresis, and “living water” is Schauberger’s view, not an established scientific term. MILUJ prepares its water in the spirit of both.</p>
+  </div>
+</section>
+
+<section class="h2" id="hydrogen">
+  <div class="wrap">
+    <div class="h2-head">
+      <div>
+        <p class="step-tag rv">Step 2 · Hydrogen</p>
+        <h2 class="rv">Hydrogen, held long enough to matter.</h2>
+      </div>
+      <p class="rv">Once the water is structured, the second step adds molecular hydrogen. Here is what that is, and why holding it in the water is the hard part.</p>
+    </div>
+    <div class="h2-top">
+      <p class="rv">Every water molecule already contains hydrogen, but it is locked to oxygen as H₂O. Molecular hydrogen, H₂, is something else: two hydrogen atoms joined on their own, a tiny gas molecule that dissolves between the water molecules without changing taste, colour or smell.</p>
+      <div class="sym rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a water molecule, H2O, beside a hydrogen molecule, H2"><circle cx="150" cy="265" r="62" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="150" y="285" text-anchor="middle" font-family="Georgia,serif" font-size="58" fill="#121813">O</text>
+<circle cx="88" cy="170" r="34" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="212" cy="170" r="34" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="88" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H</text><text x="212" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H</text>
+<line x1="250" y1="120" x2="250" y2="380" stroke="#121813" stroke-opacity=".3" stroke-width="3"/>
+<circle cx="335" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="415" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="335" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text><text x="415" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text>
+<text x="150" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂O</text><text x="375" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂</text></svg></div>
+    </div>
+    <div class="h2-cards">
+      <div class="rv"><span class="n">01</span><h3>The smallest molecule</h3><p>About 0.3 nanometres across, H₂ moves freely through water and through the body’s tissues and cell membranes.</p></div>
+      <div class="rv"><span class="n">02</span><h3>It escapes quickly</h3><p>From ordinary hydrogen water most of the H₂ is gone within about 20 minutes of opening, long before it is drunk.</p></div>
+      <div class="rv"><span class="n">03</span><h3>The MILUJ system holds it</h3><p>Hydrogen is dissolved into the structured water and kept there by a patented retention system, specified by its supplier for up to 24 hours.</p></div>
+    </div>
+    <div class="chart rv" id="chart">
+      <div class="top2"><h3>How long does H₂ stay in the water?</h3>
+        <div class="legend"><span><i></i>Conventional H₂ water (illustrative)</span><span><i class="d"></i>MILUJ system, supplier specification</span></div></div>
+      <svg viewBox="0 0 920 300" role="img" aria-label="Illustrative chart: conventional hydrogen water loses most H2 within about 20 minutes; the MILUJ system targets retention up to 24 hours">
+        <g id="grid"></g>
+        <path id="cA" fill="none" stroke="#9FC7D2" stroke-width="2.5"/>
+        <path id="cB" fill="none" stroke="#E3CC94" stroke-width="2.5" stroke-dasharray="7 7"/>
+        <g id="marks"></g>
+      </svg>
+      <p class="fine">The “up to 24 hours” figure is the supplier’s specification for the patented retention system. The conventional curve is illustrative; real H₂ loss depends on concentration, container, temperature and handling. </p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <p class="step-tag rv">Both steps together</p>
+    <h2 class="rv">One preparation. Two ways to meet it.</h2>
+    <p class="lead rv">Every drop of MILUJ water goes through the same sequence, whether it ends up in a glass or in the pool.</p>
+    <div class="flow5">
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a clean drop of water"><path d="M250 85 C250 85 145 215 145 290 A105 105 0 0 0 355 290 C355 215 250 85 250 85 Z" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M200 300 A52 52 0 0 0 238 345" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><b>Clean</b><span>Filtered and mineral-balanced</span></div>
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a spiral"><path d="M415.0 250.0 L413.3 266.5 L410.1 282.6 L405.2 298.3 L398.8 313.3 L391.0 327.5 L381.8 340.8 L371.4 353.0 L359.9 364.1 L347.4 373.9 L334.0 382.3 L319.9 389.4 L305.3 394.9 L290.2 398.9 L275.0 401.4 L259.6 402.3 L244.3 401.7 L229.2 399.5 L214.5 395.9 L200.3 390.8 L186.8 384.4 L174.0 376.6 L162.2 367.7 L151.4 357.7 L141.7 346.7 L133.2 334.9 L126.0 322.3 L120.1 309.1 L115.6 295.5 L112.5 281.6 L110.9 267.6 L110.6 253.5 L111.8 239.6 L114.4 225.9 L118.3 212.6 L123.4 199.9 L129.8 187.8 L137.4 176.5 L146.0 166.1 L155.5 156.7 L165.9 148.3 L177.0 141.0 L188.6 135.0 L200.8 130.2 L213.3 126.6 L226.0 124.4 L238.8 123.4 L251.6 123.8 L264.2 125.4 L276.4 128.3 L288.2 132.3 L299.5 137.5 L310.2 143.8 L320.0 151.0 L329.1 159.2 L337.2 168.1 L344.3 177.8 L350.4 188.0 L355.4 198.8 L359.2 209.9 L361.9 221.3 L363.4 232.8 L363.7 244.3 L362.9 255.7 L360.9 266.9 L357.9 277.7 L353.8 288.1 L348.7 298.0 L342.7 307.2 L335.8 315.7 L328.2 323.4 L319.9 330.3 L311.0 336.2 L301.6 341.2 L291.9 345.1 L281.9 348.1 L271.7 350.0 L261.5 350.8 L251.3 350.6 L241.2 349.4 L231.4 347.2 L222.0 344.1 L213.0 340.1 L204.6 335.2 L196.7 329.5 L189.5 323.1 L183.1 316.1 L177.4 308.5 L172.6 300.5 L168.7 292.1 L165.6 283.4 L163.5 274.5 L162.3 265.6 L162.0 256.6 L162.6 247.8 L164.1 239.1 L166.4 230.8 L169.5 222.7 L173.4 215.1 L178.0 208.0 L183.3 201.5 L189.1 195.6 L195.4 190.4 L202.2 185.9 L209.3 182.1 L216.6 179.1 L224.2 176.9 L231.9 175.5 L239.5 174.8 L247.2 175.0 L254.7 175.9 L261.9 177.6 L268.9 179.9 L275.6 182.9 L281.8 186.6 L287.6 190.8 L292.8 195.5 L297.5 200.7 L301.6 206.2 L305.0 212.1 L307.8 218.2 L310.0 224.5 L311.4 230.9 L312.2 237.3 L312.4 243.7 L311.9 250.0 L310.7 256.1 L309.0 262.0 L306.7 267.6 L303.9 272.9 L300.6 277.8 L296.9 282.3 L292.8 286.3 L288.3 289.8 L283.6 292.8 L278.7 295.3 L273.7 297.2 L268.5 298.6 L263.3 299.4 L258.2 299.7 L253.1 299.4 L248.2 298.6 L243.4 297.4 L238.9 295.7 L234.6 293.6 L230.7 291.1 L227.1 288.2 L223.9 285.0 L221.0 281.6 L218.6 278.0 L216.6 274.2 L215.1 270.4 L214.0 266.4 L213.3 262.4 L213.0 258.5 L213.2 254.7 L213.7 250.9 L214.6 247.3 L215.9 243.9 L217.5 240.8 L219.3 237.9 L221.4 235.2 L223.7 232.9 L226.2 230.8 L228.9 229.1 L231.6 227.8 L234.4 226.7 L237.2 226.0 L240.0 225.6 L242.7 225.5 L245.4 225.7 L247.9 226.2 L250.3 226.9 L252.5 227.9 L254.5 229.0 L256.4 230.4 L258.0 231.9 L259.3 233.5 L260.5 235.2 L261.4 236.9 L262.0 238.7 L262.4 240.5 L262.6 242.2 L262.6 243.9 L262.4 245.5 L262.0 246.9 L261.4 248.3 L260.7 249.5 L259.9 250.5 L259.0 251.4 L258.0 252.1 L257.0 252.6 L255.9 252.9 L254.9 253.0 L253.9 253.0 L253.0 252.8 L252.2 252.5 L251.4 252.0 L250.8 251.4 L250.3 250.8 L250.0 250.0" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="250" cy="250" r="9" fill="#121813"/></svg></div><b>Structured</b><span>Moved through a vortex, as in a mountain stream</span></div>
+      <div class="f-step rv"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a hydrogen molecule, two atoms joined"><circle cx="195" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="305" cy="250" r="80" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="195" cy="250" r="16" fill="#121813"/><circle cx="305" cy="250" r="16" fill="#121813"/></svg></div><b>Hydrogen-rich</b><span>Molecular H₂ dissolved and held</span></div>
+      <div class="f-fork rv" aria-hidden="true">⟶</div>
+      <div class="f-out rv">
+        <a href="#drink"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: a glass of water"><path d="M160 110 H340 L315 400 H185 Z" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M172 200 H328" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M178 200 H322 L311 392 H189 Z" fill="#121813" fill-opacity=".18"/><circle cx="225" cy="330" r="7" fill="#121813"/><circle cx="262" cy="290" r="6" fill="#121813"/><circle cx="240" cy="250" r="5" fill="#121813"/><circle cx="280" cy="350" r="8" fill="#121813"/><circle cx="210" cy="270" r="5" fill="#121813"/></svg></div><div><b>To drink</b><span>The journey through the body</span></div></a>
+        <a href="#pool"><div class="sym"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: water in a pool"><path d="M80 150 H420" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 240 Q122.5 214 165.0 240 Q207.5 266 250.0 240 Q292.5 214 335.0 240 Q377.5 266 420.0 240" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 302 Q122.5 276 165.0 302 Q207.5 328 250.0 302 Q292.5 276 335.0 302 Q377.5 328 420.0 302" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M80 364 Q122.5 338 165.0 364 Q207.5 390 250.0 364 Q292.5 338 335.0 364 Q377.5 390 420.0 364" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><b>To bathe in</b><span>Through the skin, in the pool</span></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="glass-sec" id="drink">
+  <div class="wrap g-grid">
+    <figure class="rv"><img src="../assets/w3_glass.webp" alt="A tall glass of clear water turning in a gentle spiral, full of fine rising hydrogen bubbles, beside a glass carafe in the MILUJ hall" loading="lazy"></figure>
+    <div>
+      <p class="step-tag rv">Use 1 · The water we drink</p>
+      <h2 class="rv">Living water that holds its hydrogen.</h2>
+      <p class="lead rv">Order and carrier in one glass: structured, mineral-balanced water, saturated with molecular hydrogen and kept stable by a patented retention system.</p>
+      <ol class="layers3">
+        <li class="rv"><span class="dot">1</span><div><h3>Pure</h3><p>Filtered and mineral-balanced: nothing in the water that should not be there.</p></div></li>
+        <li class="rv"><span class="dot">2</span><div><h3>Structured</h3><p>Prepared through vortex movement in the spirit of Schauberger, to restore the order of a living spring.</p></div></li>
+        <li class="rv"><span class="dot">3</span><div><h3>Hydrogen-saturated</h3><p>Molecular hydrogen dissolved and held for hours instead of minutes, so it is still there when you drink it.</p></div></li>
+      </ol>
+      <p class="check rv"><b>Where you find it.</b> Served at every table in the restaurant and drawn from the sanctuary’s own water system. Follow one glass below, from the first sip into a single cell.</p>
+    </div>
   </div>
 </section>
 
 <section class="journey-intro" id="journey">
   <div class="wrap j-head">
     <div>
-      <p class="label rv">The journey of one glass</p>
+      <p class="label rv">Use 1 · The journey of one glass</p>
       <h2 class="rv" style="margin-top:12px">From the glass into the cell.</h2>
     </div>
     <p class="lead rv">Follow one glass of MILUJ water through the body, into the fascia, into a single cell and down to the mitochondria, where your energy is made.</p>
@@ -421,53 +617,50 @@ section p:not(.label){max-width:65ch}
   </div>
 </section>
 
-<section class="h2" id="hydrogen">
-  <div class="wrap">
-    <div class="h2-head">
-      <div>
-        <p class="label rv">What water can carry</p>
-        <h2 class="rv" style="margin-top:12px">Hydrogen, held long enough to matter.</h2>
-      </div>
-      <p class="rv">H₂ has one practical problem: it escapes from water within minutes of opening a bottle. The MILUJ system is designed to hold it for hours, so it is still there when you drink.</p>
-    </div>
-    <div class="chart rv" id="chart">
-      <div class="top2"><h3>How long does H₂ stay in the water?</h3>
-        <div class="legend"><span><i></i>Conventional H₂ water (illustrative)</span><span><i class="d"></i>MILUJ system, supplier target</span></div></div>
-      <svg viewBox="0 0 920 300" role="img" aria-label="Illustrative chart: conventional hydrogen water loses most H2 within about 20 minutes; the MILUJ system targets retention up to 24 hours">
-        <g id="grid"></g>
-        <path id="cA" fill="none" stroke="#9FC7D2" stroke-width="2.5"/>
-        <path id="cB" fill="none" stroke="#E3CC94" stroke-width="2.5" stroke-dasharray="7 7"/>
-        <g id="marks"></g>
-      </svg>
-      <p class="fine">The “up to 24 hours” figure is a supplier-stated target for the patented retention system. The conventional curve is illustrative; real H₂ loss depends on concentration, container, temperature and handling. MILUJ intends to verify both profiles independently before presenting them as measured results.</p>
-    </div>
-  </div>
-</section>
 
-<section class="glass-sec" id="glass">
-  <div class="wrap g-grid">
-    <figure class="rv"><img src="../assets/w3_glass.webp" alt="A tall glass of clear water turning in a gentle spiral, full of fine rising hydrogen bubbles, beside a glass carafe in the MILUJ hall" loading="lazy"></figure>
-    <div>
-      <p class="label rv">The MILUJ water</p>
-      <h2 class="rv" style="margin-top:12px">Living water that holds its hydrogen.</h2>
-      <p class="lead rv">Order and carrier in one glass: structured, mineral-balanced water, saturated with molecular hydrogen and kept stable by a patented retention system.</p>
-      <ol class="layers3">
-        <li class="rv"><span class="dot">1</span><div><h3>Pure</h3><p>Filtered and mineral-balanced: nothing in the water that should not be there.</p></div></li>
-        <li class="rv"><span class="dot">2</span><div><h3>Structured</h3><p>Prepared through vortex movement in the spirit of Schauberger, to restore the order of a living spring.</p></div></li>
-        <li class="rv"><span class="dot">3</span><div><h3>Hydrogen-saturated</h3><p>Molecular hydrogen dissolved and held for hours instead of minutes, so it is still there when you drink it.</p></div></li>
-      </ol>
-      <p class="check rv"><b>How we will check it.</b> Guests often describe water like this as softer and easier to drink. MILUJ will document what it does with validated measurements and independent testing before claiming more.</p>
+
+<section class="pool" id="pool">
+  <div class="wrap">
+    <p class="step-tag rv">Use 2 · The water we enter</p>
+    <h2 class="rv">A pool of the same water.</h2>
+    <p class="lead rv">The pool in front of the Ascension Pyramid is filled with the same structured water as every glass at MILUJ, and one section of it is enriched with molecular hydrogen. Here the water meets the body from the outside.</p>
+    <figure class="pool-hero rv"><img src="../assets/t11_h2pool.webp" alt="Guests resting at night in the outdoor hydrogen pool in front of the Ascension Pyramid, the water full of fine rising bubbles" loading="lazy"></figure>
+    <div class="pool-points">
+      <div class="rv"><span class="n">01</span><h3>The same water</h3><p>Cleaned, mineral-balanced and structured in exactly the same sequence as the water you drink.</p></div>
+      <div class="rv"><span class="n">02</span><h3>A hydrogen-rich section</h3><p>One part of the pool carries dissolved molecular hydrogen, so you can choose to rest in it.</p></div>
+      <div class="rv"><span class="n">03</span><h3>Part of the day</h3><p>Under the open sky after breath, movement or sound practice: time to float, cool down and let the body settle.</p></div>
+    </div>
+    <div class="pool-skin">
+      <div class="sym rv"><svg viewBox="0 0 500 500" role="img" aria-label="Symbol: hydrogen passing from the water through the skin"><path d="M70 120 Q132 94 195 120 T320 120 T445 120" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="60" y="250" width="380" height="70" rx="10" fill="#121813" fill-opacity=".16"/><path d="M60 250 H440 M60 320 H440" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="130" cy="180" r="11" fill="#121813"/><circle cx="250" cy="200" r="11" fill="#121813"/><circle cx="370" cy="170" r="11" fill="#121813"/><circle cx="190" cy="285" r="11" fill="#121813"/><circle cx="310" cy="285" r="11" fill="#121813"/><circle cx="150" cy="390" r="11" fill="#121813"/><circle cx="270" cy="410" r="11" fill="#121813"/><circle cx="390" cy="380" r="11" fill="#121813"/><path d="M250 150 V445 M228 422 L250 446 L272 422" stroke="#121813" stroke-opacity=".45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+      <div>
+        <h3 class="rv">Through the skin, not the gut.</h3>
+        <p class="rv">When you drink, water and hydrogen take the long way, through the stomach and the gut. In the pool the contact is direct: H₂ is small enough to pass through the skin while you rest in the water.</p>
+        <p class="rv">In a 2023 study, hydrogen from a warm hydrogen-rich bath appeared in the blood within two minutes. The study was done in animals; what this means for people is still being researched.</p>
+        <p class="pool-lens rv"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span>Emerging research</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="lenses" id="science">
   <div class="wrap">
-    <h2 class="rv">Three lenses. One honest language.</h2>
+    <p class="step-tag rv">Summary</p>
+    <h2 class="rv">What MILUJ brings together.</h2>
+    <ul class="have">
+      <li class="rv"><div>Water cleaned and mineral-balanced<span>The base for everything that follows</span></div></li>
+      <li class="rv"><div>Structured through vortex movement<span>In the spirit of Schauberger’s living water</span></div></li>
+      <li class="rv"><div>Enriched with molecular hydrogen<span>Held by a patented retention system</span></div></li>
+      <li class="rv"><div>Drinking water from the sanctuary’s own system<span>At every table in the restaurant</span></div></li>
+      <li class="rv"><div>A pool of the same water<span>With a hydrogen-rich section, in front of the Ascension Pyramid</span></div></li>
+      <li class="rv"><div>One approach, inside and out<span>The same water you drink and bathe in</span></div></li>
+    </ul>
+    <h2 class="rv sub">Three lenses. One honest language.</h2>
     <div class="l-grid">
       <div class="rv"><span class="dots3"><i class="on"></i><i class="on"></i><i class="on"></i></span><h3>Established physiology</h3><p>Water is the medium for every process inside and between our cells, and normal hydration is essential to human function. Molecular structure changes the properties of matter, as carbon shows.</p></div>
       <div class="rv"><span class="dots3"><i class="on"></i><i class="on"></i><i></i></span><h3>Emerging research</h3><p>Molecular hydrogen is being studied for effects on oxidative signalling and cellular processes; clinical evidence is still developing. Ordered water near surfaces (EZ water) is reported and debated.</p></div>
-      <div class="rv"><span class="dots3"><i class="on"></i><i></i><i></i></span><h3>MILUJ exploration</h3><p>Living, structured water in Schauberger’s sense, and hydrogen held stable for hours, are what MILUJ sets out to document, measure and have validated independently.</p></div>
+      <div class="rv"><span class="dots3"><i class="on"></i><i></i><i></i></span><h3>MILUJ approach</h3><p>Structured water in Schauberger’s sense and hydrogen held stable for hours are the two principles MILUJ’s water is prepared on, for the water guests drink and the pool they bathe in.</p></div>
     </div>
     <details class="sources-wrap">
       <summary>Research context</summary>
@@ -483,6 +676,7 @@ section p:not(.label){max-width:65ch}
       <a href="https://pubmed.ncbi.nlm.nih.gov/34202183/" target="_blank" rel="noopener">Fascia and hyaluronan<span>PubMed ↗</span></a>
       <a href="https://www.nobelprize.org/prizes/chemistry/2003/summary/" target="_blank" rel="noopener">Aquaporins, the water channels of the cell<span>Nobel Prize in Chemistry 2003 ↗</span></a>
       <a href="https://www.nature.com/articles/nm1577" target="_blank" rel="noopener">H₂ as a selective antioxidant<span>Nature Medicine, 2007 ↗</span></a>
+      <a href="https://amscd.termedia.pl/Direct-evidence-of-hydrogen-absorption-from-the-skin-a-pig-study,165963,0,2.html" target="_blank" rel="noopener">Hydrogen absorbed through the skin in a bath<span>Arch Med Sci Civil Dis, 2023 (animal study) ↗</span></a>
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10816294/" target="_blank" rel="noopener">Hydrogen water: a systematic review<span>NIH / PMC ↗</span></a>
       </div>
     </details>
@@ -886,6 +1080,13 @@ section p:not(.label){max-width:65ch}
     $('#cB').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1400, delay: 600, fill: 'backwards' });
     $('#marks').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 1500, fill: 'backwards' }); }, { threshold: .35 });
   chIO.observe($('#chart'));
+
+
+  /* step navigation: mark the section in view */
+  const navLinks = [...document.querySelectorAll('.wnav a')];
+  const navIO = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return;
+    const id = e.target.id; navLinks.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.setAttribute('aria-current', on); if (on) { const ol = a.closest('ol'); ol.scrollTo({ left: a.parentElement.offsetLeft - ol.clientWidth / 2 + a.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' }); } }); }), { rootMargin: '-45% 0px -50% 0px' });
+  ['philosophy', 'body', 'structure', 'hydrogen', 'process', 'drink', 'pool', 'science'].forEach(id => { const el = document.getElementById(id); if (el) navIO.observe(el); });
 
   /* one loop, drawing only what is on screen; scroll damping is frame-rate independent */
   let last = performance.now();
