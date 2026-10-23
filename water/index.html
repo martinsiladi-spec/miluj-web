@@ -936,58 +936,71 @@ section p:not(.label){max-width:65ch}
     const e1 = [s[0] + L1 * Math.cos(b + a), s[1] + L1 * Math.sin(b + a)], e2 = [s[0] + L1 * Math.cos(b - a), s[1] + L1 * Math.sin(b - a)]; return (e1[1] + .3 * e1[0]) > (e2[1] + .3 * e2[0]) ? e1 : e2; };
 
   /* scene 0 · the body: a figure drinks, water spreads */
-  const TORSO = [[-.083, -.302], [.083, -.302], [.068, -.13], [.06, -.06], [.078, .015], [-.078, .015], [-.06, -.06], [-.068, -.13]];
-  const LIMBS = [[[-.042, 0], [-.05, .215], .066], [[-.05, .215], [-.046, .425], .048], [[.042, 0], [.05, .215], .066], [[.05, .215], [.046, .425], .048],
-    [[-.046, .425], [-.074, .443], .026], [[.046, .425], [.074, .443], .026], [[0, -.35], [0, -.3], .046], [[-.084, -.288], [-.106, -.145], .044], [[-.106, -.145], [-.109, -.005], .036]];
-  const SHR = [.084, -.288], HAND0 = [.109, -.005], HAND1 = [.046, -.33];
+  // a smooth, mannequin-like figure in the style of the homepage crowd: dark bronze with a warm rim,
+  // which starts to glow from within as the water spreads through it
+  const half = [[.019, -.35], [.021, -.322], [.05, -.31], [.085, -.297], [.098, -.278], [.094, -.25], [.082, -.215], [.075, -.16], [.064, -.1], [.068, -.045], [.082, 0], [.082, .06],
+    [.073, .14], [.062, .225], [.064, .29], [.056, .36], [.043, .412], [.06, .432], [.058, .447], [.022, .447], [.02, .415], [.022, .34], [.018, .24], [.016, .15], [.007, .07]];
+  const OUTLINE = [...half, [0, .058], ...half.slice().reverse().map(p => [-p[0], p[1]])];
+  const smoothPath = (c, pts) => { const n = pts.length; c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 0; i < n; i++) { const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+      c.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]); } c.closePath(); };
+  const SHL = [-.079, -.272], ELL = [-.102, -.135], WRL = [-.107, -.01];
+  const SHR = [.079, -.272], WR0 = [.107, -.01], WR1 = [.056, -.305];
   const mir = pts => pts.map(p => [-p[0], p[1]]);
-  const armL = [[-.005, -.2], [-.05, -.262], [-.084, -.28], [-.104, -.2], [-.108, -.1], [-.109, -.015]];
-  const legL = [[.002, -.07], [-.03, -.02], [-.046, .06], [-.05, .215], [-.047, .36], [-.046, .42]];
+  const armL = [[-.005, -.2], [-.05, -.262], [-.082, -.275], [-.1, -.2], [-.106, -.1], [-.109, -.02]];
+  const legL = [[.002, -.07], [-.03, -.02], [-.046, .06], [-.045, .215], [-.044, .33], [-.036, .41]];
   const THROAT = poly([[.012, -.352], [.004, -.32], [0, -.27], [0, -.19], [.01, -.12], [.016, -.085]]);
   const RIVERS = [[legL, .05], [mir(legL), .08], [armL, .22], [mir(armL), .25], [[[0, -.29], [0, -.35], [.004, -.405]], .34],
-    [[[.002, -.1], [-.035, -.15], [-.06, -.2]], .14], [[[.01, -.1], [.04, -.16], [.058, -.21]], .16], [[[0, -.2], [-.035, -.24]], .2], [[[0, -.2], [.035, -.24]], .21],
-    [[[-.05, .215], [-.03, .3]], .3], [[[.05, .215], [.03, .3]], .32]].map(([pts, d]) => ({ P: poly(pts), d }));
-  const body = (c, outline, armOnly, elbow, hand) => {
+    [[[.002, -.1], [-.035, -.15], [-.056, -.2]], .14], [[[.01, -.1], [.04, -.16], [.056, -.2]], .16], [[[0, -.2], [-.035, -.24]], .2], [[[0, -.2], [.035, -.24]], .21],
+    [[[-.045, .215], [-.03, .3]], .3], [[[.045, .215], [.03, .3]], .32]].map(([pts, d]) => ({ P: poly(pts), d }));
+  const limb = (c, s, e, w, extra) => { const dx = w[0] - e[0], dy = w[1] - e[1], L = Math.hypot(dx, dy) || 1;
+    line(c, s, e, .036 + extra); line(c, e, w, .027 + extra);
+    c.save(); c.translate(w[0] + dx / L * .022, w[1] + dy / L * .022); c.rotate(Math.atan2(dy, dx) - Math.PI / 2);
+    c.beginPath(); c.ellipse(0, 0, .015 + extra / 2, .024 + extra / 2, 0, 0, 6.2832); c.fill(); c.restore(); };
+  const torsoShape = (c, extra) => { smoothPath(c, OUTLINE); c.fill(); if (extra) { c.lineWidth = extra; c.stroke(); }
+    c.beginPath(); c.ellipse(0, -.396, .041 + extra / 2, .053 + extra / 2, 0, 0, 6.2832); c.fill();
+    limb(c, SHL, ELL, WRL, extra); };
+  const armShape = (c, extra, e, w) => limb(c, SHR, e, w, extra);
+  // three passes per part: soft glow with a warm rim, then the body colour, so overlaps stay clean
+  const figurePart = (c, shape, spread) => {
+    const rim = 1.8 * jd / JS, warm = `rgba(255,214,160,${(.42 + .45 * spread).toFixed(3)})`;
     c.lineCap = 'round'; c.lineJoin = 'round';
-    if (!armOnly) {
-      c.beginPath(); TORSO.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.closePath();
-      c.lineWidth = .03 + outline; c.fill(); c.stroke();
-      LIMBS.forEach(([a, b, w]) => line(c, a, b, w + outline));
-      c.beginPath(); c.arc(0, -.388, .052 + outline / 2, 0, 6.2832); c.fill();
-    } else {
-      line(c, SHR, elbow, .044 + outline); line(c, elbow, hand, .036 + outline);
-      c.beginPath(); c.arc(hand[0], hand[1], .021 + outline / 2, 0, 6.2832); c.fill();
-    }
+    c.save(); c.shadowColor = `rgba(255,196,128,${(.3 + .55 * spread).toFixed(3)})`; c.shadowBlur = (12 + 34 * spread) * jd;
+    c.fillStyle = c.strokeStyle = warm; shape(c, rim); c.restore();
+    const g = c.createLinearGradient(0, -.46, 0, .45), k = spread;
+    g.addColorStop(0, `rgb(${Math.round(58 + 150 * k)},${Math.round(49 + 128 * k)},${Math.round(40 + 96 * k)})`);
+    g.addColorStop(.45, `rgb(${Math.round(48 + 136 * k)},${Math.round(40 + 112 * k)},${Math.round(32 + 80 * k)})`);
+    g.addColorStop(1, `rgb(${Math.round(36 + 110 * k)},${Math.round(30 + 88 * k)},${Math.round(24 + 60 * k)})`);
+    c.fillStyle = c.strokeStyle = g; shape(c, 0);
   };
   const drawBody = (c, p, T) => {
     const raise = smooth(.02, .08, p) - smooth(.125, .165, p), tip = smooth(.065, .11, p) - smooth(.12, .145, p), sip = smooth(.07, .125, p);
     const spread = smooth(.15, .29, p), down = smooth(.075, .17, p);
-    const hand = [HAND0[0] + (HAND1[0] - HAND0[0]) * raise, HAND0[1] + (HAND1[1] - HAND0[1]) * raise], elbow = ik(SHR, hand, .15 - .055 * raise, .152 - .025 * raise);   // the arm foreshortens as it comes forward
-    const tint = spread * .85, bodyCol = `rgb(${Math.round(20 - 4 * tint)},${Math.round(27 + 20 * tint)},${Math.round(24 + 30 * tint)})`;
-    // halo on the floor and around the figure
-    glow(c, 0, .05, .55, AQ, .05 + .07 * spread);
-    for (const armOnly of [false, true]) {
-      c.fillStyle = c.strokeStyle = 'rgb(122,121,113)'; body(c, lw(2.6), armOnly, elbow, hand);
-      c.fillStyle = c.strokeStyle = bodyCol; body(c, 0, armOnly, elbow, hand);
-      if (!armOnly) {
-        // water arriving: throat, then rivers into every limb
-        c.lineCap = 'round';
-        c.strokeStyle = rgba(AQ, .22); c.lineWidth = lw(7); strokePart(c, THROAT, down);
-        c.strokeStyle = rgba(AQ, .85); c.lineWidth = lw(1.8); strokePart(c, THROAT, down);
-        const gut = smooth(.12, .2, p) * (1 - .4 * spread); if (gut > 0) glow(c, .014, -.08, .05, AQ, .5 * gut);
-        RIVERS.forEach(({ P, d }) => { const f = clamp((spread - d) / .55, 0, 1); if (!f) return;
-          c.strokeStyle = rgba(AQ, .16); c.lineWidth = lw(6); strokePart(c, P, f);
-          c.strokeStyle = rgba(AQ, .75); c.lineWidth = lw(1.5); strokePart(c, P, f);
-          for (let i = 0; i < 4; i++) { const q = at(P, ((T * .35 + i / 4) % 1) * f); disc(c, q[0], q[1], lw(2.1), rgba(AQ, .95)); }
-          for (let i = 0; i < 2; i++) { const q = at(P, ((T * .75 + i / 2 + .3) % 1) * f); disc(c, q[0], q[1], lw(1.7), rgba('255,255,255', .95)); } });
-        if (down > 0 && down < 1) for (let i = 0; i < 5; i++) { const q = at(THROAT, ((T * .9 + i / 5) % 1) * down); disc(c, q[0], q[1], lw(2), rgba(AQ, 1)); }
-      }
-    }
+    const wr = [WR0[0] + (WR1[0] - WR0[0]) * raise, WR0[1] + (WR1[1] - WR0[1]) * raise], elbow = ik(SHR, wr, .145 - .05 * raise, .13 - .02 * raise);   // the arm foreshortens as it comes forward
+    const fd = Math.hypot(wr[0] - elbow[0], wr[1] - elbow[1]) || 1, hand = [wr[0] + (wr[0] - elbow[0]) / fd * .022, wr[1] + (wr[1] - elbow[1]) / fd * .022];
+    // warm light on the floor and behind the figure, as on the homepage
+    c.save(); c.translate(0, .45); c.scale(1, .22); glow(c, 0, 0, .3, '255,200,130', .1 + .4 * spread); c.restore();
+    glow(c, 0, -.05, .5, '255,200,130', .04 + .14 * spread);
+    figurePart(c, torsoShape, spread);
+    // inner light rising from the core as the water arrives
+    if (spread > 0) { c.save(); smoothPath(c, OUTLINE); c.clip(); glow(c, 0, -.12, .32, '255,236,200', .45 * spread); c.restore(); }
+    figurePart(c, (cc, x) => armShape(cc, x, elbow, wr), spread);
+    // water arriving: throat, then rivers into every limb
+    c.lineCap = 'round';
+    c.strokeStyle = rgba(AQ, .25); c.lineWidth = lw(7); strokePart(c, THROAT, down);
+    c.strokeStyle = rgba(AQ, .9); c.lineWidth = lw(1.8); strokePart(c, THROAT, down);
+    const gut = smooth(.12, .2, p) * (1 - .4 * spread); if (gut > 0) glow(c, .014, -.08, .05, AQ, .55 * gut);
+    RIVERS.forEach(({ P, d }) => { const f = clamp((spread - d) / .55, 0, 1); if (!f) return;
+      c.strokeStyle = rgba('40,110,135', .35); c.lineWidth = lw(5); strokePart(c, P, f);
+      c.strokeStyle = rgba(AQ, .95); c.lineWidth = lw(1.6); strokePart(c, P, f);
+      for (let i = 0; i < 4; i++) { const q = at(P, ((T * .35 + i / 4) % 1) * f); disc(c, q[0], q[1], lw(2.2), rgba('200,235,245', 1)); }
+      for (let i = 0; i < 2; i++) { const q = at(P, ((T * .75 + i / 2 + .3) % 1) * f); disc(c, q[0], q[1], lw(1.8), 'rgba(255,255,255,1)'); } });
+    if (down > 0 && down < 1) for (let i = 0; i < 5; i++) { const q = at(THROAT, ((T * .9 + i / 5) % 1) * down); disc(c, q[0], q[1], lw(2), rgba(AQ, 1)); }
     // the glass, held in the right hand, tipping towards the lips
     c.save(); c.translate(hand[0], hand[1]); c.rotate(-1.15 * tip); c.translate(0, -.016);
     const gw = .019, gb = .015, gh = .03, lvl = 1 - .92 * sip;
     c.beginPath(); c.moveTo(-gw, -gh); c.lineTo(gw, -gh); c.lineTo(gb, gh); c.lineTo(-gb, gh); c.closePath();
-    c.fillStyle = 'rgba(11,14,12,.75)'; c.fill();
+    c.fillStyle = 'rgba(245,239,226,.12)'; c.fill();
     c.save(); c.clip(); const top = gh - 2 * gh * lvl * .9;
     c.fillStyle = rgba(AQ, .7); c.fillRect(-gw, top, gw * 2, gh * 2);
     for (let i = 0; i < 7; i++) { const u = (T * .5 + i / 7) % 1, y = gh - u * (gh - top) * .95, x = (((i * 37) % 13) / 13 - .5) * gb * 1.6; disc(c, x, y, lw(1.1), rgba('255,255,255', .9 * (1 - u))); }

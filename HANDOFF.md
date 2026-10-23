@@ -107,7 +107,7 @@ Prestavaná 23. 10. na 8 sekcií, aby bola jasná a zrozumiteľná (Martin: „p
 3. **Same atoms. Different order.** `w2_carbon.webp` + pinned 3D canvas 72 častíc: grafit → diamant → bežná voda → štruktúrovaná voda (ľadová mriežka).
 4. **Order and movement** (`#order`): Pollack (text + 3 body + EZ diagram SVG) a Schauberger (vír canvas + text) v jednej sekcii, pod tým box „How to read this“.
 5. **The journey of one glass** (`#journey` intro + `#journeyScene` pinned, 640vh). Jedno plátno, štyri vnorené mierky so zoomom ×9:
-   - postava (obrys) vypije pohár H₂ vody, voda tečie hrdlom a riekami do končatín (5 min v krvi, ~2 h rovnomerne v telesnej vode, Péronnet 2012);
+   - postava v štýle davu z úvodnej stránky (hladká figurína, tmavý bronz s teplým lemom; s vodou sa rozžiari ako zlatá postava z videa) vypije pohár H₂ vody, voda tečie hrdlom a riekami do končatín (5 min v krvi, ~2 h rovnomerne v telesnej vode, Péronnet 2012);
    - zoom do stehna: fascie, kolagénové vlákna, tekutina medzi vrstvami, bunky;
    - zoom do bunky: aquaporíny (~1 mld. molekúl/s, Nobel 2003), H₂ prechádza membránou priamo;
    - zoom do mitochondrie: H₂ + 2 •OH → 2 H₂O (Ohsawa 2007, ●●○ emerging research).
