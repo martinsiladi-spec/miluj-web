@@ -569,7 +569,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     <img class="hero-logo" src="assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
     <h1>Welcome home to <em class="g">the New Earth</em></h1>
     <p class="lead">A healing and retreat sanctuary in Bali: a temple of transformation where grounded spirituality, intentional architecture and emerging science meet.</p>
-    <div class="ctas"><a class="btn solid" href="#invest">Investor overview ↗</a></div>
+    <div class="ctas"><a class="btn solid" href="#invest" data-inv-open>Investor overview ↗</a></div>
     <div class="cue">Scroll to walk in</div>
   </div>
 </section>
@@ -807,7 +807,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   <div class="wrap">
     <img src="assets/x_logo.webp" alt="MILUJ Sanctuary">
     <h2 style="margin-top:28px">This project doesn't just choose you; it invites you.</h2>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px"><a class="btn solid" href="#invest">Investor overview ↗</a></div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px"><a class="btn solid" href="#invest" data-inv-open>Investor overview ↗</a></div>
   </div>
 </section>
 
@@ -1397,6 +1397,8 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     const open = () => { form.hidden = false; done.hidden = true; err.hidden = true; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); setTimeout(() => document.getElementById('invName').focus(), 50); };
     const close = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); };
     document.getElementById('invOpen').addEventListener('click', open);
+    // every "Investor overview" button opens the same request form (the link to #invest stays as a fallback without script)
+    document.querySelectorAll('[data-inv-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(); }));
     document.getElementById('invClose').addEventListener('click', close);
     document.getElementById('invDoneClose').addEventListener('click', close);
     dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
