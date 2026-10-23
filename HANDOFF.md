@@ -100,43 +100,21 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 
 ## 4. Podstránka `/water` (`water/index.html`): „What makes water alive?“
 
-Sekcie v poradí:
-1. **Hero:** `w1_spring.webp` (prameň s vírom v džungli), logo, „← Back to MILUJ“.
-2. **How much of you is water?** **Len údaj 99 % všetkých molekúl** (Freitas, *Nanomedicine*, 1999). Martin si **neželá** percentá podľa hmotnosti (muži, ženy, novorodenci).
-3. **Same atoms. Different order.**
-   - Obrázok `w2_carbon.webp` (ceruzka a diamant).
-   - Pinned 3D canvas: jedna sada 72 častíc sa mení grafit → diamant → bežná voda (s vodíkovými väzbami) → **štruktúrovaná/EZ voda ako mriežka rovnaká ako pri diamante** (kyslíky v tetraédrickej mriežke ako ľad, 2 vodíky na kyslík, zlaté vodíkové väzby).
-   - Popisok pod animáciou poctivo hovorí, čo je reálna geometria a čo zjednodušenie.
-4. **Purity vs. structure:** citát.
-5. **Štvrté skupenstvo (Pollack)** (`#fourth-phase`):
-   - SVG diagram: povrch → usporiadaná zóna (−) → bežná voda (+) → IR svetlo;
-   - 4 karty: vodomilné povrchy, náboj ako batéria a LED, prúdenie bez pumpy (Nafion, 2013), vodný most v elektrickom poli (Fuchs, TU Graz, 2007);
-   - boxy: Mu Shik Jhon (hypotéza) a „How to read this“ (diskusia, difúzioforéza).
-6. **Schauberger** (`#schauberger`):
-   - text a box „Living vs. dead water“ (jeho pohľad, ktorý chce MILUJ zmerať);
-   - box o Schwenkovi (*Sensitive Chaos*, 1962; *Wirbel* = stavec aj vír);
-   - canvas s vírom a pod ním statický diagram „víry vo víroch“ (SVG).
-7. **Mitochondrie** (`#mitochondria`): „Life runs on hydrogen and water.“
-   - Canvas diagram vnútornej membrány:
-     - elektróny (zlaté) tunelujú cez komplexy I, III a IV;
-     - protóny (svetlo modrosivé) idú po vodných reťaziach (Grotthuss);
-     - ATP syntáza sa otáča;
-     - z kyslíka vzniká voda (**sýto modrá #3D8BFF**);
-     - •OH a H₂.
-   - Častice sú zväčšené.
-   - Pod diagramom 5 krokov a boxy „H₂ (emerging research, Ohsawa 2007)“ a „Why this matters to MILUJ“.
-8. **Vodík a graf** (`#hydrogen`), pozri vyššie.
-9. **Jeden pohár** (`#glass`): `w3_glass.webp`, Pure / Structured / Hydrogen-saturated, „How we will check it“.
-10. **Fascie: „Rivers inside you.“** (`#fascia`):
-    - intersticium 2018 a hyaluronan;
-    - Schleip 2012;
-    - „na akej vode záleží“ (pohľad MILUJ + meranie bioimpedanciou);
-    - SVG sieť riečišť s tečúcimi kvapkami;
-    - čísla ≈ 10 L / ≈ 3 h / 1 web;
-    - karty Guimberteau, tensegrita, zmyslová sieť;
-    - box „Drinking alone is not enough“ (pohyb).
-11. **Tri šošovky + zdroje** (`#science`, svetlé pozadie). Odkazy: NCBI, Freitas, PMC štruktúra vody, arXiv EZ review, Pollack lab 2013, TU Graz vodný most, PKS Schauberger, Page 1999 tunelovanie, MRC ATP syntáza, Ohsawa 2007, NIH H₂ review, Benias 2018, fascia/hyaluronan.
-12. **Záver:** „Water is the medium of life.“ + tlačidlo späť na úvodnú stránku.
+Prestavaná 23. 10. na 8 sekcií, aby bola jasná a zrozumiteľná (Martin: „príliš chaotické“). Odstránené: diagram mitochondrií (dýchací reťazec), samostatná sekcia Fascie, citát Purity, karty Fuchs / Mu Shik Jhon / Schwenk.
+
+1. **Hero:** `w1_spring.webp`, logo, „← Back to MILUJ“.
+2. **How much of you is water?** Len údaj 99 % všetkých molekúl (Freitas, 1999). Percentá podľa hmotnosti Martin **nechce**.
+3. **Same atoms. Different order.** `w2_carbon.webp` + pinned 3D canvas 72 častíc: grafit → diamant → bežná voda → štruktúrovaná voda (ľadová mriežka).
+4. **Order and movement** (`#order`): Pollack (text + 3 body + EZ diagram SVG) a Schauberger (vír canvas + text) v jednej sekcii, pod tým box „How to read this“.
+5. **The journey of one glass** (`#journey` intro + `#journeyScene` pinned, 640vh). Jedno plátno, štyri vnorené mierky so zoomom ×9:
+   - postava (obrys) vypije pohár H₂ vody, voda tečie hrdlom a riekami do končatín (5 min v krvi, ~2 h rovnomerne v telesnej vode, Péronnet 2012);
+   - zoom do stehna: fascie, kolagénové vlákna, tekutina medzi vrstvami, bunky;
+   - zoom do bunky: aquaporíny (~1 mld. molekúl/s, Nobel 2003), H₂ prechádza membránou priamo;
+   - zoom do mitochondrie: H₂ + 2 •OH → 2 H₂O (Ohsawa 2007, ●●○ emerging research).
+   - Texty krokov vľavo (na mobile pod plátnom), legenda dole na plátne. Kód: `/* ---------- journey of one glass` v skripte, časová os `ZOOM`/`STEPAT`, ohniská `FOCUS`.
+6. **Hydrogen chart** (`#hydrogen`), pozri vyššie.
+7. **One glass** (`#glass`): `w3_glass.webp`, Pure / Structured / Hydrogen-saturated, „How we will check it“.
+8. **Tri šošovky** (`#science`) + **zdroje v rozbaľovacom `<details>`** + záver „Water is the medium of life.“
 
 ## 5. Dizajn systém
 
@@ -219,7 +197,8 @@ Spraviť až keď budú hotové všetky podstránky.
 4. Odpovede od Martina (23. 10., zapracované na webe):
    - **všetkých 22 domov sú Temple Houses**, každý s iným zameraním na liečenie;
    - **bazén** je zásobený vodou systému, jeho časť je vodíková, liečenie prebieha aj cez pokožku pri pobyte v bazéne;
-   - **soli = minerálne soli** na doplnenie minerálov v tele (karta v Science track prepísaná, ●●● Established physiology). Obrázok `sc2_salt` stále ukazuje soľnú jaskyňu, treba nový;
+   - **soli = minerálne soli** na doplnenie minerálov v tele (karta v Science track prepísaná, ●●● Established physiology).;
    - stále otvorené: roky do časovej osi „Journey“, masterplan vo vyššom rozlíšení (≥ 4 000 px).
+   - obrázok `sc2_salt` vymenený za sypajúcu sa minerálnu soľ (Higgsfield 9ea4ee39).
 5. Ponúknuté a neurobené: prelet celým areálom (skica → 3D → realita).
 6. Neskôr možno: investorská prezentácia namiesto formulára; Chladni / frekvencie k izbám.
