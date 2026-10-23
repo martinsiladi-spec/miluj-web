@@ -1257,14 +1257,17 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 
   /* H2 chart (log x: 1 min .. 1440 min) */
   const X0 = 70, X1 = 900, Y0 = 250, Y1 = 20;
-  const lx = m => X0 + (Math.log10(m) / Math.log10(1440)) * (X1 - X0);
+  // time axis in two zones: the first 20 minutes (where ordinary H₂ water loses its hydrogen) and then the hours up to 24 h
+  const ZS = false ? .26 : .18;
+  const lx = m => X0 + (m <= 20 ? Math.sqrt(m / 20) * ZS : ZS + (1 - ZS) * (m - 20) / 1420) * (X1 - X0);
   const ly = v => Y0 - (v / 100) * (Y0 - Y1);
   let g = '';
   [0,25,50,75,100].forEach(v => g += `<line x1="${X0}" x2="${X1}" y1="${ly(v)}" y2="${ly(v)}" stroke="rgba(245,239,226,${v ? .08 : .25})"/><text x="${X0 - 12}" y="${ly(v) + 4}" text-anchor="end">${v}%</text>`);
-  [[1,'1 min'],[5,'5 min'],[20,'20 min'],[60,'1 h'],[360,'6 h'],[1440,'24 h']].forEach(([m,t]) => g += `<line x1="${lx(m)}" x2="${lx(m)}" y1="${Y1}" y2="${Y0}" stroke="rgba(245,239,226,.06)"/><text x="${lx(m)}" y="${Y0 + 24}" text-anchor="middle">${t}</text>`);
+  [...(false ? [] : [[1,'1 min']]),[5,'5 min'],[20,'20 min'],[360,'6 h'],[720,'12 h'],[1080,'18 h'],[1440,'24 h']].forEach(([m,t]) => g += `<line x1="${lx(m)}" x2="${lx(m)}" y1="${Y1}" y2="${Y0}" stroke="rgba(245,239,226,.06)"/><text x="${lx(m)}" y="${Y0 + 24}" text-anchor="middle">${t}</text>`);
+  { const bx = lx(20) + 16, by = Y0; g += `<path d="M${bx - 7} ${by + 8} l8 -16 M${bx + 1} ${by + 8} l8 -16" stroke="rgba(245,239,226,.55)" stroke-width="1.5" fill="none"/>`; }
   $('#grid').innerHTML = g;
-  const ptsA = [[1,100],[2,94],[4,80],[8,55],[13,30],[20,12],[35,4],[60,1],[1440,0]];
-  const ptsB = [[1,100],[20,98],[60,96],[360,90],[1440,82]];
+  const ptsA = [[0,100],[1,99],[2,95],[3,89],[4,82],[6,68],[8,55],[10,44],[13,30],[16,20],[20,12],[30,5],[45,2],[60,1],[120,0],[1440,0]];
+  const ptsB = [[0,100],[5,99],[20,98],[60,96],[360,90],[720,87],[1080,84],[1440,82]];
   const path = pts => pts.map((p, i) => (i ? 'L' : 'M') + lx(p[0]).toFixed(1) + ' ' + ly(p[1]).toFixed(1)).join(' ');
   $('#cA').setAttribute('d', path(ptsA)); $('#cB').setAttribute('d', path(ptsB));
   $('#marks').innerHTML = `<circle cx="${lx(20)}" cy="${ly(12)}" r="5" fill="#9FC7D2"/><text x="${lx(20) + 10}" y="${ly(12) - 10}" style="fill:#9FC7D2">≈ 20 min</text><circle cx="${lx(1440)}" cy="${ly(82)}" r="5" fill="#E3CC94"/><text x="${lx(1440) - 10}" y="${ly(82) - 14}" text-anchor="end" style="fill:#E3CC94">up to 24 h (target)</text>`;
