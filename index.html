@@ -330,7 +330,29 @@ h2.g-h{font-size:clamp(40px,4.4vw,68px);margin-top:12px}
 .blocks p{font-size:15px;color:var(--mute-l)}
 .invest .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
 .wa-note{margin-top:16px;font-size:var(--fs-small,14px);color:var(--mute-l)}
-.wa-num{color:var(--ink);font-variant-numeric:tabular-nums;user-select:all;white-space:nowrap}
+/* investor request dialog */
+.inv-dialog{border:0;padding:0;border-radius:20px;background:var(--paper);color:var(--ink);width:min(520px,calc(100% - 32px));max-height:calc(100svh - 32px);overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.inv-dialog::backdrop{background:rgba(11,14,12,.72)}
+.inv-dialog[open]{animation:invIn .32s cubic-bezier(.23,1,.32,1)}
+@keyframes invIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.inv-form,.inv-done{position:relative;display:grid;gap:6px;padding:32px 28px 28px}
+.inv-form h3,.inv-done h3{font-size:clamp(28px,3vw,36px);margin-right:36px}
+.inv-intro,.inv-done p{color:var(--mute-l);font-size:16px;margin:4px 0 10px}
+.inv-form label{font-size:14px;font-weight:500;color:var(--ink);margin-top:8px}
+.inv-form label span{font-weight:300;color:var(--mute-l)}
+.inv-form input,.inv-form textarea{font:300 16px/1.4 var(--body);color:var(--ink);background:#fff;border:1px solid rgba(27,26,21,.22);border-radius:10px;padding:12px 14px;width:100%;box-sizing:border-box}
+.inv-form input:focus-visible,.inv-form textarea:focus-visible{outline:2px solid #8A6D2C;outline-offset:1px;border-color:transparent}
+.inv-form textarea{resize:vertical}
+.inv-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.inv-send{margin-top:16px;justify-self:start}
+.inv-send[disabled]{opacity:.6;cursor:progress}
+.inv-error{color:#9B2C1F;font-size:14px;margin-top:8px}
+.inv-close{all:unset;position:absolute;top:16px;right:18px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;font-size:26px;line-height:1;cursor:pointer;color:var(--ink)}
+.inv-close:hover{background:rgba(27,26,21,.06)}
+.inv-close:focus-visible{outline:2px solid #8A6D2C}
+.inv-done .btn{justify-self:start;margin-top:8px}
+.inv-form[hidden],.inv-done[hidden],.inv-error[hidden]{display:none!important}
+@media (prefers-reduced-motion: reduce){.inv-dialog[open]{animation:none}}
 
 /* closing */
 .closing{background:var(--night);padding-block:120px;text-align:center}
@@ -753,8 +775,31 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       <div><h2>More than an investment.</h2><p class="h-sub">An invitation to create impact.</p></div>
       <div><p class="eyebrow">Current project valuation</p><div class="val">€5.7M</div><p>Architecture, water, science and spirit, evolving together.</p></div>
     </div>
-    <div class="ctas"><a class="btn dark" href="https://wa.me/420603417008?text=Hello%20MILUJ%20team%2C%20I%27m%20interested%20in%20investing%20in%20MILUJ%20Sanctuary%20and%20would%20like%20to%20receive%20the%20investor%20overview." target="_blank" rel="noopener">Talk to us on WhatsApp ↗</a></div>
-    <p class="wa-note">We will welcome you and invite you to a short call. You can also write to <span class="wa-num">+420 603 417 008</span>.</p>
+    <div class="ctas"><button type="button" class="btn dark" id="invOpen">Request the investor overview ↗</button></div>
+    <p class="wa-note">We will welcome you by email and invite you to a short call.</p>
+    <dialog class="inv-dialog" id="invDialog" aria-labelledby="invTitle">
+      <form class="inv-form" id="invForm" novalidate>
+        <button type="button" class="inv-close" id="invClose" aria-label="Close">×</button>
+        <h3 id="invTitle">Request the investor overview</h3>
+        <p class="inv-intro">Leave your details and we will welcome you by email, then invite you to a short call.</p>
+        <label for="invName">Name</label>
+        <input id="invName" name="name" type="text" autocomplete="name" required>
+        <label for="invEmail">Email</label>
+        <input id="invEmail" name="email" type="email" autocomplete="email" required>
+        <label for="invCountry">Country</label>
+        <input id="invCountry" name="country" type="text" autocomplete="country-name">
+        <label for="invMsg">Message <span>(optional)</span></label>
+        <textarea id="invMsg" name="message" rows="3"></textarea>
+        <input type="text" name="_honey" class="inv-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="inv-error" id="invError" hidden></p>
+        <button type="submit" class="btn dark inv-send" id="invSend">Send request</button>
+      </form>
+      <div class="inv-done" id="invDone" hidden>
+        <h3>Thank you</h3>
+        <p>Your request has reached us. A welcome email is on its way, and we will invite you to a short call shortly.</p>
+        <button type="button" class="btn dark" id="invDoneClose">Close</button>
+      </div>
+    </dialog>
   </div>
 </section>
 
@@ -1343,6 +1388,38 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   };
   requestAnimationFrame(loop);
 
+
+  /* investor request: dialog form sent through FormSubmit (main address visible, copy to a second address) */
+  (() => {
+    const dlg = document.getElementById('invDialog'); if (!dlg) return;
+    const form = document.getElementById('invForm'), done = document.getElementById('invDone'), err = document.getElementById('invError'), send = document.getElementById('invSend');
+    const TO = 'hello.julimvillas@gmail.com', CC = 'martin.siladi@gmail.com';
+    const open = () => { form.hidden = false; done.hidden = true; err.hidden = true; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); setTimeout(() => document.getElementById('invName').focus(), 50); };
+    const close = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); };
+    document.getElementById('invOpen').addEventListener('click', open);
+    document.getElementById('invClose').addEventListener('click', close);
+    document.getElementById('invDoneClose').addEventListener('click', close);
+    dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); err.hidden = true;
+      const name = form.name.value.trim(), email = form.email.value.trim();
+      if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = 'Please fill in your name and a valid email address.'; err.hidden = false; (name ? form.email : form.name).focus(); return; }
+      if (form._honey.value) return;
+      send.disabled = true; send.textContent = 'Sending…';
+      try {
+        const r = await fetch('https://formsubmit.co/ajax/' + TO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({
+          name, email, country: form.country.value.trim(), message: form.message.value.trim(),
+          _subject: 'MILUJ Sanctuary · new investor request', _cc: CC, _template: 'table', _captcha: 'false',
+          _autoresponse: 'Welcome to MILUJ Sanctuary, and thank you for your interest. We have received your request and will invite you to a short call shortly to share the investor overview and answer your questions. With love, the MILUJ team.'
+        }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'send failed');
+        form.reset(); form.hidden = true; done.hidden = false; document.getElementById('invDoneClose').focus();
+      } catch (x) {
+        err.textContent = 'The request could not be sent right now. Please write to us directly at ' + TO + '.'; err.hidden = false;
+      } finally { send.disabled = false; send.textContent = 'Send request'; }
+    });
+  })();
 })();
 </script>
 
