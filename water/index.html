@@ -114,6 +114,31 @@ section p:not(.label){max-width:65ch}
 .purity blockquote em{color:var(--gold-2)}
 .purity p{margin-top:22px;color:var(--mute-d)}
 
+/* fourth phase */
+.fourth{padding-block:30px 140px}
+.fp-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
+.fourth h2{font-size:var(--fs-h2)}
+.fp-head p{color:var(--mute-d)}
+.ez-fig{margin:44px 0 0;border-radius:18px;overflow:hidden;background:#101512}
+.ez-fig svg{display:block;width:100%;height:auto}
+.ez-fig figcaption{display:none;padding:10px 14px 12px;font-size:13px;color:rgba(245,239,226,.6)}
+.fp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:40px}
+.fp-grid > div{border-top:1px solid rgba(194,162,94,.35);padding-top:16px}
+.fp-grid .n{font-size:14px;color:var(--gold-2)}
+.fp-grid h3{font-size:24px;margin:8px 0}
+.fp-grid p{font-size:15px;color:var(--mute-d)}
+.fp-foot{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.fp-foot p{padding:20px 22px;border-radius:16px;background:rgba(245,239,226,.05);color:var(--mute-d);font-size:16px;max-width:none}
+.fp-foot b,.f-move b{display:block;color:var(--gold-2);font-weight:500;font-size:15px;margin-bottom:6px}
+.f-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.f-cards > div{border-top:1px solid rgba(194,162,94,.35);padding-top:16px}
+.f-cards h3{font-size:24px;margin-bottom:8px}
+.f-cards p{font-size:15px;color:var(--mute-d)}
+.f-move{margin-top:36px;padding:20px 22px;border-radius:16px;background:rgba(159,199,210,.07);color:var(--mute-d);max-width:none!important}
+@media (max-width:1100px){.fp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.fp-head,.fp-foot,.f-cards{grid-template-columns:1fr}.fourth{padding-block:20px 96px}}
+@media (max-width:560px){.fp-grid{grid-template-columns:1fr}.ez-fig svg .ezl{display:none}.ez-fig figcaption{display:block}}
+
 /* Schauberger */
 .sch{background:var(--forest);padding-block:140px}
 .sch-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
@@ -277,19 +302,13 @@ section p:not(.label){max-width:65ch}
   <div class="wrap bw">
     <div>
       <h2 class="rv">How much of you is water?</h2>
-      <p class="lead rv">By weight, more than half of you. By count, almost all of you: water molecules are so small that about 99 of every 100 molecules in your body are water. Two thirds of that water lives inside your cells.</p>
-      <div class="bw-pick rv" role="group" aria-label="Show body water for">
-        <button type="button" data-p="75" data-c="of a newborn’s body weight" aria-pressed="true">At birth</button>
-        <button type="button" data-p="58" data-c="of an adult man’s body weight" aria-pressed="false">Adult man</button>
-        <button type="button" data-p="48" data-c="of an adult woman’s body weight" aria-pressed="false">Adult woman</button>
-        <button type="button" data-p="99" data-c="of all the molecules in your body" aria-pressed="false">By molecules</button>
-      </div>
-      <p class="bw-note rv">By weight: up to 75 % at birth, on average about 58 % in adult men and 48 % in adult women (Watson et al., 1980), with a wide range between people. Muscle is about 75 % water, fat only about 10 %, so a lean, muscular body holds more. The familiar “70 %” fits a newborn or lean tissue better than an average adult.</p>
+      <p class="lead rv">Almost all of you. Water molecules are so small and so many that about 99 of every 100 molecules in your body are water. Every other molecule you are made of lives, works and moves in it.</p>
+      <p class="bw-note rv">Counted by number of molecules (Freitas, <i>Nanomedicine</i>, 1999).</p>
     </div>
     <div class="vessel rv" aria-live="polite">
       <div class="glass"><div class="fill" id="bwFill"><div class="wave"></div></div></div>
-      <div class="pct"><span id="bwPct">75</span><small>%</small></div>
-      <div class="cap" id="bwCap">of a newborn’s body weight</div>
+      <div class="pct"><span id="bwPct">99</span><small>%</small></div>
+      <div class="cap" id="bwCap">of all the molecules in your body</div>
     </div>
   </div>
 </section>
@@ -334,6 +353,291 @@ section p:not(.label){max-width:65ch}
   </div>
 </section>
 
+<section class="fourth" id="fourth-phase">
+  <div class="wrap">
+    <div class="fp-head">
+      <div>
+        <p class="label rv">The fourth phase · Gerald Pollack</p>
+        <h2 class="rv" style="margin-top:12px">Water that holds charge and moves on its own.</h2>
+      </div>
+      <p class="rv">Gerald Pollack, professor of bioengineering at the University of Washington, describes a fourth phase of water between liquid and ice: a gel-like, ordered layer he calls exclusion-zone or EZ water. His lab reports properties that ordinary textbook water does not have.</p>
+    </div>
+    <figure class="ez-fig rv"><svg viewBox="0 0 1200 300" role="img" aria-label="Diagram: next to a water-loving surface, water forms ordered hexagonal layers carrying negative charge; beyond them the bulk water is disordered and carries positive charge; infrared light makes the ordered zone grow">
+<defs><linearGradient id="ezfade" x1="0" x2="1"><stop offset="0" stop-color="#9FC7D2" stop-opacity=".16"/><stop offset="1" stop-color="#9FC7D2" stop-opacity="0"/></linearGradient><linearGradient id="ir" x1="1" x2="0"><stop offset="0" stop-color="#E58C6A" stop-opacity=".35"/><stop offset="1" stop-color="#E58C6A" stop-opacity="0"/></linearGradient></defs>
+<rect x="0" y="0" width="70" height="300" fill="#2A302C"/><rect x="70" y="0" width="420" height="300" fill="url(#ezfade)"/>
+<line x1="8" y1="0" x2="-52" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="13" y1="0" x2="-47" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="18" y1="0" x2="-42" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="23" y1="0" x2="-37" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="28" y1="0" x2="-32" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="33" y1="0" x2="-27" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="38" y1="0" x2="-22" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="43" y1="0" x2="-17" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="48" y1="0" x2="-12" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="53" y1="0" x2="-7" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="58" y1="0" x2="-2" y2="300" stroke="rgba(245,239,226,.06)"/>
+<line x1="63" y1="0" x2="3" y2="300" stroke="rgba(245,239,226,.06)"/>
+<polygon points="103.9,16.0 90.0,24.0 76.1,16.0 76.1,0.0 90.0,-8.0 103.9,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,16.0 117.7,24.0 103.9,16.0 103.9,0.0 117.7,-8.0 131.6,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,16.0 145.4,24.0 131.6,16.0 131.6,0.0 145.4,-8.0 159.3,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,16.0 173.1,24.0 159.3,16.0 159.3,0.0 173.1,-8.0 187.0,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,16.0 200.9,24.0 187.0,16.0 187.0,0.0 200.9,-8.0 214.7,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,16.0 228.6,24.0 214.7,16.0 214.7,0.0 228.6,-8.0 242.4,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,16.0 256.3,24.0 242.4,16.0 242.4,0.0 256.3,-8.0 270.1,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,16.0 284.0,24.0 270.1,16.0 270.1,0.0 284.0,-8.0 297.8,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,16.0 311.7,24.0 297.8,16.0 297.8,0.0 311.7,-8.0 325.6,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,16.0 339.4,24.0 325.6,16.0 325.6,0.0 339.4,-8.0 353.3,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,16.0 367.1,24.0 353.3,16.0 353.3,0.0 367.1,-8.0 381.0,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,16.0 394.8,24.0 381.0,16.0 381.0,0.0 394.8,-8.0 408.7,0.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,40.0 103.9,48.0 90.0,40.0 90.0,24.0 103.9,16.0 117.7,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,40.0 131.6,48.0 117.7,40.0 117.7,24.0 131.6,16.0 145.4,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,40.0 159.3,48.0 145.4,40.0 145.4,24.0 159.3,16.0 173.1,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,40.0 187.0,48.0 173.1,40.0 173.1,24.0 187.0,16.0 200.9,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,40.0 214.7,48.0 200.9,40.0 200.9,24.0 214.7,16.0 228.6,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,40.0 242.4,48.0 228.6,40.0 228.6,24.0 242.4,16.0 256.3,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,40.0 270.1,48.0 256.3,40.0 256.3,24.0 270.1,16.0 284.0,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,40.0 297.8,48.0 284.0,40.0 284.0,24.0 297.8,16.0 311.7,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,40.0 325.6,48.0 311.7,40.0 311.7,24.0 325.6,16.0 339.4,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,40.0 353.3,48.0 339.4,40.0 339.4,24.0 353.3,16.0 367.1,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,40.0 381.0,48.0 367.1,40.0 367.1,24.0 381.0,16.0 394.8,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,40.0 408.7,48.0 394.8,40.0 394.8,24.0 408.7,16.0 422.6,24.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,64.0 90.0,72.0 76.1,64.0 76.1,48.0 90.0,40.0 103.9,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,64.0 117.7,72.0 103.9,64.0 103.9,48.0 117.7,40.0 131.6,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,64.0 145.4,72.0 131.6,64.0 131.6,48.0 145.4,40.0 159.3,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,64.0 173.1,72.0 159.3,64.0 159.3,48.0 173.1,40.0 187.0,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,64.0 200.9,72.0 187.0,64.0 187.0,48.0 200.9,40.0 214.7,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,64.0 228.6,72.0 214.7,64.0 214.7,48.0 228.6,40.0 242.4,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,64.0 256.3,72.0 242.4,64.0 242.4,48.0 256.3,40.0 270.1,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,64.0 284.0,72.0 270.1,64.0 270.1,48.0 284.0,40.0 297.8,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,64.0 311.7,72.0 297.8,64.0 297.8,48.0 311.7,40.0 325.6,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,64.0 339.4,72.0 325.6,64.0 325.6,48.0 339.4,40.0 353.3,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,64.0 367.1,72.0 353.3,64.0 353.3,48.0 367.1,40.0 381.0,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,64.0 394.8,72.0 381.0,64.0 381.0,48.0 394.8,40.0 408.7,48.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,88.0 103.9,96.0 90.0,88.0 90.0,72.0 103.9,64.0 117.7,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,88.0 131.6,96.0 117.7,88.0 117.7,72.0 131.6,64.0 145.4,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,88.0 159.3,96.0 145.4,88.0 145.4,72.0 159.3,64.0 173.1,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,88.0 187.0,96.0 173.1,88.0 173.1,72.0 187.0,64.0 200.9,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,88.0 214.7,96.0 200.9,88.0 200.9,72.0 214.7,64.0 228.6,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,88.0 242.4,96.0 228.6,88.0 228.6,72.0 242.4,64.0 256.3,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,88.0 270.1,96.0 256.3,88.0 256.3,72.0 270.1,64.0 284.0,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,88.0 297.8,96.0 284.0,88.0 284.0,72.0 297.8,64.0 311.7,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,88.0 325.6,96.0 311.7,88.0 311.7,72.0 325.6,64.0 339.4,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,88.0 353.3,96.0 339.4,88.0 339.4,72.0 353.3,64.0 367.1,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,88.0 381.0,96.0 367.1,88.0 367.1,72.0 381.0,64.0 394.8,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,88.0 408.7,96.0 394.8,88.0 394.8,72.0 408.7,64.0 422.6,72.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,112.0 90.0,120.0 76.1,112.0 76.1,96.0 90.0,88.0 103.9,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,112.0 117.7,120.0 103.9,112.0 103.9,96.0 117.7,88.0 131.6,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,112.0 145.4,120.0 131.6,112.0 131.6,96.0 145.4,88.0 159.3,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,112.0 173.1,120.0 159.3,112.0 159.3,96.0 173.1,88.0 187.0,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,112.0 200.9,120.0 187.0,112.0 187.0,96.0 200.9,88.0 214.7,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,112.0 228.6,120.0 214.7,112.0 214.7,96.0 228.6,88.0 242.4,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,112.0 256.3,120.0 242.4,112.0 242.4,96.0 256.3,88.0 270.1,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,112.0 284.0,120.0 270.1,112.0 270.1,96.0 284.0,88.0 297.8,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,112.0 311.7,120.0 297.8,112.0 297.8,96.0 311.7,88.0 325.6,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,112.0 339.4,120.0 325.6,112.0 325.6,96.0 339.4,88.0 353.3,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,112.0 367.1,120.0 353.3,112.0 353.3,96.0 367.1,88.0 381.0,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,112.0 394.8,120.0 381.0,112.0 381.0,96.0 394.8,88.0 408.7,96.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,136.0 103.9,144.0 90.0,136.0 90.0,120.0 103.9,112.0 117.7,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,136.0 131.6,144.0 117.7,136.0 117.7,120.0 131.6,112.0 145.4,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,136.0 159.3,144.0 145.4,136.0 145.4,120.0 159.3,112.0 173.1,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,136.0 187.0,144.0 173.1,136.0 173.1,120.0 187.0,112.0 200.9,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,136.0 214.7,144.0 200.9,136.0 200.9,120.0 214.7,112.0 228.6,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,136.0 242.4,144.0 228.6,136.0 228.6,120.0 242.4,112.0 256.3,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,136.0 270.1,144.0 256.3,136.0 256.3,120.0 270.1,112.0 284.0,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,136.0 297.8,144.0 284.0,136.0 284.0,120.0 297.8,112.0 311.7,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,136.0 325.6,144.0 311.7,136.0 311.7,120.0 325.6,112.0 339.4,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,136.0 353.3,144.0 339.4,136.0 339.4,120.0 353.3,112.0 367.1,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,136.0 381.0,144.0 367.1,136.0 367.1,120.0 381.0,112.0 394.8,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,136.0 408.7,144.0 394.8,136.0 394.8,120.0 408.7,112.0 422.6,120.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,160.0 90.0,168.0 76.1,160.0 76.1,144.0 90.0,136.0 103.9,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,160.0 117.7,168.0 103.9,160.0 103.9,144.0 117.7,136.0 131.6,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,160.0 145.4,168.0 131.6,160.0 131.6,144.0 145.4,136.0 159.3,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,160.0 173.1,168.0 159.3,160.0 159.3,144.0 173.1,136.0 187.0,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,160.0 200.9,168.0 187.0,160.0 187.0,144.0 200.9,136.0 214.7,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,160.0 228.6,168.0 214.7,160.0 214.7,144.0 228.6,136.0 242.4,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,160.0 256.3,168.0 242.4,160.0 242.4,144.0 256.3,136.0 270.1,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,160.0 284.0,168.0 270.1,160.0 270.1,144.0 284.0,136.0 297.8,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,160.0 311.7,168.0 297.8,160.0 297.8,144.0 311.7,136.0 325.6,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,160.0 339.4,168.0 325.6,160.0 325.6,144.0 339.4,136.0 353.3,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,160.0 367.1,168.0 353.3,160.0 353.3,144.0 367.1,136.0 381.0,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,160.0 394.8,168.0 381.0,160.0 381.0,144.0 394.8,136.0 408.7,144.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,184.0 103.9,192.0 90.0,184.0 90.0,168.0 103.9,160.0 117.7,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,184.0 131.6,192.0 117.7,184.0 117.7,168.0 131.6,160.0 145.4,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,184.0 159.3,192.0 145.4,184.0 145.4,168.0 159.3,160.0 173.1,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,184.0 187.0,192.0 173.1,184.0 173.1,168.0 187.0,160.0 200.9,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,184.0 214.7,192.0 200.9,184.0 200.9,168.0 214.7,160.0 228.6,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,184.0 242.4,192.0 228.6,184.0 228.6,168.0 242.4,160.0 256.3,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,184.0 270.1,192.0 256.3,184.0 256.3,168.0 270.1,160.0 284.0,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,184.0 297.8,192.0 284.0,184.0 284.0,168.0 297.8,160.0 311.7,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,184.0 325.6,192.0 311.7,184.0 311.7,168.0 325.6,160.0 339.4,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,184.0 353.3,192.0 339.4,184.0 339.4,168.0 353.3,160.0 367.1,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,184.0 381.0,192.0 367.1,184.0 367.1,168.0 381.0,160.0 394.8,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,184.0 408.7,192.0 394.8,184.0 394.8,168.0 408.7,160.0 422.6,168.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,208.0 90.0,216.0 76.1,208.0 76.1,192.0 90.0,184.0 103.9,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,208.0 117.7,216.0 103.9,208.0 103.9,192.0 117.7,184.0 131.6,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,208.0 145.4,216.0 131.6,208.0 131.6,192.0 145.4,184.0 159.3,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,208.0 173.1,216.0 159.3,208.0 159.3,192.0 173.1,184.0 187.0,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,208.0 200.9,216.0 187.0,208.0 187.0,192.0 200.9,184.0 214.7,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,208.0 228.6,216.0 214.7,208.0 214.7,192.0 228.6,184.0 242.4,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,208.0 256.3,216.0 242.4,208.0 242.4,192.0 256.3,184.0 270.1,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,208.0 284.0,216.0 270.1,208.0 270.1,192.0 284.0,184.0 297.8,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,208.0 311.7,216.0 297.8,208.0 297.8,192.0 311.7,184.0 325.6,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,208.0 339.4,216.0 325.6,208.0 325.6,192.0 339.4,184.0 353.3,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,208.0 367.1,216.0 353.3,208.0 353.3,192.0 367.1,184.0 381.0,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,208.0 394.8,216.0 381.0,208.0 381.0,192.0 394.8,184.0 408.7,192.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,232.0 103.9,240.0 90.0,232.0 90.0,216.0 103.9,208.0 117.7,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,232.0 131.6,240.0 117.7,232.0 117.7,216.0 131.6,208.0 145.4,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,232.0 159.3,240.0 145.4,232.0 145.4,216.0 159.3,208.0 173.1,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,232.0 187.0,240.0 173.1,232.0 173.1,216.0 187.0,208.0 200.9,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,232.0 214.7,240.0 200.9,232.0 200.9,216.0 214.7,208.0 228.6,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,232.0 242.4,240.0 228.6,232.0 228.6,216.0 242.4,208.0 256.3,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,232.0 270.1,240.0 256.3,232.0 256.3,216.0 270.1,208.0 284.0,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,232.0 297.8,240.0 284.0,232.0 284.0,216.0 297.8,208.0 311.7,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,232.0 325.6,240.0 311.7,232.0 311.7,216.0 325.6,208.0 339.4,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,232.0 353.3,240.0 339.4,232.0 339.4,216.0 353.3,208.0 367.1,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,232.0 381.0,240.0 367.1,232.0 367.1,216.0 381.0,208.0 394.8,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,232.0 408.7,240.0 394.8,232.0 394.8,216.0 408.7,208.0 422.6,216.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,256.0 90.0,264.0 76.1,256.0 76.1,240.0 90.0,232.0 103.9,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,256.0 117.7,264.0 103.9,256.0 103.9,240.0 117.7,232.0 131.6,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,256.0 145.4,264.0 131.6,256.0 131.6,240.0 145.4,232.0 159.3,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,256.0 173.1,264.0 159.3,256.0 159.3,240.0 173.1,232.0 187.0,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,256.0 200.9,264.0 187.0,256.0 187.0,240.0 200.9,232.0 214.7,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,256.0 228.6,264.0 214.7,256.0 214.7,240.0 228.6,232.0 242.4,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,256.0 256.3,264.0 242.4,256.0 242.4,240.0 256.3,232.0 270.1,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,256.0 284.0,264.0 270.1,256.0 270.1,240.0 284.0,232.0 297.8,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,256.0 311.7,264.0 297.8,256.0 297.8,240.0 311.7,232.0 325.6,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,256.0 339.4,264.0 325.6,256.0 325.6,240.0 339.4,232.0 353.3,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,256.0 367.1,264.0 353.3,256.0 353.3,240.0 367.1,232.0 381.0,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,256.0 394.8,264.0 381.0,256.0 381.0,240.0 394.8,232.0 408.7,240.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<polygon points="117.7,280.0 103.9,288.0 90.0,280.0 90.0,264.0 103.9,256.0 117.7,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.68" stroke-width="1.2"/>
+<polygon points="145.4,280.0 131.6,288.0 117.7,280.0 117.7,264.0 131.6,256.0 145.4,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.64" stroke-width="1.2"/>
+<polygon points="173.1,280.0 159.3,288.0 145.4,280.0 145.4,264.0 159.3,256.0 173.1,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.60" stroke-width="1.2"/>
+<polygon points="200.9,280.0 187.0,288.0 173.1,280.0 173.1,264.0 187.0,256.0 200.9,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.57" stroke-width="1.2"/>
+<polygon points="228.6,280.0 214.7,288.0 200.9,280.0 200.9,264.0 214.7,256.0 228.6,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.53" stroke-width="1.2"/>
+<polygon points="256.3,280.0 242.4,288.0 228.6,280.0 228.6,264.0 242.4,256.0 256.3,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.49" stroke-width="1.2"/>
+<polygon points="284.0,280.0 270.1,288.0 256.3,280.0 256.3,264.0 270.1,256.0 284.0,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.45" stroke-width="1.2"/>
+<polygon points="311.7,280.0 297.8,288.0 284.0,280.0 284.0,264.0 297.8,256.0 311.7,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.41" stroke-width="1.2"/>
+<polygon points="339.4,280.0 325.6,288.0 311.7,280.0 311.7,264.0 325.6,256.0 339.4,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.38" stroke-width="1.2"/>
+<polygon points="367.1,280.0 353.3,288.0 339.4,280.0 339.4,264.0 353.3,256.0 367.1,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.34" stroke-width="1.2"/>
+<polygon points="394.8,280.0 381.0,288.0 367.1,280.0 367.1,264.0 381.0,256.0 394.8,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.30" stroke-width="1.2"/>
+<polygon points="422.6,280.0 408.7,288.0 394.8,280.0 394.8,264.0 408.7,256.0 422.6,264.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.26" stroke-width="1.2"/>
+<polygon points="103.9,304.0 90.0,312.0 76.1,304.0 76.1,288.0 90.0,280.0 103.9,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.70" stroke-width="1.2"/>
+<polygon points="131.6,304.0 117.7,312.0 103.9,304.0 103.9,288.0 117.7,280.0 131.6,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.66" stroke-width="1.2"/>
+<polygon points="159.3,304.0 145.4,312.0 131.6,304.0 131.6,288.0 145.4,280.0 159.3,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.62" stroke-width="1.2"/>
+<polygon points="187.0,304.0 173.1,312.0 159.3,304.0 159.3,288.0 173.1,280.0 187.0,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.59" stroke-width="1.2"/>
+<polygon points="214.7,304.0 200.9,312.0 187.0,304.0 187.0,288.0 200.9,280.0 214.7,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.55" stroke-width="1.2"/>
+<polygon points="242.4,304.0 228.6,312.0 214.7,304.0 214.7,288.0 228.6,280.0 242.4,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.51" stroke-width="1.2"/>
+<polygon points="270.1,304.0 256.3,312.0 242.4,304.0 242.4,288.0 256.3,280.0 270.1,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.47" stroke-width="1.2"/>
+<polygon points="297.8,304.0 284.0,312.0 270.1,304.0 270.1,288.0 284.0,280.0 297.8,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.43" stroke-width="1.2"/>
+<polygon points="325.6,304.0 311.7,312.0 297.8,304.0 297.8,288.0 311.7,280.0 325.6,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.40" stroke-width="1.2"/>
+<polygon points="353.3,304.0 339.4,312.0 325.6,304.0 325.6,288.0 339.4,280.0 353.3,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.36" stroke-width="1.2"/>
+<polygon points="381.0,304.0 367.1,312.0 353.3,304.0 353.3,288.0 367.1,280.0 381.0,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.32" stroke-width="1.2"/>
+<polygon points="408.7,304.0 394.8,312.0 381.0,304.0 381.0,288.0 394.8,280.0 408.7,288.0" fill="none" stroke="#9FC7D2" stroke-opacity="0.28" stroke-width="1.2"/>
+<text x="150" y="70" text-anchor="middle" font-size="26" fill="#E3CC94" font-family="Jost,sans-serif">−</text>
+<text x="260" y="150" text-anchor="middle" font-size="26" fill="#E3CC94" font-family="Jost,sans-serif">−</text>
+<text x="180" y="230" text-anchor="middle" font-size="26" fill="#E3CC94" font-family="Jost,sans-serif">−</text>
+<text x="360" y="90" text-anchor="middle" font-size="26" fill="#E3CC94" font-family="Jost,sans-serif">−</text>
+<text x="330" y="240" text-anchor="middle" font-size="26" fill="#E3CC94" font-family="Jost,sans-serif">−</text>
+<g transform="translate(653,162) rotate(132)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(858,185) rotate(23)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(527,244) rotate(93)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(651,289) rotate(168)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(988,143) rotate(229)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(604,188) rotate(311)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(813,218) rotate(240)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(556,222) rotate(212)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(689,19) rotate(310)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(785,211) rotate(315)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(920,268) rotate(141)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(969,134) rotate(335)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1012,37) rotate(49)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(642,280) rotate(156)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(871,94) rotate(182)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(736,108) rotate(209)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(847,263) rotate(244)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1040,250) rotate(355)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(896,56) rotate(308)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1060,263) rotate(204)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(920,69) rotate(298)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(841,90) rotate(23)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(998,287) rotate(32)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(968,125) rotate(54)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(685,225) rotate(312)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(545,182) rotate(16)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(922,103) rotate(315)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1069,152) rotate(357)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(693,32) rotate(215)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(538,65) rotate(146)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(862,54) rotate(15)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1006,98) rotate(343)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1022,116) rotate(165)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(811,190) rotate(213)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(833,184) rotate(337)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(804,131) rotate(258)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(653,94) rotate(350)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(812,164) rotate(4)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(753,172) rotate(7)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(865,187) rotate(22)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(871,141) rotate(243)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(717,208) rotate(264)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(532,27) rotate(242)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1059,80) rotate(163)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(852,100) rotate(130)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(695,113) rotate(213)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(688,116) rotate(276)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(535,169) rotate(263)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(694,72) rotate(288)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(654,62) rotate(156)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(911,39) rotate(115)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(707,243) rotate(157)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(999,57) rotate(121)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(884,258) rotate(161)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(646,44) rotate(190)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(627,236) rotate(300)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(623,88) rotate(289)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(879,236) rotate(124)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(593,92) rotate(284)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(672,107) rotate(149)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(755,125) rotate(330)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(607,11) rotate(338)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1013,286) rotate(155)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1052,270) rotate(79)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(937,244) rotate(237)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(811,91) rotate(122)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(647,29) rotate(211)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(681,237) rotate(16)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1026,204) rotate(331)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<g transform="translate(1022,262) rotate(207)"><circle r="4.2" fill="#9FC7D2" fill-opacity=".55"/><circle cx="5" cy="-3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/><circle cx="5" cy="3" r="2.2" fill="#F5EFE2" fill-opacity=".55"/></g>
+<text x="600" y="60" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<text x="760" y="170" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<text x="900" y="80" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<text x="680" y="250" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<text x="1000" y="220" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<text x="840" y="40" text-anchor="middle" font-size="24" fill="#F5EFE2" fill-opacity=".85" font-family="Jost,sans-serif">+</text>
+<rect x="1080" y="0" width="120" height="300" fill="url(#ir)"/>
+<path d="M1190 40 q-22 -10 -44 0 t-44 0" fill="none" stroke="#E58C6A" stroke-opacity=".6" stroke-width="1.4"/>
+<path d="M1190 95 q-22 -10 -44 0 t-44 0" fill="none" stroke="#E58C6A" stroke-opacity=".6" stroke-width="1.4"/>
+<path d="M1190 150 q-22 -10 -44 0 t-44 0" fill="none" stroke="#E58C6A" stroke-opacity=".6" stroke-width="1.4"/>
+<path d="M1190 205 q-22 -10 -44 0 t-44 0" fill="none" stroke="#E58C6A" stroke-opacity=".6" stroke-width="1.4"/>
+<path d="M1190 260 q-22 -10 -44 0 t-44 0" fill="none" stroke="#E58C6A" stroke-opacity=".6" stroke-width="1.4"/>
+<g class="ezl"><text x="35" y="286" text-anchor="middle" font-family="Jost,sans-serif" font-size="15" fill="rgba(245,239,226,.75)" transform="rotate(-90 35 286)" dx="120">Water-loving surface</text></g>
+<g class="ezl"><rect x="96" y="264" width="220" height="26" rx="13" fill="#0B0E0C" fill-opacity=".8"/><text x="206" y="282" text-anchor="middle" font-family="Jost,sans-serif" font-size="15" fill="rgba(245,239,226,.75)">Ordered zone · negative</text></g>
+<g class="ezl"><rect x="690" y="264" width="220" height="26" rx="13" fill="#0B0E0C" fill-opacity=".8"/><text x="800" y="282" text-anchor="middle" font-family="Jost,sans-serif" font-size="15" fill="rgba(245,239,226,.75)">Bulk water · positive</text></g>
+<g class="ezl"><text x="1140" y="282" text-anchor="middle" font-family="Jost,sans-serif" font-size="15" fill="rgba(245,239,226,.75)">Infrared light</text></g>
+</svg><figcaption>Left to right: a water-loving surface, the ordered zone (negative), bulk water (positive), infrared light.</figcaption></figure>
+    <div class="fp-grid">
+      <div class="rv"><span class="n">01</span><h3>It grows on water-loving surfaces</h3><p>Ordered water builds up next to hydrophilic materials. In the body they are everywhere: cell membranes, vessel walls, cartilage, collagen and hyaluronan.</p></div>
+      <div class="rv"><span class="n">02</span><h3>It holds charge like a battery</h3><p>The ordered zone carries a negative charge and the water beyond it a positive one. In <i>The Fourth Phase of Water</i> Pollack describes using this separation to light a small LED.</p></div>
+      <div class="rv"><span class="n">03</span><h3>It flows without a pump</h3><p>In a 2013 study his lab placed hydrophilic Nafion tubes in water and saw water stream through them with no pressure difference. Light, especially infrared, made the flow faster.</p></div>
+      <div class="rv"><span class="n">04</span><h3>Fields shape water</h3><p>In 2007 Elmar Fuchs and colleagues at Graz University of Technology showed that a strong electric field makes water form a free-standing bridge in the air between two glasses.</p></div>
+    </div>
+    <div class="fp-foot">
+      <p class="rv"><b>Healthy water, healthy tissue?</b> Korean chemist Mu Shik Jhon went further: in his view healthy tissue is surrounded by ordered water and diseased tissue by disordered water, so drinking ordered water would spare the body the work of ordering it. This is a hypothesis, and one of the ideas behind MILUJ’s approach.</p>
+      <p class="rv"><b>How to read this.</b> These are reported observations and interpretations. Other researchers explain the same experiments with known physics, such as diffusiophoresis, and the existence of a separate phase is not accepted in mainstream science. MILUJ follows the debate openly and builds on it with care.</p>
+    </div>
+  </div>
+</section>
+
 <section class="sch" id="schauberger">
   <div class="wrap sch-grid">
     <div>
@@ -342,6 +646,7 @@ section p:not(.label){max-width:65ch}
       <p class="lead rv">Viktor Schauberger (1885–1958) was an Austrian forester who spent his life watching water in wild mountain streams. Healthy water, he observed, rarely runs straight: it spirals, cools and gathers itself in vortices.</p>
       <p class="rv">In 1922 he built timber flumes that followed this natural movement and cut the cost of floating logs to a tenth. His patents from 1926 onwards, and his book <i>Implosion statt Explosion</i> (1955), turned the same observation into a principle: inward, spiralling movement builds order, outward explosive force wears it down.</p>
       <div class="lens rv"><b>Living water and dead water</b><p>Schauberger called water forced through straight pipes and stripped of its movement “dead”, and water allowed to swirl, cool and breathe “living”. In this view water is not just a liquid but a carrier of energy: water that has lost its order asks the body to do the ordering. This is the idea MILUJ builds on, and the one it sets out to measure.</p></div>
+      <div class="lens rv"><b>Vortices inside vortices · Theodor Schwenk</b><p>In <i>Sensitive Chaos</i> (1962), Theodor Schwenk, who founded an institute for flow research in the Black Forest, showed how water takes the form of its own movement, and how every large vortex carries smaller ones, giving the least resistance and the most exchange. Language remembers it: in German a vertebra is a <i>Wirbel</i>, a vortex, and the spine is the <i>Wirbelsäule</i>, the column of vortices.</p></div>
     </div>
     <div class="sch-vis"><div class="vortex rv"><canvas id="vortexCanvas" aria-hidden="true"></canvas><div class="years">The vortex: water’s own way of gathering itself</div></div>
       <figure class="nest rv"><svg viewBox="0 0 600 560" role="img" aria-label="Line diagram of one large three-armed vortex whose arms carry smaller vortices, which in turn carry still smaller ones"><g fill="none" stroke-linecap="round" transform="translate(0,-20)">
@@ -555,6 +860,12 @@ section p:not(.label){max-width:65ch}
         <p class="disc rv">We do not claim that a specific water type reverses ageing, removes toxins or directly treats disease.</p>
       </div>
     </div>
+    <div class="f-cards">
+      <div class="rv"><h3>Seen alive</h3><p>French hand surgeon Jean-Claude Guimberteau filmed living connective tissue under the skin with a micro-camera: a shimmering web of fine fibres, held in a gel that is mostly water, constantly reshaping as we move.</p></div>
+      <div class="rv"><h3>Held by tension</h3><p>Fascia is often described with Buckminster Fuller’s principle of tensegrity: a structure kept in balance by continuous tension and local compression. A well-hydrated web absorbs shocks and spreads force through the whole body.</p></div>
+      <div class="rv"><h3>A sensing web</h3><p>Fascia is densely supplied with sensory nerve endings; researcher Robert Schleip calls it one of our richest sensory organs. When it dries out and stops gliding, layers can “glue” together, one proposed source of stiffness and of pain felt far from where it starts.</p></div>
+    </div>
+    <p class="f-move rv"><b>Drinking alone is not enough.</b> Fascia takes up water when it moves: stretching, dance, breath, massage and warmth squeeze and refill it like a sponge. That is why at MILUJ the water and the movement practices belong together.</p>
   </div>
 </section>
 
@@ -569,9 +880,11 @@ section p:not(.label){max-width:65ch}
     <div class="sources">
       <h3>Research context</h3>
       <a href="https://www.ncbi.nlm.nih.gov/books/NBK482447/" target="_blank" rel="noopener">Body fluids and compartments<span>NCBI Bookshelf ↗</span></a>
-      <a href="https://en.wikipedia.org/wiki/Body_water" target="_blank" rel="noopener">Body water by age and sex<span>Overview with references ↗</span></a>
+      <a href="https://www.nanomedicine.com/NMI/3.1.htm" target="_blank" rel="noopener">Molecular composition of the body<span>Freitas, Nanomedicine ↗</span></a>
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5639468/" target="_blank" rel="noopener">The structure of liquid water<span>PMC ↗</span></a>
       <a href="https://arxiv.org/abs/1909.06822" target="_blank" rel="noopener">Exclusion-zone phenomena in water: a critical review<span>arXiv ↗</span></a>
+      <a href="https://www.pollacklab.org/single-post/2013/04/30/flow-through-horizontal-tubes-submerged-in-water-in-the-absence-of-a-pressure-gradient-me" target="_blank" rel="noopener">Flow through tubes without a pump<span>Pollack Laboratory, 2013 ↗</span></a>
+      <a href="https://phys.org/news/2007-09-bridge-exposed-high-voltage.html" target="_blank" rel="noopener">The floating water bridge<span>TU Graz, via Phys.org ↗</span></a>
       <a href="https://pks.or.at/?p=189" target="_blank" rel="noopener">Viktor Schauberger: life and work<span>PKS Schauberger family archive ↗</span></a>
       <a href="https://www.nature.com/articles/46972" target="_blank" rel="noopener">Electron tunnelling in biological energy chains<span>Nature, 1999 ↗</span></a>
       <a href="https://www.mrc-mbu.cam.ac.uk/research-groups/walker-group/atp-synthase" target="_blank" rel="noopener">ATP synthase, the rotary motor<span>MRC Mitochondrial Biology Unit ↗</span></a>
@@ -610,17 +923,15 @@ section p:not(.label){max-width:65ch}
 
   /* body water: pick a person, the vessel fills */
   const fill = $('#bwFill'), pct = $('#bwPct'), cap = $('#bwCap');
-  const picks = [...document.querySelectorAll('.bw-pick button')];
   let shownPct = 0;
-  const setPct = (p, c) => {
-    fill.style.transform = `scaleY(${p / 100})`; cap.textContent = c;
-    if (reduce) { pct.textContent = p; shownPct = p; return; }
-    const from = shownPct, t0 = performance.now();
-    const step = n => { const t = clamp((n - t0) / 900, 0, 1), e = 1 - Math.pow(1 - t, 3); pct.textContent = Math.round(from + (p - from) * e); if (t < 1) requestAnimationFrame(step); else shownPct = p; };
+  const setPct = p => {
+    fill.style.transform = `scaleY(${p / 100})`;
+    if (reduce) { pct.textContent = p; return; }
+    const t0 = performance.now();
+    const step = n => { const t = clamp((n - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - t, 3); pct.textContent = Math.round(p * e); if (t < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   };
-  picks.forEach(b => b.addEventListener('click', () => { picks.forEach(x => x.setAttribute('aria-pressed', String(x === b))); setPct(+b.dataset.p, b.dataset.c); }));
-  const bwIO = new IntersectionObserver(es => { if (es[0].isIntersecting) { setPct(75, picks[0].dataset.c); bwIO.disconnect(); } }, { threshold: .4 });
+  const bwIO = new IntersectionObserver(es => { if (es[0].isIntersecting) { setPct(99); bwIO.disconnect(); } }, { threshold: .4 });
   bwIO.observe($('.vessel'));
 
   /* ---------- atoms: one set of 72 particles morphs graphite → diamond → liquid water → structured (EZ) water ---------- */
