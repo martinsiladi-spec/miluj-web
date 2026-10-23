@@ -337,7 +337,7 @@ section p:not(.label){max-width:65ch}
           <div class="a-step"><div class="k">EZ</div><h3>Structured water: order at the boundary</h3><p>Next to water-loving surfaces, such as the membranes and proteins inside our cells, water can line up in ordered, hexagonal layers. Researcher Gerald Pollack calls this the exclusion zone, or EZ water, and describes it as a fourth phase of water. Other scientists explain his observations differently; the question is open and actively studied.</p><span class="fact">Reported EZ layers: up to hundreds of microns thick</span></div>
         </div>
         <div class="a-track" aria-hidden="true"><span class="on">Graphite</span><span>Diamond</span><span>Water</span><span>Structured water</span></div>
-        <p class="a-note">Graphite and diamond are drawn in their real lattice geometry, and each water molecule in its real 104.5° shape. The liquid is a simplified snapshot; the structured layer follows the hexagonal model Pollack proposes, which is not yet established.</p>
+        <p class="a-note">Graphite and diamond are drawn in their real lattice geometry, and each water molecule in its real 104.5° shape. The liquid is a simplified snapshot; structured water is drawn as a simplified ice-like lattice with the same tetrahedral order as diamond. Pollack’s own model differs in detail and is not yet established.</p>
       </div>
       <div class="a-canvas"><canvas id="atomCanvas" aria-hidden="true"></canvas>
         <div class="a-legend" id="aLegend" aria-hidden="true"><span><i style="background:#B9C0C4"></i>Carbon</span></div>
@@ -710,7 +710,7 @@ section p:not(.label){max-width:65ch}
     </div>
     <div class="m-stage rv">
       <div class="m-canvas"><canvas id="mitoCanvas" role="img" aria-label="Animated diagram of the inner mitochondrial membrane: electrons from food hop through complexes I, III and IV, protons are pumped across the membrane along chains of water, flow back through the spinning ATP synthase, and oxygen combines with electrons and protons to form water"></canvas></div>
-      <div class="m-key" aria-hidden="true"><span><i style="background:#E3CC94"></i>Electron</span><span><i style="background:#9FC7D2"></i>Proton (H⁺)</span><span><i style="background:#DCEFF3"></i>Water formed</span><span><i style="background:#F5EFE2"></i>ATP</span><span><i style="background:#E58C6A"></i>Hydroxyl radical</span><span><i style="background:#FFFFFF"></i>H₂</span></div>
+      <div class="m-key" aria-hidden="true"><span><i style="background:#E3CC94"></i>Electron</span><span><i style="background:#9FC7D2"></i>Proton (H⁺)</span><span><i style="background:#3D8BFF"></i>Water formed</span><span><i style="background:#F5EFE2"></i>ATP</span><span><i style="background:#E58C6A"></i>Hydroxyl radical</span><span><i style="background:#FFFFFF"></i>H₂</span></div>
     </div>
     <ol class="m-steps">
       <li class="rv"><div class="n">1</div><h3>Food is stored hydrogen</h3><p>Digestion strips hydrogen from sugars and fats. Enzymes hand it on, as electrons and protons, to carrier molecules (NADH, FADH₂) that deliver it to the mitochondria.</p></li>
@@ -965,17 +965,28 @@ section p:not(.label){max-width:65ch}
     O.forEach(o => { const t = rnd() * Math.PI * 2, f = Math.acos(2 * rnd() - 1); H.push(...addH(o, [Math.sin(f) * Math.cos(t), Math.sin(f) * Math.sin(t), Math.cos(f)], rnd() * 6)); });
     return centre([...O, ...H]); })();
   // 4 structured (EZ-like) water: two puckered hexagonal sheets, hydrogens pointing along the lattice
-  const S = (() => { const O = centre([...honey(-.9, 12, .18), ...honey(.9, 12, .18)]).map(p => [p[0] * 1.45, p[1] * 1.45, p[2]]);
-    const H = []; O.forEach((o, i) => { const nb = O.filter((q, j) => j !== i).map(q => [q, Math.hypot(q[0] - o[0], q[1] - o[1], q[2] - o[2])]).sort((a, b) => a[1] - b[1]);
-      const dir = q => { const d = [q[0] - o[0], q[1] - o[1], q[2] - o[2]]; const l = Math.hypot(...d); return d.map(x => x / l); };
-      const d1 = dir(nb[0][0]), d2 = dir(nb[1][0]); H.push(o.map((v, k) => v + d1[k] * .55), o.map((v, k) => v + d2[k] * .55)); });
-    return [...O, ...H].map(([x, y, z]) => [x, z * 1.3, y]); })();
+  // 4 structured water, simplified as an ice-like lattice: oxygens on the same tetrahedral (diamond) order,
+  //   each donating two hydrogens to neighbours and receiving hydrogen bonds from the others
+  let SW = [];
+  const S = (() => { const a = 3.3, pts = [], base = [[0,0,0],[0,.5,.5],[.5,0,.5],[.5,.5,0]];
+    for (let i = -2; i <= 2; i++) for (let j = -2; j <= 2; j++) for (let k = -2; k <= 2; k++) base.forEach(b => { pts.push([(i + b[0]) * a, (j + b[1]) * a, (k + b[2]) * a, 0]); pts.push([(i + b[0] + .25) * a, (j + b[1] + .25) * a, (k + b[2] + .25) * a, 1]); });
+    const sh = pts.map(p => [p[0] - .4, p[1] - .4, p[2] - .4, p[3]]);
+    const O = sh.map(p => [p, Math.hypot(p[0], p[1], p[2])]).sort((x, y) => x[1] - y[1]).slice(0, NO).map(x => x[0]);
+    const cO = centre(O.map(p => p.slice(0, 3))), nn = a * Math.sqrt(3) / 4 * 1.1, L = .55;
+    const TET = [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(v => v.map(x => x / Math.sqrt(3)));
+    const donated = new Set(), H = [];
+    O.forEach((o, i) => { const sign = o[3] ? -1 : 1, dirs = [];
+      for (let j = 0; j < NO && dirs.length < 2; j++) { if (j === i || donated.has(j + '>' + i)) continue; const d = [O[j][0] - o[0], O[j][1] - o[1], O[j][2] - o[2]], l = Math.hypot(...d);
+        if (l < nn) { dirs.push(d.map(x => x / l)); donated.add(i + '>' + j); SW.push([NO + i * 2 + dirs.length - 1, j]); } }
+      for (const t of TET) { if (dirs.length >= 2) break; const v = t.map(x => x * sign); if (dirs.every(d => d[0] * v[0] + d[1] * v[1] + d[2] * v[2] < .9)) dirs.push(v); }
+      dirs.forEach(d => H.push([cO[i][0] + d[0] * L, cO[i][1] + d[1] * L, cO[i][2] + d[2] * L])); });
+    return [...cO, ...H]; })();
   const STATES = [G, D, W, S];
   // bonds per state
   const bondsFor = (P, kind) => { const out = [];
     if (kind === 'c') { for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) { const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1], P[i][2] - P[j][2]); if (d < 1.12 && Math.abs(P[i][2] - P[j][2]) < .4 || (P === D && d < 1.05)) out.push([i, j, 1]); } }
     else { for (let o = 0; o < NO; o++) { out.push([o, NO + o * 2, 1], [o, NO + o * 2 + 1, 1]); }
-      if (kind === 's') for (let i = 0; i < NO; i++) for (let j = i + 1; j < NO; j++) { const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1], P[i][2] - P[j][2]); if (d < 1.8) out.push([i, j, 0]); } }
+      if (kind === 's') for (let i = 0; i < NO; i++) for (let j = i + 1; j < NO; j++) { const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1], P[i][2] - P[j][2]); if (d < 3.3 * Math.sqrt(3) / 4 * 1.1) out.push([i, j, 0]); } }
     return out; };
   const BONDS = [bondsFor(G0, 'c'), bondsFor(D, 'c'), bondsFor(W, 'w'), bondsFor(S, 's')];
   // liquid water: each hydrogen may hold one short-lived hydrogen bond to a neighbouring oxygen
@@ -998,7 +1009,7 @@ section p:not(.label){max-width:65ch}
   const COL = { c0: [185, 192, 196], c1: [234, 246, 255], o: [159, 199, 210], h: [245, 239, 226] };
   const mix = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
   const colourOf = (k, i) => k === 0 ? COL.c0 : k === 1 ? COL.c1 : (i < NO ? COL.o : COL.h);
-  const radiusOf = (k, i) => k < 2 ? .24 : (i < NO ? .34 : .19);
+  const radiusOf = (k, i) => k < 2 ? .24 : k === 3 ? (i < NO ? .27 : .15) : (i < NO ? .34 : .19);
   const drawAtoms = (t, p) => {
     const W2 = cv.width, H2 = cv.height; cx.clearRect(0, 0, W2, H2);
     const [a, b, f] = stateAt(p);
@@ -1118,7 +1129,7 @@ section p:not(.label){max-width:65ch}
       for (let i = 0; i < WIRE; i++) dot(PX(x + .035), PY(wireY(i)), 2.2 * md, 'rgba(159,199,210,.30)');
     });
     // iron–sulphur / copper centres the electrons tunnel between
-    EP.forEach((p, i) => { if (p[2] === 'h' || (EP[i + 1] && EP[i + 1][2] === 'h')) { mx.strokeStyle = 'rgba(227,204,148,.45)'; mx.lineWidth = 1.2 * md; mx.beginPath(); mx.arc(PX(p[0]), PY(p[1]), 5 * md, 0, 7); mx.stroke(); } });
+    EP.forEach((p, i) => { if (p[2] === 'h' || (EP[i + 1] && EP[i + 1][2] === 'h')) { mx.strokeStyle = 'rgba(227,204,148,.45)'; mx.lineWidth = 1.2 * md; mx.beginPath(); mx.arc(PX(p[0]), PY(p[1]), 8.5 * md, 0, 7); mx.stroke(); } });
     // a tail on complex I reaching into the matrix
     rr(PX(CX.I - .03), PY(.66), PX(.04), PY(.09), 10 * md); mx.fillStyle = 'rgba(18,24,19,.92)'; mx.fill(); mx.strokeStyle = 'rgba(245,239,226,.25)'; mx.stroke();
     label('NADH', PX(.04), PY(.92), .7, 'center', small ? 10 : 12); label('O₂', PX(.585), PY(.74), .75, 'right', small ? 11 : 13);
@@ -1133,16 +1144,16 @@ section p:not(.label){max-width:65ch}
     mx.strokeStyle = 'rgba(227,204,148,.9)'; mx.lineWidth = 2.4 * md; mx.beginPath(); mx.moveTo(hx, hy); mx.lineTo(hx + Math.cos(rot) * hr * .5, hy + Math.sin(rot) * hr * .4); mx.stroke();
     label('ATP synthase', ax, PY(.41), .7, 'center', small ? 10 : 12);
     // particles
-    drops.forEach(d => { dot(PX(d.x), PY(d.y), 4.2 * md, '#DCEFF3', d.a * .9, 3); if (d.lbl && !small) label('H₂O', PX(d.x) + 14 * md, PY(d.y), d.a * .8, 'left', 11); });
-    atps.forEach(a => { dot(PX(a.x), PY(a.y), 3.4 * md, '#F5EFE2', a.a, 3); label('ATP', PX(a.x) + 12 * md, PY(a.y), a.a * .85, 'left', small ? 10 : 11); });
-    rads.forEach(r => { dot(PX(r.x), PY(r.y), 3.6 * md, '#E58C6A', r.a, 3.2); if (!small) label('•OH', PX(r.x) + 12 * md, PY(r.y), r.a * .8, 'left', 11); });
-    hhs.forEach(h => { const x = PX(h.x), y = PY(h.y); mx.globalAlpha = h.a; mx.strokeStyle = '#fff'; mx.lineWidth = 1.5 * md; mx.beginPath(); mx.moveTo(x - 4 * md, y); mx.lineTo(x + 4 * md, y); mx.stroke(); mx.globalAlpha = 1; dot(x - 4 * md, y, 2.6 * md, '#fff', h.a, 2.5); dot(x + 4 * md, y, 2.6 * md, '#fff', h.a); if (!small && !h.done) label('H₂', x, y - 12 * md, h.a * .8, 'center', 11); });
-    prs.forEach(p => { let x, y; if (p.s === 'wire') { x = p.x; y = wireY(Math.min(p.k, WIRE - 1)); } else { x = p.x; y = p.y; } dot(PX(x), PY(y), 3.3 * md, '#9FC7D2', 1, 3); });
+    drops.forEach(d => { dot(PX(d.x), PY(d.y), 6.5 * md, '#3D8BFF', d.a, 3); if (d.lbl && !small) label('H₂O', PX(d.x) + 17 * md, PY(d.y), d.a * .8, 'left', 11); });
+    atps.forEach(a => { dot(PX(a.x), PY(a.y), 5.5 * md, '#F5EFE2', a.a, 3); label('ATP', PX(a.x) + 15 * md, PY(a.y), a.a * .85, 'left', small ? 10 : 11); });
+    rads.forEach(r => { dot(PX(r.x), PY(r.y), 6 * md, '#E58C6A', r.a, 3.2); if (!small) label('•OH', PX(r.x) + 15 * md, PY(r.y), r.a * .8, 'left', 11); });
+    hhs.forEach(h => { const x = PX(h.x), y = PY(h.y); mx.globalAlpha = h.a; mx.strokeStyle = '#fff'; mx.lineWidth = 1.5 * md; mx.beginPath(); mx.moveTo(x - 6 * md, y); mx.lineTo(x + 6 * md, y); mx.stroke(); mx.globalAlpha = 1; dot(x - 6 * md, y, 4 * md, '#fff', h.a, 2.5); dot(x + 6 * md, y, 4 * md, '#fff', h.a); if (!small && !h.done) label('H₂', x, y - 15 * md, h.a * .8, 'center', 11); });
+    prs.forEach(p => { let x, y; if (p.s === 'wire') { x = p.x; y = wireY(Math.min(p.k, WIRE - 1)); } else { x = p.x; y = p.y; } dot(PX(x), PY(y), 5.5 * md, '#9FC7D2', 1, 3); });
     els.forEach(e => { const a = EP[e.i], b = EP[e.i + 1];
       if (b[2] === 'h') { const on = e.t < .5 ? a : b, f = Math.sin(Math.PI * e.t);
         mx.globalAlpha = .55 * f; mx.strokeStyle = '#E3CC94'; mx.setLineDash([2 * md, 4 * md]); mx.lineWidth = 1.2 * md; mx.beginPath(); mx.moveTo(PX(a[0]), PY(a[1])); mx.lineTo(PX(b[0]), PY(b[1])); mx.stroke(); mx.setLineDash([]); mx.globalAlpha = 1;
-        dot(PX(on[0]), PY(on[1]), 3.6 * md, '#E3CC94', 1, 3.4); }
-      else { const t = e.t * e.t * (3 - 2 * e.t); dot(PX(a[0] + (b[0] - a[0]) * t), PY(a[1] + (b[1] - a[1]) * t), 3.6 * md, '#E3CC94', 1, 3.4); } });
+        dot(PX(on[0]), PY(on[1]), 6 * md, '#E3CC94', 1, 3.4); }
+      else { const t = e.t * e.t * (3 - 2 * e.t); dot(PX(a[0] + (b[0] - a[0]) * t), PY(a[1] + (b[1] - a[1]) * t), 6 * md, '#E3CC94', 1, 3.4); } });
   };
   if (reduce) { for (let i = 0; i < 400; i++) mStep(1 / 30); mDraw(); }
 
