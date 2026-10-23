@@ -11,6 +11,10 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0B0E0C">
 <link rel="icon" href="assets/x_logo_hero.webp">
+<link rel="alternate" hreflang="en" href="https://martinsiladi-spec.github.io/miluj-web/">
+<link rel="alternate" hreflang="sk" href="https://martinsiladi-spec.github.io/miluj-web/sk/">
+<link rel="alternate" hreflang="es" href="https://martinsiladi-spec.github.io/miluj-web/es/">
+<link rel="alternate" hreflang="x-default" href="https://martinsiladi-spec.github.io/miluj-web/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Noto+Serif+Armenian:wght@400&display=swap">
@@ -556,6 +560,14 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 }
 @media (prefers-reduced-motion: reduce){ .hs::after{animation:none} .t-part{transition:none} }
 </style>
+<style>
+/* language switcher */
+.hero{position:relative}
+.lang{position:absolute;z-index:5;top:calc(env(safe-area-inset-top,0px) + 22px);right:var(--gut-r,16px);display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(11,14,12,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(245,239,226,.18)}
+.lang a{min-width:40px;padding:.5em .8em;border-radius:999px;text-align:center;font:500 13px/1 var(--body);letter-spacing:.06em;color:rgba(245,239,226,.75);text-decoration:none;transition:background-color .2s ease,color .2s ease}
+.lang a:hover{color:var(--ivory)}
+.lang a[aria-current="true"]{background:var(--ivory);color:var(--night)}
+</style>
 <style>body{margin:0}.note{display:none!important}</style>
 </head>
 <body>
@@ -564,6 +576,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 
 <!-- ================= PROTOTYP ================= -->
 <section class="hero">
+  <nav class="lang" aria-label="Language"><a href="./" hreflang="en" lang="en" aria-current="true">EN</a><a href="sk/" hreflang="sk" lang="sk">SK</a><a href="es/" hreflang="es" lang="es">ES</a></nav>
   <div class="bg"><img src="assets/x_hero.webp" alt="The Ascension Pyramid at night with a beam of light rising from its apex" fetchpriority="high"></div>
   <div class="wrap">
     <img class="hero-logo" src="assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">

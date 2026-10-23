@@ -38,6 +38,10 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 - `water/index.html`: podstránka /water; assety sa načítajú cez `../assets/`.
 - `assets/`: všetky obrázky a videá (webp/mp4, spolu ~15 MB).
 - `.nojekyll`, `README.md`, `HANDOFF.md` (tento súbor).
+- `sk/index.html`, `es/index.html`: **slovenská a španielska verzia úvodnej stránky. Needitovať ručne, generujú sa** z `index.html`.
+- `tools/i18n_strings.py`: preklady (riadok = angličtina presne ako na stránke, slovenčina, španielčina).
+- `tools/build_i18n.py`: generátor. Po každej zmene textu v `index.html` doplniť/upraviť riadok v `i18n_strings.py` a spustiť `python3 tools/build_i18n.py`. Skript vypíše všetko, čo nie je preložené (a skončí chybou), aj riadky, ktoré už na stránke nie sú.
+- `tools/jsstrings.py`: pomocník, vypíše texty zo skriptu stránky.
 - Súbor `CNAME` zatiaľ **nie je**. Pridá sa až pri prepnutí domény (bod 8).
 
 **Ako pokračovať v novej relácii**
@@ -54,6 +58,8 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 4. Overiť naživo v paneli prehliadača: najprv `request_access` na `https://martinsiladi-spec.github.io`, potom `navigate`. Workspace sám na github.io nedosiahne.
 
 ## 3. Úvodná stránka (`index.html`): poradie sekcií
+
+**Jazyky (23. 10.):** hore vpravo v hero je prepínač **EN · SK · ES** (`.lang`). EN = `/`, SK = `/sk/`, ES = `/es/`. V hlavičke sú `hreflang` odkazy s plnou adresou `https://martinsiladi-spec.github.io/miluj-web/…` – **pri prepnutí domény ich treba zmeniť** v `index.html` a znova spustiť generátor. Odkaz „What makes water alive?“ vedie zo SK/ES na anglickú podstránku `/water/` (označené „(EN)“). Vlastné mená ostávajú: MILUJ, Temple House(s), Ascension Pyramid, Vinyasa, Breathwork, Gene Keys. SK vykanie, ES tykanie.
 
 1. **Hero:** logo `x_logo_hero.webp`, nadpis „Welcome home to *the New Earth*“. Jediné tlačidlo „Investor overview“ **len posúva** na `#invest`. „Plan a stay“ bolo odstránené.
 2. **Film „Od skice k realite“** (`#film`): scroll-scrub video `film.mp4`, 45 s.
@@ -186,12 +192,13 @@ Spraviť až keď budú hotové všetky podstránky.
 2. Vo WEDOS zmeniť `miluj CNAME` na `martinsiladi-spec.github.io`.
 3. Zmazať oba ChatGPT TXT záznamy.
 4. Po overení zapnúť v GitHube „Enforce HTTPS“.
-5. Pozor na relatívne cesty: dnes web beží pod `/miluj-web/`, po prepnutí v koreni domény. Odkazy sú relatívne (`water/`, `../`, `assets/`), takže fungujú v oboch prípadoch.
+5. Zmeniť `hreflang` adresy v `index.html` na novú doménu a spustiť `python3 tools/build_i18n.py`.
+6. Pozor na relatívne cesty: dnes web beží pod `/miluj-web/`, po prepnutí v koreni domény. Odkazy sú relatívne (`water/`, `../`, `assets/`), takže fungujú v oboch prípadoch.
 
 ## 9. Otvorené úlohy
 
 1. ~~Prerobiť `/temple-houses`~~: Martin 23. 10. rozhodol, že **podstránku Temple Houses zatiaľ nerobíme**, stačí sekcia Grounds na úvodnej stránke.
-2. Rozhodnúť o **SK/ES verziách** (`/sk`, `/es`) a prípadne preložiť.
+2. ~~SK/ES verzie úvodnej stránky~~: hotové 23. 10. (generátor `tools/build_i18n.py`). Podstránka `/water` je zatiaľ len po anglicky.
 3. **Prepnúť doménu** (bod 8).
 4. Odpovede od Martina (23. 10., zapracované na webe):
    - **všetkých 22 domov sú Temple Houses**, každý s iným zameraním na liečenie;
