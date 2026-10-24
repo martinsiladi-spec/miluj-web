@@ -206,6 +206,9 @@ T = [
 ('Hydrogen water and recovery in elite swimmers', 'Vodíková voda a regenerácia elitných plavcov', 'Agua con hidrógeno y recuperación de nadadores de élite'),
 ('Hydrogen water and long COVID', 'Vodíková voda a long-COVID', 'Agua con hidrógeno y COVID persistente'),
 
+('Hydrogen’s stability is the key.', 'Stabilita vodíka je kľúčová.', 'La estabilidad del hidrógeno es la clave.'),
+('Hydrogen is a gas and escapes from water quickly. Common methods do get hydrogen into the water, but by the time it is drunk most of it has gone and its effect is minimal. How long hydrogen stays in the water is exactly what decides how much of it reaches the body and its cells.', 'Vodík je plyn a z vody rýchlo uniká. Bežné metódy vodík do vody síce dostanú, no kým sa voda vypije, väčšina z neho vyprchá a jeho účinok je minimálny. Práve to, ako dlho vodík vo vode vydrží, rozhoduje o tom, koľko sa ho dostane do tela a k jeho bunkám.', 'El hidrógeno es un gas y escapa rápido del agua. Los métodos habituales logran meter hidrógeno en el agua, pero cuando se bebe la mayor parte ya se ha ido y su efecto es mínimo. Precisamente el tiempo que el hidrógeno permanece en el agua decide cuánto llega al cuerpo y a sus células.'),
+
 # ---- 5 process ----
 ("Both steps together", "Oba kroky spolu", "Los dos pasos juntos"),
 ("One preparation. Two ways to meet it.", "Jedna príprava. Dva spôsoby, ako sa s ňou stretnúť.", "Una preparación. Dos formas de encontrarla."),
