@@ -295,6 +295,20 @@ section[id]{scroll-margin-top:var(--navh)}
 .why-more{margin-top:26px;color:var(--mute-d);font-size:18px}
 
 /* 4 · hydrogen basics */
+.h2-studies{margin-top:64px}
+.h2-st-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px 32px;flex-wrap:wrap}
+.h2-st-head h3{font-size:clamp(30px,3vw,40px)}
+.h2-st-head p{color:var(--mute-d);font-size:17px}
+.h2-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:28px}
+.h2-st > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35);display:flex;flex-direction:column}
+.h2-st .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.h2-st h4{margin:6px 0 12px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2vw,28px);line-height:1.1}
+.h2-st ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.h2-st li{position:relative;padding-left:18px;font-size:16px;line-height:1.5;color:var(--ivory)}
+.h2-st li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--aqua)}
+.h2-st .meta{margin-top:auto;padding-top:16px;font-size:13px;letter-spacing:.02em;color:var(--mute-d)}
+@media (max-width:1100px){.h2-st{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.h2-st{grid-template-columns:1fr}}
 .h2-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
 .h2-cards > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
 .h2-cards .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
@@ -558,6 +572,18 @@ section[id]{scroll-margin-top:var(--navh)}
 <circle cx="335" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="415" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="335" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text><text x="415" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text>
 <text x="150" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂O</text><text x="375" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂</text></svg></div>
     </div>
+    <div class="h2-studies">
+      <div class="h2-st-head"><h3 class="rv">Čo ukázali štúdie</h3><p class="rv">Pilotné a klinické štúdie, väčšinou s 10 až 50 účastníkmi.</p></div>
+      <div class="h2-st">
+        <div class="rv"><span class="n">01</span><h4>Metabolizmus a oxidačný stres</h4><ul><li>Viac vlastného antioxidačného enzýmu SOD</li><li>Menej markerov oxidačného stresu v krvi</li><li>Vyšší „dobrý“ HDL cholesterol</li></ul><p class="meta">20 ľudí · 1,5–2 l denne · 8 týždňov · Nakao 2010</p></div>
+        <div class="rv"><span class="n">02</span><h4>Kyselina močová</h4><ul><li>Nižšia kyselina močová v krvi po 8 týždňoch</li><li>Silnejší účinok pri vyššej dávke</li></ul><p class="meta">100 pacientov · do 1 l denne · s placebom · 2024</p></div>
+        <div class="rv"><span class="n">03</span><h4>Šport a únava svalov</h4><ul><li>Laktát po veľkej záťaži nestúpol</li><li>Menší pokles svalovej sily z únavy</li></ul><p class="meta">10 futbalistov · pred záťažou · dvojito zaslepená · Aoki 2012</p></div>
+        <div class="rv"><span class="n">04</span><h4>Regenerácia po tréningu</h4><ul><li>Nižšia kreatínkináza, marker poškodenia svalov</li><li>Menej svalovice</li><li>Vyšší výskok počas zotavenia</li></ul><p class="meta">12 elitných plavcov · dvojito zaslepená · Sládečková 2024</p></div>
+        <div class="rv"><span class="n">05</span><h4>Long-COVID</h4><ul><li>Menej chronickej únavy</li><li>Lepšia vytrvalosť a sila nôh</li><li>Lepší spánok u tých, ktorí zle spali</li></ul><p class="meta">32 pacientov · 2 × 500 ml denne · 14 dní · Tan 2024</p></div>
+        <div class="rv"><span class="n">06</span><h4>Počas rádioterapie</h4><ul><li>Menej oxidačného stresu spôsobeného žiarením</li><li>Výrazne lepšia kvalita života počas liečby</li><li>Samotná liečba účinkovala rovnako</li></ul><p class="meta">49 pacientov · 6 týždňov · s placebom · Kang 2011</p></div>
+        <div class="rv"><span class="n">07</span><h4>Reumatoidná artritída</h4><ul><li>Nižší oxidačný stres a aktivita ochorenia</li><li>Všetkých 5 pacientov v skorom štádiu dosiahlo remisiu</li></ul><p class="meta">20 pacientov · 530 ml denne · 2 × 4 týždne · Ishibashi 2012</p></div>
+      </div>
+    </div>
     <div class="h2-cards">
       <div class="rv"><span class="n">01</span><h3>Najmenšia molekula</h3><p>H₂ meria približne 0,3 nanometra a voľne sa pohybuje vodou aj tkanivami a bunkovými membránami tela.</p></div>
       <div class="rv"><span class="n">02</span><h3>Rýchlo uniká</h3><p>Z bežnej vodíkovej vody väčšina H₂ unikne asi do 20 minút od otvorenia, dávno predtým, než sa vypije.</p></div>
@@ -700,6 +726,13 @@ section[id]{scroll-margin-top:var(--navh)}
       <a href="https://pubmed.ncbi.nlm.nih.gov/34202183/" target="_blank" rel="noopener">Fascie a hyalurónan<span>PubMed ↗</span></a>
       <a href="https://www.nobelprize.org/prizes/chemistry/2003/summary/" target="_blank" rel="noopener">Aquaporíny, vodné kanály bunky<span>Nobelova cena za chémiu 2003 ↗</span></a>
       <a href="https://www.nature.com/articles/nm1577" target="_blank" rel="noopener">H₂ ako selektívny antioxidant<span>Nature Medicine, 2007 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2831093/" target="_blank" rel="noopener">Vodíková voda a metabolický syndróm<span>Nakao et al., J Clin Biochem Nutr, 2010 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3395574/" target="_blank" rel="noopener">Vodíková voda a únava svalov<span>Aoki et al., Med Gas Res, 2012 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3231938/" target="_blank" rel="noopener">Vodíková voda počas rádioterapie<span>Kang et al., Med Gas Res, 2011 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3563451/" target="_blank" rel="noopener">Vodíková voda a reumatoidná artritída<span>Ishibashi et al., Med Gas Res, 2012 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11385766/" target="_blank" rel="noopener">Vodíková voda a kyselina močová<span>PMC, 2024 ↗</span></a>
+      <a href="https://www.frontiersin.org/articles/10.3389/fphys.2024.1321160/full" target="_blank" rel="noopener">Vodíková voda a regenerácia elitných plavcov<span>Sládečková et al., Front Physiol, 2024 ↗</span></a>
+      <a href="https://www.mdpi.com/2072-6643/16/10/1529" target="_blank" rel="noopener">Vodíková voda a long-COVID<span>Tan et al., Nutrients, 2024 ↗</span></a>
       <a href="https://amscd.termedia.pl/Direct-evidence-of-hydrogen-absorption-from-the-skin-a-pig-study,165963,0,2.html" target="_blank" rel="noopener">Vodík vstrebaný pokožkou počas kúpeľa<span>Arch Med Sci Civil Dis, 2023 (štúdia na zvieratách) ↗</span></a>
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10816294/" target="_blank" rel="noopener">Vodíková voda: systematický prehľad<span>NIH / PMC ↗</span></a>
       </div>

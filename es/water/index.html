@@ -295,6 +295,20 @@ section[id]{scroll-margin-top:var(--navh)}
 .why-more{margin-top:26px;color:var(--mute-d);font-size:18px}
 
 /* 4 · hydrogen basics */
+.h2-studies{margin-top:64px}
+.h2-st-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px 32px;flex-wrap:wrap}
+.h2-st-head h3{font-size:clamp(30px,3vw,40px)}
+.h2-st-head p{color:var(--mute-d);font-size:17px}
+.h2-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:28px}
+.h2-st > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35);display:flex;flex-direction:column}
+.h2-st .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
+.h2-st h4{margin:6px 0 12px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2vw,28px);line-height:1.1}
+.h2-st ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.h2-st li{position:relative;padding-left:18px;font-size:16px;line-height:1.5;color:var(--ivory)}
+.h2-st li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--aqua)}
+.h2-st .meta{margin-top:auto;padding-top:16px;font-size:13px;letter-spacing:.02em;color:var(--mute-d)}
+@media (max-width:1100px){.h2-st{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.h2-st{grid-template-columns:1fr}}
 .h2-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
 .h2-cards > div{padding-top:18px;border-top:1px solid rgba(159,199,210,.35)}
 .h2-cards .n{font-family:var(--display);font-size:22px;color:var(--aqua)}
@@ -558,6 +572,18 @@ section[id]{scroll-margin-top:var(--navh)}
 <circle cx="335" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="415" cy="250" r="44" stroke="#121813" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><text x="335" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text><text x="415" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="48" fill="#121813">H</text>
 <text x="150" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂O</text><text x="375" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#121813">H₂</text></svg></div>
     </div>
+    <div class="h2-studies">
+      <div class="h2-st-head"><h3 class="rv">Lo que mostraron los estudios</h3><p class="rv">Estudios piloto y clínicos, la mayoría con 10 a 50 participantes.</p></div>
+      <div class="h2-st">
+        <div class="rv"><span class="n">01</span><h4>Metabolismo y estrés oxidativo</h4><ul><li>Más enzima antioxidante propia, la SOD</li><li>Menos marcadores de estrés oxidativo en la sangre</li><li>Más colesterol HDL, el «bueno»</li></ul><p class="meta">20 personas · 1,5–2 l al día · 8 semanas · Nakao 2010</p></div>
+        <div class="rv"><span class="n">02</span><h4>Ácido úrico</h4><ul><li>Menos ácido úrico en sangre tras 8 semanas</li><li>Un efecto mayor con la dosis más alta</li></ul><p class="meta">100 pacientes · hasta 1 l al día · con placebo · 2024</p></div>
+        <div class="rv"><span class="n">03</span><h4>Deporte y fatiga muscular</h4><ul><li>El lactato no subió tras un esfuerzo intenso</li><li>Menos pérdida de fuerza muscular por la fatiga</li></ul><p class="meta">10 futbolistas · antes del ejercicio · doble ciego · Aoki 2012</p></div>
+        <div class="rv"><span class="n">04</span><h4>Recuperación tras el entrenamiento</h4><ul><li>Menos creatina quinasa, marcador de daño muscular</li><li>Menos agujetas</li><li>Un salto más alto durante la recuperación</li></ul><p class="meta">12 nadadores de élite · doble ciego · Sládečková 2024</p></div>
+        <div class="rv"><span class="n">05</span><h4>COVID persistente</h4><ul><li>Menos fatiga crónica</li><li>Mejor resistencia y fuerza en las piernas</li><li>Mejor sueño en quienes dormían mal</li></ul><p class="meta">32 pacientes · 2 × 500 ml al día · 14 días · Tan 2024</p></div>
+        <div class="rv"><span class="n">06</span><h4>Durante la radioterapia</h4><ul><li>Menos estrés oxidativo causado por la radiación</li><li>Una calidad de vida claramente mejor durante el tratamiento</li><li>El tratamiento en sí funcionó igual de bien</li></ul><p class="meta">49 pacientes · 6 semanas · con placebo · Kang 2011</p></div>
+        <div class="rv"><span class="n">07</span><h4>Artritis reumatoide</h4><ul><li>Menos estrés oxidativo y menor actividad de la enfermedad</li><li>Los 5 pacientes en fase temprana alcanzaron la remisión</li></ul><p class="meta">20 pacientes · 530 ml al día · 2 × 4 semanas · Ishibashi 2012</p></div>
+      </div>
+    </div>
     <div class="h2-cards">
       <div class="rv"><span class="n">01</span><h3>La molécula más pequeña</h3><p>Con unos 0,3 nanómetros, el H₂ se mueve libremente por el agua y por los tejidos y membranas celulares del cuerpo.</p></div>
       <div class="rv"><span class="n">02</span><h3>Escapa rápido</h3><p>En el agua con hidrógeno convencional, la mayor parte del H₂ desaparece unos 20 minutos después de abrirla, mucho antes de beberla.</p></div>
@@ -700,6 +726,13 @@ section[id]{scroll-margin-top:var(--navh)}
       <a href="https://pubmed.ncbi.nlm.nih.gov/34202183/" target="_blank" rel="noopener">Fascia e hialuronano<span>PubMed ↗</span></a>
       <a href="https://www.nobelprize.org/prizes/chemistry/2003/summary/" target="_blank" rel="noopener">Acuaporinas, los canales de agua de la célula<span>Premio Nobel de Química 2003 ↗</span></a>
       <a href="https://www.nature.com/articles/nm1577" target="_blank" rel="noopener">El H₂ como antioxidante selectivo<span>Nature Medicine, 2007 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2831093/" target="_blank" rel="noopener">Agua con hidrógeno y síndrome metabólico<span>Nakao et al., J Clin Biochem Nutr, 2010 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3395574/" target="_blank" rel="noopener">Agua con hidrógeno y fatiga muscular<span>Aoki et al., Med Gas Res, 2012 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3231938/" target="_blank" rel="noopener">Agua con hidrógeno durante la radioterapia<span>Kang et al., Med Gas Res, 2011 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3563451/" target="_blank" rel="noopener">Agua con hidrógeno y artritis reumatoide<span>Ishibashi et al., Med Gas Res, 2012 ↗</span></a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11385766/" target="_blank" rel="noopener">Agua con hidrógeno y ácido úrico<span>PMC, 2024 ↗</span></a>
+      <a href="https://www.frontiersin.org/articles/10.3389/fphys.2024.1321160/full" target="_blank" rel="noopener">Agua con hidrógeno y recuperación de nadadores de élite<span>Sládečková et al., Front Physiol, 2024 ↗</span></a>
+      <a href="https://www.mdpi.com/2072-6643/16/10/1529" target="_blank" rel="noopener">Agua con hidrógeno y COVID persistente<span>Tan et al., Nutrients, 2024 ↗</span></a>
       <a href="https://amscd.termedia.pl/Direct-evidence-of-hydrogen-absorption-from-the-skin-a-pig-study,165963,0,2.html" target="_blank" rel="noopener">Hidrógeno absorbido por la piel en un baño<span>Arch Med Sci Civil Dis, 2023 (estudio en animales) ↗</span></a>
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10816294/" target="_blank" rel="noopener">Agua con hidrógeno: una revisión sistemática<span>NIH / PMC ↗</span></a>
       </div>
