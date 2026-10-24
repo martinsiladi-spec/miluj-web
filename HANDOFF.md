@@ -209,3 +209,11 @@ Spraviť až keď budú hotové všetky podstránky.
    - obrázok `sc2_salt` vymenený za sypajúcu sa minerálnu soľ (Higgsfield 9ea4ee39).
 5. Ponúknuté a neurobené: prelet celým areálom (skica → 3D → realita).
 6. Neskôr možno: investorská prezentácia namiesto formulára; Chladni / frekvencie k izbám.
+
+## Výkon (24. 10.)
+- Merané Lighthouse a vlastným testom plynulosti (scroll na simulovanom slabšom telefóne, CPU ×4). Skripty nie sú v repe; postup: lokálny `python3 -m http.server`, Lighthouse 12, Playwright.
+- Videá na úvode sa nesťahujú pri štarte: `film.mp4` až po udalosti `load`, `crowd.mp4` až keď je sekcia misie do 2 obrazoviek.
+- Slova okolo domu (`buildRings`) sa merajú až keď sa blíži sekcia `#grounds`.
+- Hlavná slučka úvodu preskakuje sekcie ďaleko od obrazovky a CSS premenné zapisuje len pri zmene.
+- Plátna (canvas) na mobile (šírka < 700 px) kreslia v rozlíšení 1,5× namiesto 2×.
+- Podstránka voda: postava v animácii (`assets/j_body.webp`, 768 × 1152, čierne pozadie) sa načíta až pri priblížení a jej čierne pozadie sa po kúskoch premení na priehľadnosť; vinetácia okrajov animácie je CSS (`.j-canvas::after`, jednotky `cqmin`), nie kreslenie v každom snímku.

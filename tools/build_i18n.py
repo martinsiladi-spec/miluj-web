@@ -25,7 +25,7 @@ SUBSTRINGS_EN = ["p[2] + ' at MILUJ'", '} of 08: ${', 'alt="${c[1]} at MILUJ"'] 
 IGNORE = {'(prefers-reduced-motion: reduce)', '(hover: hover) and (pointer: fine)', 'POST', 'Content-Type', 'Accept', 'send failed',
           '"Noto Serif Armenian", Sylfaen, "Arial Unicode MS", serif', '500 22px Jost, sans-serif', 'MILUJ Sanctuary · new investor request',
           '0110 MILUJ 1001 ✦ 0101 LOVE 1100 ◇ 0011 LIGHT 1010 △ 0111 HEART 1001 ○ 1101 TRUTH 0100 ', 'Vinyasa', 'Breathwork', 'Gene Keys',
-          'IntersectionObserver', 'Nature Medicine', 'Nanomedicine', 'EZ', 'arXiv ↗', '-45% 0px -50% 0px', '0px 0px -8% 0px'}
+          'IntersectionObserver', 'Nature Medicine', 'Nanomedicine', 'EZ', 'arXiv ↗', '-45% 0px -50% 0px', '0px 0px -8% 0px', '150% 0px', '200% 0px'}
 SKIP_TEXT = re.compile(r'^@@NOTE[\d\s@NOTE]*@@$|^\d+ (min|h)$|^[\d\s.,:%·€→↗×–+-]*$|^MILUJ( Sanctuary| Bali)?$|^(EN|SK|ES)$'
                        r'|^(H|O|H₂|H₂O|EZ|C)$|^H₂ \+ 2 •OH → 2 H₂O$|^≈ 20 min$|^[A-Z][\w .,/]*↗$|^Nature Medicine, 2007 ↗$')
 

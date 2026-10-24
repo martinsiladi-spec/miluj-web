@@ -905,7 +905,9 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     for (let i = 0; i < 700; i++) { const an = Math.random() * TAU, rr = Math.pow(Math.random(), .55) * 1300, sz = Math.max(1, (.8 + Math.random() * 1.8) * q); x.globalAlpha = (.15 + Math.random() * .6) * (1 - rr / 1370); x.fillRect(px / 2 + Math.cos(an) * rr * q, px / 2 + Math.sin(an) * rr * q, sz, sz); }
     rwReady = true;
   };
-  document.fonts.load(`400 20px ${HYF}`).catch(() => {}).then(() => { RINGS = buildRings(); rwInit(); });
+  { const gio = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; gio.disconnect();
+      document.fonts.load(`400 20px ${HYF}`).catch(() => {}).then(() => { RINGS = buildRings(); rwInit(); }); }, {rootMargin: '150% 0px'});
+    gio.observe($('#grounds')); }
   // add the glyphs the scroll has revealed since last frame, or erase the arc it has taken back
   const rwSync = (w, rev, rMax) => {
     for (const Rg of RINGS) {
@@ -943,7 +945,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const CRYST = [[290,290],[778,292],[270,826],[832,826],[416,578],[540,165]];
   const CODE = '0110 MILUJ 1001 ✦ 0101 LOVE 1100 ◇ 0011 LIGHT 1010 △ 0111 HEART 1001 ○ 1101 TRUTH 0100 ';
   let tpShown = 0, tpVisible = false, lastLy = -2;
-  const sizeCanvas = () => { const d = Math.min(2, devicePixelRatio || 1), w = Math.round(cv.offsetWidth * d), h = Math.round(cv.offsetHeight * d); if (w === cv.width && h === cv.height) return; cv.width = w; cv.height = h; clearTimeout(rwTimer); rwTimer = setTimeout(rwInit, 250); };
+  const sizeCanvas = () => { const d = Math.min(innerWidth < 700 ? 1.5 : 2, devicePixelRatio || 1), w = Math.round(cv.offsetWidth * d), h = Math.round(cv.offsetHeight * d); if (w === cv.width && h === cv.height) return; cv.width = w; cv.height = h; clearTimeout(rwTimer); rwTimer = setTimeout(rwInit, 250); };
   sizeCanvas(); addEventListener('resize', sizeCanvas);
   const houseClip = () => { cx2.beginPath(); HOUSE.forEach((q, i) => i ? cx2.lineTo(q[0], q[1]) : cx2.moveTo(q[0], q[1])); cx2.closePath(); cx2.clip(); };
   const roomClip = () => { cx2.beginPath(); ROOM.forEach((p, i) => i ? cx2.lineTo(p[0], p[1]) : cx2.moveTo(p[0], p[1])); cx2.closePath(); cx2.clip(); };
@@ -1311,7 +1313,8 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     const direct = () => { v.src = url; v.load(); };
     try { fetch(url).then(r => r.ok ? r.blob() : Promise.reject(r.status)).then(b => { v.src = URL.createObjectURL(b); v.load(); }).catch(direct); } catch(e) { direct(); }
   };
-  loadScrub(cvid, d => { cDur = d; });
+  { const mio = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; mio.disconnect(); loadScrub(cvid, d => { cDur = d; }); }, {rootMargin: '200% 0px'});
+    mio.observe(mission); }
 
   /* enter animations (content is visible at rest; motion only plays when a block scrolls into view) */
   const once = new WeakSet();
@@ -1329,13 +1332,14 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const stages = [...film.querySelectorAll('.stage')];
   const bounds = [0, .165, .31, .79];
   let target = 0, shown = 0, dur = 0;
-  loadScrub(vid, d => { dur = d; });
+  { const go = () => (window.requestIdleCallback || setTimeout)(() => loadScrub(vid, d => { dur = d; }));
+    if (document.readyState === 'complete') go(); else addEventListener('load', go, {once: true}); }
   const unlock = () => { [vid, cvid].forEach(v => { const p = v.play(); if (p && p.then) p.then(() => v.pause()).catch(() => {}); }); window.removeEventListener('touchstart', unlock); };
   window.addEventListener('touchstart', unlock, {passive: true});
 
   /* scroll loop */
   let lastY = scrollY, vel = 0;
-  const tl = $('#tl'), tlItems = [...tl.querySelectorAll('div')], steps = $('#steps');
+  const journeyEl = $('#journey'), tl = $('#tl'), tlItems = [...tl.querySelectorAll('div')], steps = $('#steps');
   let lastT = performance.now();
   const loop = () => {
     const now = performance.now(), dt = Math.min(.1, (now - lastT) / 1000); lastT = now;
@@ -1344,8 +1348,9 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     // only touch the marquee when its speed really changes: setting playbackRate every frame repaints the page around it
     if (mqAnim && !reduce) { const pr = Math.round((1 + Math.min(vel / 6, 5)) * 20) / 20; if (pr !== mqAnim.playbackRate) mqAnim.playbackRate = pr; }
 
-    const fp = progress(film);
-    target = fp;
+    const fr = film.getBoundingClientRect();
+    if (fr.bottom > -innerHeight && fr.top < innerHeight * 2) {
+    target = progress(film);
     shown += (target - shown) * k;
     if (dur && Math.abs(vid.currentTime - shown * dur) > 1 / 30 && !vid.seeking) { try { vid.currentTime = shown * (dur - .05); } catch(e) {} }
     // text and sizes are written only when they change: replacing a text node every frame forces a repaint of the page
@@ -1353,6 +1358,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     const ft = String(Math.round(shown * 100)).padStart(2, '0') + ' %'; if (ftime.textContent !== ft) ftime.textContent = ft;
     let si = 0; bounds.forEach((b, i) => { if (shown >= b) si = i; });
     stages.forEach((s, i) => s.classList.toggle('on', i === si));
+    }
 
     const mr = mission.getBoundingClientRect();
     if (mr.bottom > -innerHeight && mr.top < innerHeight * 2) {
@@ -1364,7 +1370,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       const bi = cShown < .2 ? 0 : cShown < .48 ? 1 : cShown < .73 ? 2 : 3;
       if (bi !== lastBeat) { lastBeat = bi; beats.forEach((b, i) => b.classList.toggle('on', i === bi)); mUnit.textContent = units[bi]; }
       const h = Math.log(Math.max(n, 1)) / LMAX * 100;
-      mScale.style.setProperty('--h', h.toFixed(2) + '%');
+      const hv = h.toFixed(2) + '%'; if (mScale._h !== hv) { mScale._h = hv; mScale.style.setProperty('--h', hv); }
       scaleMarks.forEach(sp => sp.classList.toggle('on', n >= +sp.dataset.n * .98));
     }
 
@@ -1375,7 +1381,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
         scShown += (sp - scShown) * .14;
         const x = -scTravel * (1 - scShown);
         scTrack.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
-        scBar.style.setProperty('--w', (scShown * 100).toFixed(1) + '%');
+        const wv = (scShown * 100).toFixed(1) + '%'; if (scBar._w !== wv) { scBar._w = wv; scBar.style.setProperty('--w', wv); }
         let best = 0, bd = 1e9; const cx = innerWidth / 2;
         scCards.forEach((c, i) => { const r = c.getBoundingClientRect(); const d = Math.abs(r.left + r.width / 2 - cx); if (d < bd) { bd = d; best = i; } });
         scCards.forEach((c, i) => c.classList.toggle('on', i === best));
@@ -1393,13 +1399,16 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
     const tdr = tPin.getBoundingClientRect();
     if (tdr.bottom > -innerHeight && tdr.top < innerHeight * 2) tdFx(progress(tPin), k);
 
-    const jp = progress($('#journey'));
-    const fillP = clamp(jp * 1.15, 0, 1);
-    tl.style.setProperty('--p', (fillP * 100).toFixed(1) + '%');
-    tlItems.forEach((d, i) => d.classList.toggle('on', fillP >= i / (tlItems.length - 1) - .02));
-
+    const jr = journeyEl.getBoundingClientRect();
+    if (jr.bottom > -innerHeight && jr.top < innerHeight * 2) {
+      const fillP = clamp(progress(journeyEl) * 1.15, 0, 1), pv = (fillP * 100).toFixed(1) + '%';
+      if (tl._p !== pv) { tl._p = pv; tl.style.setProperty('--p', pv); tlItems.forEach((d, i) => d.classList.toggle('on', fillP >= i / (tlItems.length - 1) - .02)); }
+    }
     const sr = steps.getBoundingClientRect();
-    steps.style.setProperty('--p', (clamp((innerHeight * .85 - sr.top) / (innerHeight * .5), 0, 1) * 100).toFixed(1) + '%');
+    if (sr.bottom > -innerHeight && sr.top < innerHeight * 2) {
+      const sv = (clamp((innerHeight * .85 - sr.top) / (innerHeight * .5), 0, 1) * 100).toFixed(1) + '%';
+      if (steps._p !== sv) { steps._p = sv; steps.style.setProperty('--p', sv); }
+    }
 
     requestAnimationFrame(loop);
   };
