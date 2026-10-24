@@ -182,7 +182,7 @@ Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · su
 ## 8. Doména: prepnutie z ChatGPT Sites na GitHub Pages (spustené 24. 10.)
 
 **V repe hotové 24. 10.:** `CNAME`, `hreflang` a `og:image` s plnou adresou `https://miluj.julimvision.com/…`, presmerovania starých adres, `404.html`. Od tejto chvíle `martinsiladi-spec.github.io/miluj-web/` presmeruje na `miluj.julimvision.com`.
-**Na Martinovi:** kroky 2–4 nižšie (WEDOS a GitHub Settings → Pages).
+**24. 10. večer:** DNS vo WEDOS prepnuté (zóna 2026102402, `miluj CNAME martinsiladi-spec.github.io`, ChatGPT TXT zmazané). Web beží na `http://miluj.julimvision.com/` vo všetkých jazykoch, presmerovania aj 404 fungujú. **Zostáva:** po vydaní certifikátu zaškrtnúť **Enforce HTTPS** v GitHub → Settings → Pages.
 
 **DNS je vo WEDOS (`julimvision.com`). Dnes:**
 - `miluj CNAME custom-domains.chatgpt.site`;
@@ -201,7 +201,7 @@ Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · su
 
 1. ~~Prerobiť `/temple-houses`~~: Martin 23. 10. rozhodol, že **podstránku Temple Houses zatiaľ nerobíme**, stačí sekcia Grounds na úvodnej stránke.
 2. ~~SK/ES verzie úvodnej stránky~~: hotové 23. 10. (generátor `tools/build_i18n.py`). Podstránka `/water` preložená tiež (23. 10. večer).
-3. **Prepnúť doménu** (bod 8): repo pripravené 24. 10., čaká sa na zmenu DNS vo WEDOS a Enforce HTTPS.
+3. **Doména prepnutá** 24. 10. (bod 8); zostáva Enforce HTTPS po vydaní certifikátu.
 4. Odpovede od Martina (23. 10., zapracované na webe):
    - **všetkých 22 domov sú Temple Houses**, každý s iným zameraním na liečenie;
    - **bazén** je zásobený vodou systému, jeho časť je vodíková, liečenie prebieha aj cez pokožku pri pobyte v bazéne;
