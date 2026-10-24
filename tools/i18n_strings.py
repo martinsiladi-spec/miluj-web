@@ -156,8 +156,6 @@ T = [
 ("06:00 · morning activation", "06:00 · ranná aktivácia", "06:00 · activación matinal"),
 ("19:00 · evening softening", "19:00 · večerné stíšenie", "19:00 · suavidad vespertina"),
 ("23:00 · deep rest", "23:00 · hlboký odpočinok", "23:00 · descanso profundo"),
-("Lime plaster", "Vápenná omietka", "Revoque de cal"),
-("Rammed earth", "Dusaná hlina", "Tierra apisonada"),
 ("No steel in the walls", "Bez ocele v stenách", "Sin acero en los muros"),
 ("All six layers", "Všetkých šesť vrstiev", "Las seis capas"),
 ("One space. One field.", "Jeden priestor. Jedno pole.", "Un espacio. Un campo."),

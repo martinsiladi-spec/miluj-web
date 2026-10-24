@@ -985,8 +985,6 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
       cx2.beginPath(); [[242,44],[822,44],[884,872],[220,872]].forEach((q, i) => i ? cx2.lineTo(...q) : cx2.moveTo(...q)); cx2.closePath(); cx2.stroke();
       cx2.shadowBlur = 0;
       const call = (x, y, tx, ty, txt) => { cx2.strokeStyle = 'rgba(227,204,148,.9)'; cx2.lineWidth = 1.6; cx2.beginPath(); cx2.moveTo(x, y); cx2.lineTo(tx, ty); cx2.stroke(); cx2.fillStyle = '#E3CC94'; cx2.beginPath(); cx2.arc(x, y, 5, 0, 7); cx2.fill(); cx2.font = '500 22px Jost, sans-serif'; cx2.fillStyle = '#F5EFE2'; cx2.fillText(txt, tx + (tx > x ? 8 : -8 - cx2.measureText(txt).width), ty + 7); };
-      call(812, 300, 930, 300, 'Lime plaster');
-      call(240, 520, 168, 520, 'Rammed earth');
       call(540, 58, 540, 16, '');
       cx2.font = '500 22px Jost, sans-serif'; cx2.fillStyle = '#F5EFE2'; cx2.fillText('No steel in the walls', 552, 24);
       cx2.restore();
