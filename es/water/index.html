@@ -118,6 +118,11 @@ section p:not(.label){max-width:65ch}
 .o-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
 .order h2{font-size:var(--fs-h2)}
 .o-head .lead{color:var(--mute-d)}
+.o-head.o-stack{grid-template-columns:1fr;align-items:start;gap:32px}
+.o-photo{margin:0;border-radius:18px;overflow:hidden}
+.o-photo img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 45%}
+.o-stack .lead{font-size:20px;line-height:1.6;max-width:62ch}
+@media (max-width:700px){.o-photo img{aspect-ratio:4/3}.o-stack .lead{font-size:17px}.o-head.o-stack{gap:22px}}
 .o-group{margin-top:110px;padding-bottom:20px;max-width:760px}
 .o-group .label{font-size:17px}
 .o-intro{margin-top:14px;font-family:var(--display);font-size:clamp(26px,2.6vw,34px);line-height:1.25;color:var(--ivory)}
@@ -508,11 +513,12 @@ section[id]{scroll-margin-top:var(--navh)}
 
 <section class="order" id="order">
   <div class="wrap">
-    <div class="o-head">
+    <div class="o-head o-stack">
       <div>
         <p class="step-tag rv">Paso 1 · Estructuración</p>
         <h2 class="rv">Agua estructurada que se recoge a sí misma.</h2>
       </div>
+      <figure class="o-photo rv"><img src="../../assets/w5_drop.webp" alt="Una gota de agua cristalina sobre una hoja verde, en la que se reflejan los árboles y el sol de la mañana" loading="lazy"></figure>
       <p class="lead rv">El agua estructurada sigue llena de misterios. Las investigaciones han confirmado que se ordena sola junto a las superficies que toca, e incluso se mueve por sí misma. En otros estudios, esta agua llegó también a transmitir información.</p>
     </div>
 

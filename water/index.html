@@ -118,6 +118,11 @@ section p:not(.label){max-width:65ch}
 .o-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
 .order h2{font-size:var(--fs-h2)}
 .o-head .lead{color:var(--mute-d)}
+.o-head.o-stack{grid-template-columns:1fr;align-items:start;gap:32px}
+.o-photo{margin:0;border-radius:18px;overflow:hidden}
+.o-photo img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 45%}
+.o-stack .lead{font-size:20px;line-height:1.6;max-width:62ch}
+@media (max-width:700px){.o-photo img{aspect-ratio:4/3}.o-stack .lead{font-size:17px}.o-head.o-stack{gap:22px}}
 .o-group{margin-top:110px;padding-bottom:20px;max-width:760px}
 .o-group .label{font-size:17px}
 .o-intro{margin-top:14px;font-family:var(--display);font-size:clamp(26px,2.6vw,34px);line-height:1.25;color:var(--ivory)}
@@ -508,11 +513,12 @@ section[id]{scroll-margin-top:var(--navh)}
 
 <section class="order" id="order">
   <div class="wrap">
-    <div class="o-head">
+    <div class="o-head o-stack">
       <div>
         <p class="step-tag rv">Step 1 · Structuring</p>
         <h2 class="rv">Structured water that gathers itself.</h2>
       </div>
+      <figure class="o-photo rv"><img src="../assets/w5_drop.webp" alt="A clear drop of water resting on a green leaf, reflecting the trees and the morning sun" loading="lazy"></figure>
       <p class="lead rv">Structured water is still full of mysteries. Research has confirmed that it orders itself at the surfaces it touches, and even moves on its own. In other studies, such water was also able to carry information.</p>
     </div>
 
