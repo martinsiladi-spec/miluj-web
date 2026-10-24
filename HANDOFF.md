@@ -43,7 +43,7 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 - `tools/i18n_strings.py` (úvodná stránka) a `tools/i18n_water.py` (podstránka voda): preklady, riadok = (angličtina, **slovenčina presne ako na stránke = kľúč**, španielčina). Ak sa rovnaký slovenský text na jednej stránke prekladá dvoma spôsobmi, treba slovenčinu rozlíšiť (napr. „Pure“ = „Prečistená“, „Clean“ = „Čistá“).
 - `tools/build_i18n.py`: generátor. Po každej zmene slovenského textu doplniť/upraviť riadok (EN a ES preložiť kvalitne, nie strojovo) a spustiť `python3 tools/build_i18n.py`. Skript vypíše všetko, čo nie je preložené (a skončí chybou), aj riadky, ktoré už na stránke nie sú.
 - `tools/jsstrings.py`: pomocník, vypíše texty zo skriptu stránky.
-- Súbor `CNAME` zatiaľ **nie je**. Pridá sa až pri prepnutí domény (bod 8).
+- `CNAME` (`miluj.julimvision.com`, od 24. 10.), `404.html` (presmeruje na úvod v jazyku adresy) a `temple-houses/`, `sk/temple-houses/`, `es/temple-houses/` (staré adresy z ChatGPT Sites → sekcia `#grounds`).
 
 **Ako pokračovať v novej relácii**
 1. Pripojiť repo: `add_repo` (owner `martinsiladi-spec`, repo `miluj-web`, access `push`) → naklonovať → `register_repo_root`. Claude GitHub App je u Martina nainštalovaná.
@@ -56,7 +56,7 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
    - správy písať po slovensky;
    - `git push origin HEAD:main`;
    - GitHub Pages sa nasadí do ~1 min.
-4. Overiť naživo v paneli prehliadača: najprv `request_access` na `https://martinsiladi-spec.github.io`, potom `navigate`. Workspace sám na github.io nedosiahne.
+4. Overiť naživo v paneli prehliadača: najprv `request_access` na `https://miluj.julimvision.com` (po prepnutí DNS; dovtedy github.io presmeruje na starý web), potom `navigate`. Workspace sám na github.io nedosiahne.
 
 ## 3. Úvodná stránka (`index.html`): poradie sekcií
 
@@ -179,9 +179,10 @@ Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · su
   - Chladniho obrazce a frekvencie by sa hodili skôr k izbám na úvodnej stránke.
 - **Stránka dianasiswartonova.cz** blokuje automatické čítanie (robots). Ak ju chceme použiť, Martin musí vložiť text.
 
-## 8. Doména: prepnutie z ChatGPT Sites na GitHub Pages (zatiaľ NEROBIŤ)
+## 8. Doména: prepnutie z ChatGPT Sites na GitHub Pages (spustené 24. 10.)
 
-Spraviť až keď budú hotové všetky podstránky.
+**V repe hotové 24. 10.:** `CNAME`, `hreflang` a `og:image` s plnou adresou `https://miluj.julimvision.com/…`, presmerovania starých adres, `404.html`. Od tejto chvíle `martinsiladi-spec.github.io/miluj-web/` presmeruje na `miluj.julimvision.com`.
+**Na Martinovi:** kroky 2–4 nižšie (WEDOS a GitHub Settings → Pages).
 
 **DNS je vo WEDOS (`julimvision.com`). Dnes:**
 - `miluj CNAME custom-domains.chatgpt.site`;
@@ -193,14 +194,14 @@ Spraviť až keď budú hotové všetky podstránky.
 2. Vo WEDOS zmeniť `miluj CNAME` na `martinsiladi-spec.github.io`.
 3. Zmazať oba ChatGPT TXT záznamy.
 4. Po overení zapnúť v GitHube „Enforce HTTPS“.
-5. Zmeniť `hreflang` adresy v `sk/index.html` aj `sk/water/index.html` na novú doménu a spustiť `python3 tools/build_i18n.py`.
+5. ~~Zmeniť `hreflang` adresy~~ (hotové 24. 10.).
 6. Pozor na relatívne cesty: dnes web beží pod `/miluj-web/`, po prepnutí v koreni domény. Odkazy sú relatívne (`water/`, `../`, `assets/`), takže fungujú v oboch prípadoch.
 
 ## 9. Otvorené úlohy
 
 1. ~~Prerobiť `/temple-houses`~~: Martin 23. 10. rozhodol, že **podstránku Temple Houses zatiaľ nerobíme**, stačí sekcia Grounds na úvodnej stránke.
 2. ~~SK/ES verzie úvodnej stránky~~: hotové 23. 10. (generátor `tools/build_i18n.py`). Podstránka `/water` preložená tiež (23. 10. večer).
-3. **Prepnúť doménu** (bod 8).
+3. **Prepnúť doménu** (bod 8): repo pripravené 24. 10., čaká sa na zmenu DNS vo WEDOS a Enforce HTTPS.
 4. Odpovede od Martina (23. 10., zapracované na webe):
    - **všetkých 22 domov sú Temple Houses**, každý s iným zameraním na liečenie;
    - **bazén** je zásobený vodou systému, jeho časť je vodíková, liečenie prebieha aj cez pokožku pri pobyte v bazéne;

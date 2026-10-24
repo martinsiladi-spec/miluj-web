@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MILUJ Sanctuary</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/x_logo_hero.webp">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px;background:#0B0E0C;color:#F5EFE2;font:300 17px/1.6 "Jost",system-ui,sans-serif}
+img{width:170px;margin:0 auto 28px;display:block}
+h1{font:400 clamp(34px,6vw,56px)/1.1 "Cormorant Garamond",Georgia,serif;margin:0 0 14px}
+p{margin:0 0 26px;color:rgba(245,239,226,.74)}
+a{display:inline-block;margin:4px 6px;padding:.8em 1.4em;border-radius:999px;border:1px solid rgba(245,239,226,.4);color:#F5EFE2;text-decoration:none}
+a:hover{background:#F5EFE2;color:#0B0E0C}
+</style>
+</head>
+<body>
+<main>
+<img src="/assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
+<h1 id="h">This page has moved.</h1>
+<p id="t">The MILUJ website has a new home.</p>
+<a href="/" lang="en">MILUJ · English</a><a href="/sk/" lang="sk">MILUJ · Slovensky</a><a href="/es/" lang="es">MILUJ · Español</a>
+</main>
+<script>
+(() => {
+  const p = location.pathname, lang = p.startsWith('/sk') ? 'sk' : p.startsWith('/es') ? 'es' : 'en';
+  const home = { en: '/', sk: '/sk/', es: '/es/' }[lang];
+  const water = /\/water\b/.test(p);
+  const msg = { en: ['This page has moved.', 'Taking you to the MILUJ website…'], sk: ['Táto stránka sa presťahovala.', 'Presmerujeme vás na web MILUJ…'], es: ['Esta página se ha trasladado.', 'Te llevamos a la web de MILUJ…'] }[lang];
+  document.documentElement.lang = lang; document.getElementById('h').textContent = msg[0]; document.getElementById('t').textContent = msg[1];
+  setTimeout(() => location.replace(home + (water ? 'water/' : '')), 2200);
+})();
+</script>
+</body>
+</html>
