@@ -1,7 +1,7 @@
-# Translations for the homepage (index.html → sk/index.html, es/index.html).
-# Each row: (English exactly as on the page, Slovak, Spanish).
-# HTML entities stay as they are written in index.html (e.g. "&amp;").
-# Edit the English page, then add or update the matching row here and run:  python3 tools/build_i18n.py
+# Translations for the homepage (sk/index.html is the source → index.html, es/index.html).
+# Each row: (English, Slovak exactly as on the Slovak page = the key, Spanish).
+# HTML entities stay as they are written in the page (e.g. "&amp;").
+# Edit the Slovak page, then add or update the matching row here and run:  python3 tools/build_i18n.py
 T = [
 # ---- head ----
 ("MILUJ Sanctuary · Healing &amp; Retreat Sanctuary in Bali", "MILUJ Sanctuary · Liečivé a retreatové útočisko na Bali", "MILUJ Sanctuary · Santuario de sanación y retiro en Bali"),

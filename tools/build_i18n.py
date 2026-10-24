@@ -1,13 +1,13 @@
-"""Build the Slovak and Spanish pages from the English ones.
+"""Build the English and Spanish pages from the Slovak ones.
 
     python3 tools/build_i18n.py
 
-The English pages are the only source:  index.html  and  water/index.html.
-This script writes  sk/index.html, sk/water/index.html, es/index.html, es/water/index.html:
-it translates every text listed in tools/i18n_strings.py and tools/i18n_water.py, points assets
-one folder further up, and sets the language switcher and <html lang>. It lists anything it could
-not translate (and exits with an error), so new English text is never silently left behind:
-add a row to the right file and run it again.
+The Slovak pages are the only source:  sk/index.html  and  sk/water/index.html  (edit only these).
+This script writes  index.html, water/index.html  (English, the site root)  and  es/index.html, es/water/index.html:
+it translates every text listed in tools/i18n_strings.py and tools/i18n_water.py, fixes the asset paths for the
+folder depth, and sets the language switcher and <html lang>. Each row there is (English, Slovak, Spanish);
+the Slovak text is the key and must match the Slovak page exactly. It lists anything it could not translate
+(and exits with an error), so new Slovak text is never silently left behind: add a row and run it again.
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -16,10 +16,12 @@ from i18n_water import T as T_WATER
 from jsstrings import scan, human
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LANGS = {'sk': 1, 'es': 2}
+SRC, KEY = 'sk', 1                       # source language and its column in the rows
+TARGETS = {'en': 0, 'es': 2}
 PAGES = ['', 'water/']                       # page folders, relative to the site root
 ATTRS = r'(alt|aria-label|content|title|placeholder)'
-SUBSTRINGS = ["p[2] + ' at MILUJ'", '} of 08: ${', 'alt="${c[1]} at MILUJ"']   # text inside longer JS templates
+SUBSTRINGS = []
+SUBSTRINGS_EN = ["p[2] + ' at MILUJ'", '} of 08: ${', 'alt="${c[1]} at MILUJ"']   # text inside longer JS templates
 IGNORE = {'(prefers-reduced-motion: reduce)', '(hover: hover) and (pointer: fine)', 'POST', 'Content-Type', 'Accept', 'send failed',
           '"Noto Serif Armenian", Sylfaen, "Arial Unicode MS", serif', '500 22px Jost, sans-serif', 'MILUJ Sanctuary · new investor request',
           '0110 MILUJ 1001 ✦ 0101 LOVE 1100 ◇ 0011 LIGHT 1010 △ 0111 HEART 1001 ○ 1101 TRUTH 0100 ', 'Vinyasa', 'Breathwork', 'Gene Keys',
@@ -70,10 +72,9 @@ def translate_js(js, d, missing):
     return ''.join(out)
 
 def switcher(s, lang, page):
-    up = '../' * (1 + page.count('/'))            # from /<lang>/<page> back to the site root
-    href = {'en': up + page, lang: './'}
-    for other in LANGS:
-        if other != lang: href[other] = up + other + '/' + page
+    up = '../' * (page.count('/') + (lang != 'en'))   # from this page back to the site root (English lives at the root)
+    href = {code: up + ('' if code == 'en' else code + '/') + page for code in ('en', 'sk', 'es')}
+    href[lang] = './'
     def link(m):
         code = m.group(1)
         cur = ' aria-current="true"' if code == lang else ''
@@ -81,7 +82,7 @@ def switcher(s, lang, page):
     return re.sub(r'<a href="[^"]*" hreflang="(en|sk|es)" lang="(?:en|sk|es)"(?: aria-current="true")?>(?:EN|SK|ES)</a>', link, s)
 
 def build(lang, page, d):
-    src = os.path.join(ROOT, page, 'index.html')
+    src = os.path.join(ROOT, SRC, page, 'index.html')
     s = open(src, encoding='utf-8').read()
     notes = re.findall(r'<aside class="note.*?</aside>', s, re.S)   # hidden working notes stay as they are
     for i, n in enumerate(notes): s = s.replace(n, f'@@NOTE{i}@@')
@@ -92,24 +93,28 @@ def build(lang, page, d):
         elif not p.startswith('<style'): parts[i] = translate_html(p, d, missing)
     s = ''.join(parts)
     for i, n in enumerate(notes): s = s.replace(f'@@NOTE{i}@@', n)
-    s = re.sub(r'(["\'`(])((?:\.\./)*)assets/', r'\1../\2assets/', s)   # one folder deeper: assets one more level up
-    s = s.replace('<html lang="en">', f'<html lang="{lang}">', 1)
+    if lang == 'en': s = re.sub(r'(["\'`(])\.\./((?:\.\./)*)assets/', r'\1\2assets/', s)   # English sits one folder higher
+    s = s.replace(f'<html lang="{SRC}">', f'<html lang="{lang}">', 1)
     s = switcher(s, lang, page)
-    out = os.path.join(ROOT, lang, page, 'index.html')
+    out = os.path.join(ROOT, '' if lang == 'en' else lang, page, 'index.html')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, 'w', encoding='utf-8').write(s)
     return out, sorted(missing)
 
 if __name__ == '__main__':
     ok = True
-    rows = T_HOME + T_WATER
-    for lang, col in LANGS.items():
-        d = {r[0]: r[col] for r in rows}
+    for lang, col in TARGETS.items():
         for page in PAGES:
+            # the page's own rows win over the other file's, so the same Slovak text may read differently on each page
+            rows = (T_WATER + T_HOME) if page == '' else (T_HOME + T_WATER)
+            d = {r[KEY]: r[col] for r in rows}
+            en2sk = {r[0]: r[KEY] for r in rows}
+            for k in SUBSTRINGS_EN: d[en2sk.get(k, k)] = {r[0]: r[col] for r in rows}.get(k, k)
+            SUBSTRINGS[:] = [en2sk.get(k, k) for k in SUBSTRINGS_EN]
             out, missing = build(lang, page, d)
             print(os.path.relpath(out, ROOT), 'written')
             for m in missing: print(f'  not translated: {m[:110]}'); ok = False
-    sources = ''.join(open(os.path.join(ROOT, p, 'index.html'), encoding='utf-8').read() for p in PAGES).replace("\\'", "'")
-    for r in rows:
-        if r[0] not in sources: print(f'unused row (no longer on any page): {r[0][:100]}')
+    sources = ''.join(open(os.path.join(ROOT, SRC, p, 'index.html'), encoding='utf-8').read() for p in PAGES).replace("\\'", "'")
+    for r in T_HOME + T_WATER:
+        if r[KEY] not in sources: print(f'unused row (no longer on any page): {r[KEY][:100]}')
     sys.exit(0 if ok else 1)

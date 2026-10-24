@@ -7,7 +7,7 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 ## 1. Kontext
 
 - **Klient:** Martin (martin.siladi@gmail.com).
-  - Komunikácia **po slovensky**, obsah webu **po anglicky**.
+  - Komunikácia **po slovensky**. **Od 24. 10. je smerodajná slovenská verzia webu**; angličtina a španielčina sa z nej prekladajú.
   - Starý web má aj verzie `/sk` a `/es`.
 - **Projekt:** MILUJ Sanctuary, healing & retreat centrum na Bali (Karangasem):
   - Ascension Pyramid a podzemná zvuková sála;
@@ -38,9 +38,10 @@ Tento dokument stačí na pokračovanie v novej relácii. **Zdroj pravdy je GitH
 - `water/index.html`: podstránka /water; assety sa načítajú cez `../assets/`.
 - `assets/`: všetky obrázky a videá (webp/mp4, spolu ~15 MB).
 - `.nojekyll`, `README.md`, `HANDOFF.md` (tento súbor).
-- `sk/index.html`, `sk/water/index.html`, `es/index.html`, `es/water/index.html`: **slovenská a španielska verzia oboch stránok. Needitovať ručne, generujú sa** z anglických `index.html` a `water/index.html`.
-- `tools/i18n_strings.py` (úvodná stránka) a `tools/i18n_water.py` (podstránka voda): preklady, riadok = angličtina presne ako na stránke, slovenčina, španielčina.
-- `tools/build_i18n.py`: generátor. Po každej zmene anglického textu doplniť/upraviť riadok v príslušnom súbore prekladov a spustiť `python3 tools/build_i18n.py`. Skript vypíše všetko, čo nie je preložené (a skončí chybou), aj riadky, ktoré už na stránke nie sú.
+- **`sk/index.html` a `sk/water/index.html` sú zdroj (od 24. 10.).** Všetky zmeny textu aj kódu sa robia **len tu**.
+- `index.html`, `water/index.html` (angličtina, koreň webu) a `es/index.html`, `es/water/index.html` sa **generujú zo slovenčiny. Needitovať ručne.**
+- `tools/i18n_strings.py` (úvodná stránka) a `tools/i18n_water.py` (podstránka voda): preklady, riadok = (angličtina, **slovenčina presne ako na stránke = kľúč**, španielčina). Ak sa rovnaký slovenský text na jednej stránke prekladá dvoma spôsobmi, treba slovenčinu rozlíšiť (napr. „Pure“ = „Prečistená“, „Clean“ = „Čistá“).
+- `tools/build_i18n.py`: generátor. Po každej zmene slovenského textu doplniť/upraviť riadok (EN a ES preložiť kvalitne, nie strojovo) a spustiť `python3 tools/build_i18n.py`. Skript vypíše všetko, čo nie je preložené (a skončí chybou), aj riadky, ktoré už na stránke nie sú.
 - `tools/jsstrings.py`: pomocník, vypíše texty zo skriptu stránky.
 - Súbor `CNAME` zatiaľ **nie je**. Pridá sa až pri prepnutí domény (bod 8).
 
@@ -192,7 +193,7 @@ Spraviť až keď budú hotové všetky podstránky.
 2. Vo WEDOS zmeniť `miluj CNAME` na `martinsiladi-spec.github.io`.
 3. Zmazať oba ChatGPT TXT záznamy.
 4. Po overení zapnúť v GitHube „Enforce HTTPS“.
-5. Zmeniť `hreflang` adresy v `index.html` aj `water/index.html` na novú doménu a spustiť `python3 tools/build_i18n.py`.
+5. Zmeniť `hreflang` adresy v `sk/index.html` aj `sk/water/index.html` na novú doménu a spustiť `python3 tools/build_i18n.py`.
 6. Pozor na relatívne cesty: dnes web beží pod `/miluj-web/`, po prepnutí v koreni domény. Odkazy sú relatívne (`water/`, `../`, `assets/`), takže fungujú v oboch prípadoch.
 
 ## 9. Otvorené úlohy

@@ -1,5 +1,5 @@
-# Translations for the water page (water/index.html → sk/water/, es/water/).
-# Each row: (English exactly as on the page, Slovak, Spanish). Rows shared with the homepage live in i18n_strings.py.
+# Translations for the water page (sk/water/index.html is the source → water/, es/water/).
+# Each row: (English, Slovak exactly as on the Slovak page = the key, Spanish). Rows shared with the homepage live in i18n_strings.py.
 T = [
 # ---- head ----
 ("Living Water · MILUJ Sanctuary", "Živá voda · MILUJ Sanctuary", "Agua viva · MILUJ Sanctuary"),
@@ -234,7 +234,7 @@ T = [
 ("Order and carrier in one glass: structured, mineral-balanced water, saturated with molecular hydrogen and kept stable by a patented retention system.",
  "Poriadok aj nosič v jednom pohári: štruktúrovaná, minerálne vyvážená voda, nasýtená molekulárnym vodíkom a stabilizovaná patentovaným retenčným systémom.",
  "Orden y portador en un solo vaso: agua estructurada y con equilibrio mineral, saturada de hidrógeno molecular y estabilizada por un sistema de retención patentado."),
-("Pure", "Čistá", "Pura"),
+("Pure", "Prečistená", "Pura"),
 ("Filtered and mineral-balanced: nothing in the water that should not be there.", "Filtrovaná a minerálne vyvážená: vo vode nie je nič, čo tam nemá byť.", "Filtrada y con equilibrio mineral: nada en el agua que no deba estar."),
 ("Prepared through vortex movement in the spirit of Schauberger, to restore the order of a living spring.", "Pripravená vírivým pohybom v duchu Schaubergera, aby sa obnovil poriadok živého prameňa.", "Preparada con movimiento en vórtice, en el espíritu de Schauberger, para devolverle el orden de un manantial vivo."),
 ("Hydrogen-saturated", "Nasýtená vodíkom", "Saturada de hidrógeno"),
