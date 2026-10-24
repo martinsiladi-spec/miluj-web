@@ -183,6 +183,7 @@ Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · su
 
 **V repe hotové 24. 10.:** `CNAME`, `hreflang` a `og:image` s plnou adresou `https://miluj.julimvision.com/…`, presmerovania starých adres, `404.html`. Od tejto chvíle `martinsiladi-spec.github.io/miluj-web/` presmeruje na `miluj.julimvision.com`.
 **24. 10. večer:** DNS vo WEDOS prepnuté (zóna 2026102402, `miluj CNAME martinsiladi-spec.github.io`, ChatGPT TXT zmazané). Web beží na `http://miluj.julimvision.com/` vo všetkých jazykoch, presmerovania aj 404 fungujú. **Zostáva:** po vydaní certifikátu zaškrtnúť **Enforce HTTPS** v GitHub → Settings → Pages.
+**Problém (24. 10., 23:40):** jeden DNS server WEDOS (odpovedá z IP `75.2.92.86`) stále posiela starú zónu `2026100302` (CNAME na ChatGPT), druhý (`45.138.106.1`) novú `2026102402`. Návštevníci náhodne vidia starý alebo nový web a GitHub nevie vydať certifikát. Martin má kontaktovať podporu WEDOS (vynútiť synchronizáciu zóny). Overenie: `dns.google/resolve?name=julimvision.com&type=SOA&cd=1` opakovane, porovnať serial a „Comment“. Starý web na ChatGPT Sites zatiaľ nevypínať.
 
 **DNS je vo WEDOS (`julimvision.com`). Dnes:**
 - `miluj CNAME custom-domains.chatgpt.site`;
