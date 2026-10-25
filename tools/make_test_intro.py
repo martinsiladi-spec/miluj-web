@@ -20,10 +20,13 @@ s = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n', '', s)
 # ---- CSS ----
 CSS = r'''
 /* ===== TEST: intro reveal + glass loading veil ===== */
-.hero h1 .w{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(.32em);animation:wIn 1.2s cubic-bezier(.23,1,.32,1) forwards}
+.hero h1 .w{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(.28em);animation:wIn 2.1s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes wIn{to{opacity:1;filter:blur(0);transform:none}}
-.hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.1s cubic-bezier(.23,1,.32,1) forwards}
-.hero p.lead{animation-delay:1.55s}.hero .ctas{animation-delay:1.95s}.hero .cue{animation-delay:2.5s}
+.hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.7s cubic-bezier(.22,1,.36,1) forwards}
+.hero p.lead{animation-delay:3.5s}.hero .ctas{animation-delay:4.3s}.hero .cue{animation-delay:5.1s}
+/* the pyramid is there from the first moment: a tiny inline preview, then the sharp photo fades in over it */
+.hero .bg::before{content:"";position:absolute;inset:-6%;background:#0B0E0C url(data:image/webp;base64,UklGRrABAABXRUJQVlA4IKQBAAAQCQCdASowABwAPrFGm0mnI6IhMAqo4BYJYgCdMsD1dZ5WGf9vG/4fYzo93Fp4ll9V+BjONBkMuf+/x2cRHwwOoKbv9mwATjVigL1v84J9eAAA/vlMX+8o4N5rKrVGlCmSwUuKiGyUFzDEma9HqlpJG4HJg0JkhQskR3RkrlVDi0WdBTneku5FYa69E0jyj+6fqDbXUgZpFtlZtH9Q2cePe4pZ3syH20sKtqz5cuWTyGwWtHD+OCj2cTB9HYeBbpSXgTzFgrrOnho1lvmpz0+DS85f2xGYqY0oG/xWl/Glj6FTdvlv6K0PS1R0PK4puRDP3AhN/jqCGnB8TsPP33JxWT3TmgX4HfrXzLEbR1s8gCY7YnazVmS2G2pIrBjzCLCBuF3zAZze/aV3jaU4Zt+JabMMdZaUz0XaWdNkHGLmgOmr8unLXg2ZO7d3YONSNWw6bl8ydipRpm+Q/4nP35d9jZt/1GueqN56+yftLi+F3+y8ed1gz/7+wAAHqr+J8mVLvZIiKv3zH04yFgosNn9C0bSVnhN+pE1NpFthqMVPymgOAAA=) center/cover;filter:blur(18px)}
+.hero .bg img{position:relative;opacity:0;transition:opacity 1.4s ease}.hero .bg img.in{opacity:1}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.hero h1 .w,.hero p.lead,.hero .ctas,.hero .cue{animation:none;opacity:1;filter:none;transform:none}}
 
@@ -51,11 +54,11 @@ rep('<style>body{margin:0}.note{display:none!important}</style>', '<style>' + CS
 # ---- hero headline: words reveal one by one ----
 m = re.search(r'<h1>(.*?)<em class="g">(.*?)</em></h1>', s)
 plain, gold = m.group(1).split(), m.group(2).split()
-d, parts = .35, []
+d, parts = .7, []
 for w in plain:
-    parts.append(f'<span class="w" style="animation-delay:{d:.2f}s">{w}</span>'); d += .16
-d += .12
-gold_html = ' '.join(f'<span class="w" style="animation-delay:{d + i * .2:.2f}s">{w}</span>' for i, w in enumerate(gold))
+    parts.append(f'<span class="w" style="animation-delay:{d:.2f}s">{w}</span>'); d += .38
+d += .3
+gold_html = ' '.join(f'<span class="w" style="animation-delay:{d + i * .45:.2f}s">{w}</span>' for i, w in enumerate(gold))
 s = s.replace(m.group(0), '<h1>' + ' '.join(parts) + ' <em class="g">' + gold_html + '</em></h1>', 1)
 
 # ---- glass veil inside the film and mission scenes ----
@@ -90,7 +93,8 @@ s = s.replace(old_load, new_load, 1)
 old_mio = s[s.index('  { const mio = new IntersectionObserver'):s.index('\n', s.index('    mio.observe(mission); }')) + 1]
 s = s.replace(old_mio, '', 1)
 old_go = s[s.index('  { const go = () => (window.requestIdleCallback'):s.index('\n', s.index("if (document.readyState === 'complete') go();")) + 1]
-s = s.replace(old_go, '''  /* TEST: start at once, film first, then the crowd (or earlier if the visitor is already close to it) */
+s = s.replace(old_go, '''  { const hi = document.querySelector('.hero .bg img'); const show = () => hi.classList.add('in'); if (hi.complete && hi.naturalWidth) show(); else { hi.addEventListener('load', show, { once: true }); hi.addEventListener('error', show, { once: true }); } }
+  /* TEST: start at once, film first, then the crowd (or earlier if the visitor is already close to it) */
   { let crowdStarted = false;
     const crowd = () => { if (crowdStarted) return; crowdStarted = true; loadScrub(cvid, d => { cDur = d; }, $('#crowdGlass')); };
     let filmStarted = false;

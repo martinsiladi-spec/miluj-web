@@ -567,10 +567,13 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 </style>
 <style>
 /* ===== TEST: intro reveal + glass loading veil ===== */
-.hero h1 .w{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(.32em);animation:wIn 1.2s cubic-bezier(.23,1,.32,1) forwards}
+.hero h1 .w{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(.28em);animation:wIn 2.1s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes wIn{to{opacity:1;filter:blur(0);transform:none}}
-.hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.1s cubic-bezier(.23,1,.32,1) forwards}
-.hero p.lead{animation-delay:1.55s}.hero .ctas{animation-delay:1.95s}.hero .cue{animation-delay:2.5s}
+.hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.7s cubic-bezier(.22,1,.36,1) forwards}
+.hero p.lead{animation-delay:3.5s}.hero .ctas{animation-delay:4.3s}.hero .cue{animation-delay:5.1s}
+/* the pyramid is there from the first moment: a tiny inline preview, then the sharp photo fades in over it */
+.hero .bg::before{content:"";position:absolute;inset:-6%;background:#0B0E0C url(data:image/webp;base64,UklGRrABAABXRUJQVlA4IKQBAAAQCQCdASowABwAPrFGm0mnI6IhMAqo4BYJYgCdMsD1dZ5WGf9vG/4fYzo93Fp4ll9V+BjONBkMuf+/x2cRHwwOoKbv9mwATjVigL1v84J9eAAA/vlMX+8o4N5rKrVGlCmSwUuKiGyUFzDEma9HqlpJG4HJg0JkhQskR3RkrlVDi0WdBTneku5FYa69E0jyj+6fqDbXUgZpFtlZtH9Q2cePe4pZ3syH20sKtqz5cuWTyGwWtHD+OCj2cTB9HYeBbpSXgTzFgrrOnho1lvmpz0+DS85f2xGYqY0oG/xWl/Glj6FTdvlv6K0PS1R0PK4puRDP3AhN/jqCGnB8TsPP33JxWT3TmgX4HfrXzLEbR1s8gCY7YnazVmS2G2pIrBjzCLCBuF3zAZze/aV3jaU4Zt+JabMMdZaUz0XaWdNkHGLmgOmr8unLXg2ZO7d3YONSNWw6bl8ydipRpm+Q/4nP35d9jZt/1GueqN56+yftLi+F3+y8ed1gz/7+wAAHqr+J8mVLvZIiKv3zH04yFgosNn9C0bSVnhN+pE1NpFthqMVPymgOAAA=) center/cover;filter:blur(18px)}
+.hero .bg img{position:relative;opacity:0;transition:opacity 1.4s ease}.hero .bg img.in{opacity:1}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.hero h1 .w,.hero p.lead,.hero .ctas,.hero .cue{animation:none;opacity:1;filter:none;transform:none}}
 
@@ -605,7 +608,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   <div class="bg"><img src="../assets/x_hero.webp" alt="Ascension Pyramid v noci, z jej vrcholu stúpa lúč svetla" fetchpriority="high"></div>
   <div class="wrap">
     <img class="hero-logo" src="../assets/x_logo_hero.webp" alt="MILUJ Healing &amp; Retreat Centrum">
-    <h1><span class="w" style="animation-delay:0.35s">Vitajte</span> <span class="w" style="animation-delay:0.51s">doma</span> <span class="w" style="animation-delay:0.67s">na</span> <em class="g"><span class="w" style="animation-delay:0.95s">Novej</span> <span class="w" style="animation-delay:1.15s">Zemi</span></em></h1>
+    <h1><span class="w" style="animation-delay:0.70s">Vitajte</span> <span class="w" style="animation-delay:1.08s">doma</span> <span class="w" style="animation-delay:1.46s">na</span> <em class="g"><span class="w" style="animation-delay:2.14s">Novej</span> <span class="w" style="animation-delay:2.59s">Zemi</span></em></h1>
     <p class="lead">Liečivé a retreatové útočisko na Bali: chrám premeny, kde sa stretáva uzemnená spiritualita, zámerná architektúra a nová veda.</p>
     <div class="ctas"><a class="btn solid" href="#invest">Pre investorov ↗</a></div>
     <div class="cue">Posúvajte a vstúpte</div>
@@ -1368,6 +1371,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const stages = [...film.querySelectorAll('.stage')];
   const bounds = [0, .165, .31, .79];
   let target = 0, shown = 0, dur = 0;
+  { const hi = document.querySelector('.hero .bg img'); const show = () => hi.classList.add('in'); if (hi.complete && hi.naturalWidth) show(); else { hi.addEventListener('load', show, { once: true }); hi.addEventListener('error', show, { once: true }); } }
   /* TEST: start at once, film first, then the crowd (or earlier if the visitor is already close to it) */
   { let crowdStarted = false;
     const crowd = () => { if (crowdStarted) return; crowdStarted = true; loadScrub(cvid, d => { cDur = d; }, $('#crowdGlass')); };
