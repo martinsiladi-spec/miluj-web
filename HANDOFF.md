@@ -219,3 +219,10 @@ Kód: CSS bloky `/* step navigation */`, `/* 1 · philosophy */` … `/* 8 · su
 - Hlavná slučka úvodu preskakuje sekcie ďaleko od obrazovky a CSS premenné zapisuje len pri zmene.
 - Plátna (canvas) na mobile (šírka < 700 px) kreslia v rozlíšení 1,5× namiesto 2×.
 - Podstránka voda: postava v animácii (`assets/j_body.webp`, 768 × 1152, čierne pozadie) sa načíta až pri priblížení a jej čierne pozadie sa po kúskoch premení na priehľadnosť; vinetácia okrajov animácie je CSS (`.j-canvas::after`, jednotky `cqmin`), nie kreslenie v každom snímku.
+
+## 10. Neverejná kópia a nový úvod (25. 10.)
+
+- **Nový úvod (zatiaľ len na test):** pyramída viditeľná hneď (malý vložený náhľad, potom ostrá fotka), nadpis sa odhaľuje pomaly slovo po slove s rozostrením; film a scéna misie sa sťahujú s priebehom za **matným sklom v štýle Apple**, ktoré sa čistí podľa stiahnutého podielu, s ukazovateľom „Pripravujeme film / scénu“. Film štartuje až po načítaní fotky pyramídy, aby jej nebral pripojenie. Slepý test A/B: Martin vybral verziu so sklom, chcel pomalší text a pyramídu hneď.
+- Kód: `tools/make_test_intro.py` (`apply_intro(html, lang)`; samostatne vyrobí skrytú `test/` zo slovenčiny, noindex).
+- **Neverejná kópia celého webu:** `python3 tools/make_staging.py VÝSTUP` → `VÝSTUP/site/…` (všetkých 6 stránok, odkazy na priečinky prepísané na `index.html`). Zverejnená ako súkromný artefakt **https://claude.ai/artifact/P57c4BNTKxYBPn3QmCTcEF** (rozcestník `index.html` + `site/…`). Aktualizácia: znova zostaviť a publikovať rovnaký súbor s `url` tohto artefaktu. Investorský formulár v kópii neodosiela (sandbox).
+- **Zverejnený web zatiaľ nový úvod nemá.** Po schválení preniesť `apply_intro` do `sk/index.html` (zdroj) a spustiť `build_i18n.py`; preklady štítkov sú v `LABELS`.

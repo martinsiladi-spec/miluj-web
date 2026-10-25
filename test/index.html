@@ -566,7 +566,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
 .lang a[aria-current="true"]{background:var(--ivory);color:var(--night)}
 </style>
 <style>
-/* ===== TEST: intro reveal + glass loading veil ===== */
+/* ===== intro reveal + glass loading veil ===== */
 .hero h1 .w{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(.28em);animation:wIn 2.1s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes wIn{to{opacity:1;filter:blur(0);transform:none}}
 .hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.7s cubic-bezier(.22,1,.36,1) forwards}
@@ -1372,7 +1372,7 @@ h2.g-h,.layers h2{font-size:clamp(36px,3.6vw,56px)}
   const bounds = [0, .165, .31, .79];
   let target = 0, shown = 0, dur = 0;
   { const hi = document.querySelector('.hero .bg img'); const show = () => hi.classList.add('in'); if (hi.complete && hi.naturalWidth) show(); else { hi.addEventListener('load', show, { once: true }); hi.addEventListener('error', show, { once: true }); } }
-  /* TEST: start at once, film first, then the crowd (or earlier if the visitor is already close to it) */
+  /* film first, then the crowd (or earlier if the visitor is already close to it) */
   { let crowdStarted = false;
     const crowd = () => { if (crowdStarted) return; crowdStarted = true; loadScrub(cvid, d => { cDur = d; }, $('#crowdGlass')); };
     let filmStarted = false;

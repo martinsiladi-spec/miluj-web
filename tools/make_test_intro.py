@@ -1,31 +1,26 @@
-"""Build test/index.html: a hidden copy of the Slovak homepage with the intro reveal and the glass loading veil.
+"""The new homepage intro: the headline reveals word by word over the pyramid, the scrub videos
+download with progress behind a frosted-glass veil that clears as they arrive.
 
-    python3 tools/make_test_intro.py
+    python3 tools/make_test_intro.py      → test/index.html (hidden Slovak test page, noindex)
 
-The live pages are not touched. test/ is not linked from anywhere and is marked noindex.
+apply_intro(html, lang) is also used by tools/make_staging.py for the private copy of the whole site.
+The live pages are not touched.
 """
 import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-s = open(os.path.join(ROOT, 'sk', 'index.html'), encoding='utf-8').read()
+LQIP = 'UklGRrABAABXRUJQVlA4IKQBAAAQCQCdASowABwAPrFGm0mnI6IhMAqo4BYJYgCdMsD1dZ5WGf9vG/4fYzo93Fp4ll9V+BjONBkMuf+/x2cRHwwOoKbv9mwATjVigL1v84J9eAAA/vlMX+8o4N5rKrVGlCmSwUuKiGyUFzDEma9HqlpJG4HJg0JkhQskR3RkrlVDi0WdBTneku5FYa69E0jyj+6fqDbXUgZpFtlZtH9Q2cePe4pZ3syH20sKtqz5cuWTyGwWtHD+OCj2cTB9HYeBbpSXgTzFgrrOnho1lvmpz0+DS85f2xGYqY0oG/xWl/Glj6FTdvlv6K0PS1R0PK4puRDP3AhN/jqCGnB8TsPP33JxWT3TmgX4HfrXzLEbR1s8gCY7YnazVmS2G2pIrBjzCLCBuF3zAZze/aV3jaU4Zt+JabMMdZaUz0XaWdNkHGLmgOmr8unLXg2ZO7d3YONSNWw6bl8ydipRpm+Q/4nP35d9jZt/1GueqN56+yftLi+F3+y8ed1gz/7+wAAHqr+J8mVLvZIiKv3zH04yFgosNn9C0bSVnhN+pE1NpFthqMVPymgOAAA='
+LABELS = {'sk': ('Pripravujeme film', 'Pripravujeme scénu'),
+          'en': ('Preparing the film', 'Preparing the scene'),
+          'es': ('Preparando la película', 'Preparando la escena')}
 
-def rep(a, b, count=1):
-    global s
-    assert s.count(a) == count, (a[:70], s.count(a))
-    s = s.replace(a, b)
-
-# ---- head: hidden test page ----
-rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
-s = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n', '', s)
-
-# ---- CSS ----
 CSS = r'''
-/* ===== TEST: intro reveal + glass loading veil ===== */
+/* ===== intro reveal + glass loading veil ===== */
 .hero h1 .w{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(.28em);animation:wIn 2.1s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes wIn{to{opacity:1;filter:blur(0);transform:none}}
 .hero p.lead,.hero .ctas,.hero .cue{opacity:0;animation:fadeUp 1.7s cubic-bezier(.22,1,.36,1) forwards}
 .hero p.lead{animation-delay:3.5s}.hero .ctas{animation-delay:4.3s}.hero .cue{animation-delay:5.1s}
 /* the pyramid is there from the first moment: a tiny inline preview, then the sharp photo fades in over it */
-.hero .bg::before{content:"";position:absolute;inset:-6%;background:#0B0E0C url(data:image/webp;base64,UklGRrABAABXRUJQVlA4IKQBAAAQCQCdASowABwAPrFGm0mnI6IhMAqo4BYJYgCdMsD1dZ5WGf9vG/4fYzo93Fp4ll9V+BjONBkMuf+/x2cRHwwOoKbv9mwATjVigL1v84J9eAAA/vlMX+8o4N5rKrVGlCmSwUuKiGyUFzDEma9HqlpJG4HJg0JkhQskR3RkrlVDi0WdBTneku5FYa69E0jyj+6fqDbXUgZpFtlZtH9Q2cePe4pZ3syH20sKtqz5cuWTyGwWtHD+OCj2cTB9HYeBbpSXgTzFgrrOnho1lvmpz0+DS85f2xGYqY0oG/xWl/Glj6FTdvlv6K0PS1R0PK4puRDP3AhN/jqCGnB8TsPP33JxWT3TmgX4HfrXzLEbR1s8gCY7YnazVmS2G2pIrBjzCLCBuF3zAZze/aV3jaU4Zt+JabMMdZaUz0XaWdNkHGLmgOmr8unLXg2ZO7d3YONSNWw6bl8ydipRpm+Q/4nP35d9jZt/1GueqN56+yftLi+F3+y8ed1gz/7+wAAHqr+J8mVLvZIiKv3zH04yFgosNn9C0bSVnhN+pE1NpFthqMVPymgOAAA=) center/cover;filter:blur(18px)}
+.hero .bg::before{content:"";position:absolute;inset:-6%;background:#0B0E0C url(data:image/webp;base64,@LQIP@) center/cover;filter:blur(18px)}
 .hero .bg img{position:relative;opacity:0;transition:opacity 1.4s ease}.hero .bg img.in{opacity:1}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.hero h1 .w,.hero p.lead,.hero .ctas,.hero .cue{animation:none;opacity:1;filter:none;transform:none}}
@@ -48,27 +43,9 @@ CSS = r'''
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(11,14,12,.62)}.pill{background:rgba(11,14,12,.7)}}
 .pill{transition:opacity .8s ease}.pill.done{opacity:0}
 @media (prefers-reduced-motion: reduce){.glass::before{animation:none;display:none}}
-'''
-rep('<style>body{margin:0}.note{display:none!important}</style>', '<style>' + CSS + '</style>\n<style>body{margin:0}.note{display:none!important}</style>')
+'''.replace('@LQIP@', LQIP)
 
-# ---- hero headline: words reveal one by one ----
-m = re.search(r'<h1>(.*?)<em class="g">(.*?)</em></h1>', s)
-plain, gold = m.group(1).split(), m.group(2).split()
-d, parts = .7, []
-for w in plain:
-    parts.append(f'<span class="w" style="animation-delay:{d:.2f}s">{w}</span>'); d += .38
-d += .3
-gold_html = ' '.join(f'<span class="w" style="animation-delay:{d + i * .45:.2f}s">{w}</span>' for i, w in enumerate(gold))
-s = s.replace(m.group(0), '<h1>' + ' '.join(parts) + ' <em class="g">' + gold_html + '</em></h1>', 1)
-
-# ---- glass veil inside the film and mission scenes ----
-VEIL = '<div class="glass" id="{id}" aria-hidden="true"></div><span class="pill" id="{id}Pill" aria-hidden="true"><span class="lbl">{lbl}</span><i><b></b></i><span class="pct">0 %</span></span>'
-rep('data-src="../assets/film.mp4"></video>', 'data-src="../assets/film.mp4"></video>\n    ' + VEIL.format(id='filmGlass', lbl='Pripravujeme film'))
-rep('data-src="../assets/crowd.mp4"></video>', 'data-src="../assets/crowd.mp4"></video>\n    ' + VEIL.format(id='crowdGlass', lbl='Pripravujeme scénu'))
-
-# ---- JS: streamed download with progress, film first, crowd right after ----
-old_load = s[s.index('  const loadScrub = (v, onDur) => {'):s.index('  { const mio = new IntersectionObserver')]
-new_load = '''  const loadScrub = (v, onDur, glass) => {
+NEW_LOAD = '''  const loadScrub = (v, onDur, glass) => {
     const url = v.dataset.src, pill = glass && document.getElementById(glass.id + 'Pill'), pct = pill && pill.querySelector('.pct');
     let shownStep = -1;
     const prog = p => { if (!glass) return; const step = Math.min(25, Math.floor(p * 25)); if (step === shownStep) return; shownStep = step;
@@ -89,12 +66,8 @@ new_load = '''  const loadScrub = (v, onDur, glass) => {
     return done;
   };
 '''
-s = s.replace(old_load, new_load, 1)
-old_mio = s[s.index('  { const mio = new IntersectionObserver'):s.index('\n', s.index('    mio.observe(mission); }')) + 1]
-s = s.replace(old_mio, '', 1)
-old_go = s[s.index('  { const go = () => (window.requestIdleCallback'):s.index('\n', s.index("if (document.readyState === 'complete') go();")) + 1]
-s = s.replace(old_go, '''  { const hi = document.querySelector('.hero .bg img'); const show = () => hi.classList.add('in'); if (hi.complete && hi.naturalWidth) show(); else { hi.addEventListener('load', show, { once: true }); hi.addEventListener('error', show, { once: true }); } }
-  /* TEST: start at once, film first, then the crowd (or earlier if the visitor is already close to it) */
+NEW_GO = '''  { const hi = document.querySelector('.hero .bg img'); const show = () => hi.classList.add('in'); if (hi.complete && hi.naturalWidth) show(); else { hi.addEventListener('load', show, { once: true }); hi.addEventListener('error', show, { once: true }); } }
+  /* film first, then the crowd (or earlier if the visitor is already close to it) */
   { let crowdStarted = false;
     const crowd = () => { if (crowdStarted) return; crowdStarted = true; loadScrub(cvid, d => { cDur = d; }, $('#crowdGlass')); };
     let filmStarted = false;
@@ -106,9 +79,39 @@ s = s.replace(old_go, '''  { const hi = document.querySelector('.hero .bg img');
     mio.observe(mission);
     const fio = new IntersectionObserver(es => { if (es[0].isIntersecting) { fio.disconnect(); film0(); } }, { rootMargin: '50% 0px' });
     fio.observe(film); }
-''', 1)
-assert 'fio.observe(film); }' in s and "loadScrub(vid, d => { dur = d; }, $('#filmGlass'))" in s
+'''
+VEIL = '<div class="glass" id="{id}" aria-hidden="true"></div><span class="pill" id="{id}Pill" aria-hidden="true"><span class="lbl">{lbl}</span><i><b></b></i><span class="pct">0 %</span></span>'
 
-os.makedirs(os.path.join(ROOT, 'test'), exist_ok=True)
-open(os.path.join(ROOT, 'test', 'index.html'), 'w', encoding='utf-8').write(s)
-print('test/index.html written', len(s))
+def apply_intro(s, lang):
+    def rep(a, b):
+        nonlocal s
+        assert s.count(a) == 1, (a[:70], s.count(a)); s = s.replace(a, b)
+    rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
+    s = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n', '', s)
+    rep('<style>body{margin:0}.note{display:none!important}</style>', '<style>' + CSS + '</style>\n<style>body{margin:0}.note{display:none!important}</style>')
+    # headline words reveal one by one, the golden part after a short pause
+    m = re.search(r'<h1>(.*?)<em class="g">(.*?)</em></h1>', s)
+    plain, gold = m.group(1).split(), m.group(2).split()
+    d, parts = .7, []
+    for w in plain:
+        parts.append(f'<span class="w" style="animation-delay:{d:.2f}s">{w}</span>'); d += .38
+    d += .3
+    gold_html = ' '.join(f'<span class="w" style="animation-delay:{d + i * .45:.2f}s">{w}</span>' for i, w in enumerate(gold))
+    s = s.replace(m.group(0), '<h1>' + ' '.join(parts) + ' <em class="g">' + gold_html + '</em></h1>', 1)
+    # glass veils in the film and mission scenes
+    film_lbl, crowd_lbl = LABELS[lang]
+    for name, gid, lbl in [('film', 'filmGlass', film_lbl), ('crowd', 'crowdGlass', crowd_lbl)]:
+        s, n = re.subn(r'(data-src="(?:\.\./)*assets/' + name + r'\.mp4"></video>)', lambda mm: mm.group(1) + '\n    ' + VEIL.format(id=gid, lbl=lbl), s)
+        assert n == 1, name
+    # streamed downloads with progress
+    s = s.replace(s[s.index('  const loadScrub = (v, onDur) => {'):s.index('  { const mio = new IntersectionObserver')], NEW_LOAD, 1)
+    s = s.replace(s[s.index('  { const mio = new IntersectionObserver'):s.index('\n', s.index('    mio.observe(mission); }')) + 1], '', 1)
+    s = s.replace(s[s.index('  { const go = () => (window.requestIdleCallback'):s.index('\n', s.index("if (document.readyState === 'complete') go();")) + 1], NEW_GO, 1)
+    assert 'fio.observe(film); }' in s and "$('#filmGlass')" in s
+    return s
+
+if __name__ == '__main__':
+    s = apply_intro(open(os.path.join(ROOT, 'sk', 'index.html'), encoding='utf-8').read(), 'sk')
+    os.makedirs(os.path.join(ROOT, 'test'), exist_ok=True)
+    open(os.path.join(ROOT, 'test', 'index.html'), 'w', encoding='utf-8').write(s)
+    print('test/index.html written', len(s))
