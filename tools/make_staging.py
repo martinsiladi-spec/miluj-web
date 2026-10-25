@@ -1,17 +1,15 @@
-"""Build a private copy of the whole site with the new intro, for review before it goes live.
+"""Build a private copy of the whole site (as it is in the repository now), for review before changes go live.
 
     python3 tools/make_staging.py OUT_DIR
 
-Writes OUT_DIR/site/... (all six pages in three languages + assets). The homepages get the new intro
-(tools/make_test_intro.apply_intro); folder links point at index.html so the copy also works on hosts
-without directory index (a private claude.ai page). Nothing in the repository's live pages changes.
+Writes OUT_DIR/site/... (all six pages in three languages + assets, marked noindex); folder links point at
+index.html so the copy also works on hosts without directory index (a private claude.ai page).
+Typical use: change the Slovak source, run build_i18n.py, build this copy and publish it privately; push to main only after approval.
 """
 import os, re, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from make_test_intro import apply_intro
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = {'index.html': 'en', 'sk/index.html': 'sk', 'es/index.html': 'es',
-         'water/index.html': None, 'sk/water/index.html': None, 'es/water/index.html': None}
+PAGES = ['index.html', 'sk/index.html', 'es/index.html', 'water/index.html', 'sk/water/index.html', 'es/water/index.html']
 
 def explicit_index(s):
     # href="sk/" → "sk/index.html", "../" → "../index.html", "./" → "index.html"; anchors and absolute URLs stay
@@ -24,9 +22,9 @@ def explicit_index(s):
 
 def build(out):
     site = os.path.join(out, 'site'); shutil.rmtree(site, ignore_errors=True)
-    for rel, lang in PAGES.items():
+    for rel in PAGES:
         s = open(os.path.join(ROOT, rel), encoding='utf-8').read()
-        s = apply_intro(s, lang) if lang else s.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 1)
+        s = s.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 1)
         s = explicit_index(s)
         p = os.path.join(site, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, 'w', encoding='utf-8').write(s)

@@ -17,6 +17,8 @@ T = [
 ("Welcome home to", "Vitajte doma na", "Bienvenido a casa, a"),
 ("the New Earth", "Novej Zemi", "la Nueva Tierra"),
 ("Investor overview ↗", "Pre investorov ↗", "Para inversores ↗"),
+("Preparing the film", "Pripravujeme film", "Preparando la película"),
+("Preparing the scene", "Pripravujeme scénu", "Preparando la escena"),
 ("Scroll to walk in", "Posúvajte a vstúpte", "Desliza para entrar"),
 
 # ---- film ----
